@@ -1,0 +1,28 @@
+@mixin df-jcsb{
+    display: flex;
+    justify-content: space-between;
+}
+@mixin df-aic{
+    display: flex;
+    align-items: center;
+}
+@mixin df-aic-jcsb{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+@mixin df-aic-jcc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@mixin df-jcc{
+    display: flex;
+    justify-content: center;
+}
+
+
+@mixin tr($s: 0.3s){
+    transition: $s linear;
+}
+

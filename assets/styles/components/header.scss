@@ -1,0 +1,127 @@
+@import '../main.scss';
+
+.header{
+    background: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+    z-index: 5;
+    font-size: 14px;
+    a{
+        color: #fff;
+    }
+    &.alt{
+        .header__top{
+            padding: 0px;
+            max-height: 0px;
+        }
+        .header__subLogo{
+            width: 180px;
+            margin-right: 40px;
+        }
+        .header__bot{
+            .container{
+                max-width: 1550px;
+            }
+        }
+    }
+    /* ====================================================================== */
+    /* Top Section */
+    /* ====================================================================== */
+    &__top{
+        @include tr(.2s);
+        max-height: 200px;
+        padding: 20px 0px;
+        overflow-y: hidden;
+        .container{
+            @include df-aic-jcsb;
+        }
+    }
+    &__left{
+        @include df-aic;
+    }
+    &__weather{
+        @include df-aic;
+        margin-left: 25px;
+        span{
+            margin-left: 10px;
+        }
+    }
+    &__right{
+        @include df-aic;
+    }
+    &__date{
+        @include df-aic;
+        span{
+            margin-left: 10px;
+        }
+    }
+    &__lang{
+        @include df-aic;
+        margin-left: 45px;
+        cursor: pointer;
+        &:hover{
+            opacity: 0.8;
+        }
+    }
+    /* ====================================================================== */
+    /* Bottom Section */
+    /* ====================================================================== */
+    &__bot{
+        border-top: 1px solid rgba(255, 255, 255, 0.19);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.19);
+        padding: 20px 0px;
+        .container{
+            @include tr(.2s);
+            @include df-aic;
+        }
+    }
+    &__subLogo{
+        @include tr(.2s);
+        width: 0px;
+        overflow-x: hidden;
+        img{
+            width: 180px;
+            height: 40px;
+        }
+    }
+    &__nav{
+        ul{
+            display: flex;
+            margin: 0px -22px;
+            .item{
+                margin: -11px;
+                padding: 0px 22px;
+                a{
+                    padding: 11px;
+                    span{
+                        position: relative;
+                        &::after{
+                            @include tr(.2s);
+                            content: '';
+                            position: absolute;
+                            bottom: -3px;
+                            left: 0;
+                            width: 0%;
+                            height: 1px;
+                            background-color: #fff;
+                        }
+                    }
+                    &:hover{
+                        opacity: 0.8;
+                        span{
+                            &::after{
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__search{
+        margin-left: auto;
+    }
+}
