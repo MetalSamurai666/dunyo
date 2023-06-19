@@ -1,4 +1,5 @@
 <script setup>
+
 const route = useRoute()
 </script>
 
@@ -6,6 +7,7 @@ const route = useRoute()
   <NuxtLayout>
     <div class="home">
       <Welcome />
+      <Economy />
     </div>
   </NuxtLayout>
 </template>
