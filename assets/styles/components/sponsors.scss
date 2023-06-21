@@ -1,0 +1,33 @@
+@import '../main.scss';
+
+.sponsors{
+    &__box{
+        padding: 45px 0px 65px;
+    }
+    .slider{
+        &-pagination{
+            bottom: -40px;
+        }
+        &-page{
+            background-color: #B1CCF3;
+            opacity: 1;
+            &.is-active{
+                background-color: #316AC0;
+                transform: unset;
+            }
+        }
+        &__img{
+            @include df-aic;
+            span{
+                margin-left: 10px;
+                font-size: 12px;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                line-clamp: 3;
+                -webkit-box-orient: vertical;
+                white-space: break-spaces;
+            }
+        }
+    }
+}

@@ -1,0 +1,145 @@
+@import '../main.scss';
+@import '@splidejs/vue-splide/css';
+
+.slides{
+    background-color: #000;
+    .slider{
+        /* ================================================================== */
+        /* Progress */
+        /* ================================================================== */
+        &__progress{
+            position: absolute;
+            top: 80px;
+            left: 160px;
+            color: #fff;
+            z-index: 4;
+        }
+        /* ================================================================== */
+        /* Arrows */
+        /* ================================================================== */
+        &__arrow{
+            opacity: 1;
+            background-color: #316AC0;
+            width: 33px;
+            height: 33px;
+            svg{
+                width: 15px;
+                height: 15px;
+                path{
+                    fill: #fff;
+                }
+            }
+        }
+        &__prev{
+            top: 90px;
+            left: 90px;
+        }
+        &__next{
+            top: 90px;
+            left: 220px;
+        }
+        /* ================================================================== */
+        /* Slide */
+        /* ================================================================== */
+        &__slide{
+            position: relative;
+            &::after{
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background: linear-gradient(90.15deg, rgba(10, 10, 10, 0.74) -3.17%, rgba(10, 10, 10, 0) 67.59%);
+                z-index: 3;
+            }
+        }
+        &__box{
+            display: flex;
+            color: #fff;
+            padding: 55px 100px 75px 100px;
+            height: 100%;
+        }
+        /* ================================================================== */
+        /* Left Section */
+        /* ================================================================== */
+        &__left{
+            flex-basis: 75%;
+            width: 75%;
+            z-index: 4;
+            align-self: flex-end;
+        }
+        &__cat{
+            font-size: 16px;
+            position: relative;
+            padding-left: 15px;
+            &::before{
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                margin: auto;
+                width: 10px;
+                height: 10px;
+                background-color: $colorOrange;
+                border-radius: 50%;
+            }
+        }
+        &__title{
+            padding-top: 15px;
+            font-size: 36px;
+            font-weight: 600;
+            max-width: 610px;
+            line-height: 46px;
+        }
+        /* ================================================================== */
+        /* Right Section */
+        /* ================================================================== */
+        &__right{
+            flex-basis: 25%;
+            width: 25%;
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), rgba(47, 47, 47, 0.4);
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            padding: 55px 100px 75px 35px;
+        }
+        &__text{
+            p{
+                font-size: 18px;
+                line-height: 32px;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 12;
+                line-clamp: 12;
+                -webkit-box-orient: vertical;
+                white-space: break-spaces;
+            }
+        }
+        &__more{
+            margin-left: -35px;
+            margin-top: auto;
+            a{
+                @include df-aic;
+                @include tr(0.2s);
+                width: fit-content;
+                background-color: $colorOrange;
+                color: #fff;
+                padding: 5px 25px 5px 35px;
+                font-size: 18px;
+                line-height: 32px;
+                img{
+                    margin-left: 5px;
+                }
+                &:hover{
+                    background-color: darken($colorOrange, 10%);
+                }
+            }
+        }
+    }
+}

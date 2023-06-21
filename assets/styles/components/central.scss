@@ -1,0 +1,124 @@
+@import '../main.scss';
+
+.central{
+    background-color: #f2ede7;
+    &__box{
+        display: flex;
+        padding: 60px 0px;
+    }
+    /* ====================================================================== */
+    /* Left Section */
+    /* ====================================================================== */
+    &__left{
+        flex-basis: 75%;
+        width: 75%;
+        padding-right: 20px;
+    }
+    &__title{
+        padding: 15px 0px;
+        font-size: 18px;
+        padding-left: 25px;
+        position: relative;
+        border-bottom: 1px solid #B5B5B5;
+        &::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            width: 15px;
+            height: 15px;
+            background-color: #39D0C7;
+            border-radius: 50%;
+        }
+    }
+    &__main{
+        display: flex;
+        padding-top: 25px;
+    }
+    &__poster{
+        background-image: url(@/assets/img/economy/poster.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 20px 50px;
+        color: #fff;
+        @include df-aic;
+        flex-direction: column;
+        justify-content: flex-end;
+        position: relative;
+        &::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.46) 100%);
+        }
+        .poster{
+            &__date{
+                font-size: 14px;
+                z-index: 4;
+            }
+            &__title{
+                font-size: 32px;
+                font-weight: 600;
+                line-height: 41px;
+                text-align: center;
+                z-index: 4;
+            }
+        }
+    }
+    &__cards{
+        margin: -12.5px 0px;
+        padding-left: 20px;
+    }
+    &__card{
+        padding: 12.5px 0px;
+    }
+    /* ====================================================================== */
+    /* Right Section */
+    /* ====================================================================== */
+    &__news{
+        padding-left: 20px;
+    }
+    &__right{
+        flex-basis: 25%;
+        width: 25%;
+        .btns{
+            @include df-aic-jcsb;
+            border-bottom: 1px solid #B5B5B5;
+            button{
+                @include tr(0.2s);
+                padding: 15px;
+                &.active{
+                    color: #316AC0;
+                }
+            }
+        }
+        .news{
+            padding-top: 11.5px;
+            &__content{
+                display: none;
+                &.active{
+                    display: block;
+                }
+            }
+            &__item{
+                padding: 12.5px 0px;
+                &.science{
+                    .cardDate__date{
+                        background-color: $colorDarkBlue;
+                    }
+                }
+                &.education{
+                    .cardDate__date{
+                        background-color: $colorOrange;
+                    }
+                }
+            }
+        }
+    }
+}

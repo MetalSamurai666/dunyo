@@ -1,6 +1,4 @@
 <script setup>
-
-const route = useRoute()
 </script>
 
 <template>
@@ -8,6 +6,10 @@ const route = useRoute()
     <div class="home">
       <Welcome />
       <Economy />
+      <Slides />
+      <Central />
+      <Video />
+      <Sponsors />
     </div>
   </NuxtLayout>
 </template>

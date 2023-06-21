@@ -1,6 +1,7 @@
 @import '../main.scss';
 
 .header{
+    @include tr(0.2s);
     background: 0;
     position: fixed;
     top: 0;
@@ -10,9 +11,33 @@
     z-index: 5;
     font-size: 14px;
     a{
+        @include tr(0.2s);
         color: #fff;
     }
     &.alt{
+        background-color: #fff;
+        .header__nav{
+            ul{
+                .listly{
+                    &::after{
+                        background-color: #000;
+                    }
+                }
+            }
+        }
+        a{
+            color: #000;
+        }
+        .header__subLogo{
+            filter: invert(1);
+        }
+        .header__search{
+            button{
+                img{
+                    filter: invert(1);
+                }
+            }
+        }
         .header__top{
             padding: 0px;
             max-height: 0px;
@@ -72,7 +97,7 @@
     &__bot{
         border-top: 1px solid rgba(255, 255, 255, 0.19);
         border-bottom: 1px solid rgba(255, 255, 255, 0.19);
-        padding: 20px 0px;
+        padding: 10px 0px;
         .container{
             @include tr(.2s);
             @include df-aic;
@@ -118,10 +143,30 @@
                         }
                     }
                 }
+                &.listly{
+                    position: relative;
+                    &::after{
+                        content: '';
+                        position: absolute;
+                        bottom: 0px;
+                        left: 0;
+                        right: 0;
+                        margin: auto;
+                        width: 4px;
+                        height: 4px;
+                        background-color: #fff;
+                        border-radius: 50%;
+                    }
+                }
             }
         }
     }
     &__search{
         margin-left: auto;
+        button{
+            img{
+                @include tr(0.2s);
+            }
+        }
     }
 }

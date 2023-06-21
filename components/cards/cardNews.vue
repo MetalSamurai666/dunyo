@@ -1,0 +1,23 @@
+<script setup>
+    const cardProps = defineProps({
+        card: Object
+    })
+</script>
+
+<template>
+    <li class="cardNews">
+        <div class="cardNews__box">
+            <div class="cardNews__top">
+                <NuxtLink class="cardNews__title" :to="card?.link">{{ card?.title }}</NuxtLink>
+            </div>
+            <div class="cardNews__bot">
+                <div class="cardNews__date">{{ card?.date }}</div>
+                <div class="cardNews__cat">{{ card?.cat }}</div>
+            </div>
+        </div>
+    </li>
+</template>
+
+<style lang="scss">
+@import '@/assets/styles/components/cards/cardNews.scss';
+</style>

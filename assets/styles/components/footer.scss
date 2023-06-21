@@ -1,1 +1,66 @@
 @import '../main.scss';
+
+.footer{
+    color: #fff;
+    a{
+        color: #fff;
+    }
+    &__title{
+        font-size: 18px;
+        font-weight: 700;
+    }
+    &__link{
+        @include tr(0.2s);
+        padding: 7px 0px;
+        &:hover{
+            opacity: 0.8;
+        }
+    }
+    &__top{
+        background-color: $colorLightBlue;
+        padding: 60px 0px;
+    }
+    &__nav{
+        @include df-jcsb;
+        margin: 0px -20px;
+    }
+    &__bot{
+        background-color: $colorDarkBlue;
+        padding: 25px 0px;
+    }
+    &__list{
+        flex-basis: 25%;
+        width: 25%;
+        padding: 0px 20px;
+        li{
+            &:first-child{
+                margin-bottom: 20px;
+            }
+        }
+        &.contacts{
+            border-left: 1px solid rgba(#fff, 0.3);
+            .footer__link{
+                display: flex;
+                flex-direction: column;
+                a{
+                    margin-top: 5px;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+    &__copyright{
+        text-align: center;
+        font-size: 14px;
+    }
+    &__socials{
+        @include df-jcc;
+        padding-top: 10px;
+        ul{
+            @include df-aic;
+            li{
+                padding: 0px 5px;
+            }
+        }
+    }
+}
