@@ -234,4 +234,29 @@
             }
         }
     }
+
+    @media (max-width: 500px) {
+        height: unset;
+        &__slider{
+            height: 100%;
+        }
+        &__top{
+            max-width: 100%;
+        }
+        &__bot{
+            padding-top: 40px;
+        }
+        &__actual{
+            ul{
+                flex-wrap: wrap;
+                .item{
+                    flex-basis: 100%;
+                    width: 100%;
+                }
+            }
+        }
+        .slider{
+            height: 100%;
+        }
+    }
 }

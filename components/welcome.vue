@@ -109,7 +109,12 @@
                     pagination: false,
                     autoplay: true,
                     resetProgress: false,
-                    pauseOnHover: false
+                    pauseOnHover: false,
+                    breakpoints: {
+                        500:{
+                            height: 'auto',
+                        }
+                    }
                 }">
                 <SplideSlide v-for="(item, index) of slider" class="splide__slide slider__slide" :key="index">
                     <img class="slider__img" :src="item.img">

@@ -3,6 +3,7 @@
 <template>
     <div>
         <Header />   
+        <Menu />
         <slot/>
         
         <Footer />

@@ -64,6 +64,11 @@
             @include df-aic-jcsb;
         }
     }
+    &__logo{
+        img{
+            image-rendering: -webkit-optimize-contrast;
+        }
+    }
     &__left{
         @include df-aic;
     }
@@ -167,6 +172,37 @@
             img{
                 @include tr(0.2s);
             }
+        }
+    }
+    &__menu{
+        display: none;
+    }
+
+    /* ====================================================================== */
+    /* Mobile */
+    /* ====================================================================== */
+    @media (max-width: 500px) {
+        &__left, &__date, &__lang, &__bot{
+            display: none;
+        }
+        &__menu{
+            display: block;
+        }
+        &.mobile-alt{
+            background-color: $colorDarkBlue;
+            .header__top{
+                padding: 10px 0px;
+            }
+            // .header__logo{
+            //     img{
+            //         filter: invert(1);
+            //     }
+            // }
+            // .header__menu{
+            //     img{
+            //         filter: invert(1);
+            //     }
+            // }
         }
     }
 }

@@ -12,7 +12,6 @@
         flex-basis: 25%;
         width: 25%;
     }
-    
     &__more{
         a{
             font-weight: 500;
@@ -167,6 +166,32 @@
             height: 90px;
             object-fit: cover;
             object-position: 50% 20%;
+        }
+    }
+
+    /* ====================================================================== */
+    /* Mobile */
+    /* ====================================================================== */
+    @media (max-width: 500px) {
+        &__row{
+            flex-direction: column;
+        }
+        &__small, &__big{
+            flex-basis: 100%;
+            width: 100%;
+            padding: 0;
+        }
+        &__big{
+            margin: 20px 0px;
+        }
+        &__poster{
+            height: 400px;
+            .poster{
+                &__title{
+                    font-size: 24px;
+                    line-height: 32px;
+                }
+            }
         }
     }
 }

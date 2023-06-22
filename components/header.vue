@@ -1,16 +1,32 @@
 <script setup>
-/* Header fixed on scroll */
-    var className = "alt";
-    var scrollTrigger = 0;
-    window.onscroll = function() {
-        if (window.scrollY > scrollTrigger || window.pageYOffset > scrollTrigger) {
-            document.querySelector('header').classList.add(className);
-        } else {
-            document.querySelector('header').classList.remove(className);
-        }
-    };
+/* Imports */
+    import { storeToRefs } from 'pinia'
+    import { useMenuStore } from '~/store/menu';
 
-/* Nav menu */
+    const menuStore = useMenuStore()
+    const { menuState } = storeToRefs(menuStore)
+
+/* Header fixed on scroll */
+    var scrollTrigger = 0;
+    if (window.innerWidth > 500) {
+        window.onscroll = function() {
+            if (window.scrollY > scrollTrigger || window.pageYOffset > scrollTrigger) {
+                document.querySelector('header').classList.add('alt');
+            } else {
+                document.querySelector('header').classList.remove('alt');
+            }
+        };
+    } else {
+        window.onscroll = function() {
+            if (window.scrollY > scrollTrigger || window.pageYOffset > scrollTrigger) {
+                document.querySelector('header').classList.add('mobile-alt');
+            } else {
+                document.querySelector('header').classList.remove('mobile-alt');
+            }
+        };
+    }
+
+/* Nav List */
     const nav = ref([
         {
             link: '/',
@@ -53,6 +69,11 @@
             title: 'Архив',
         },
     ])
+
+/* Mobile Menu */
+    function openMenu() {
+        menuStore.menuChange()
+    }
 </script>
 
 <template>
@@ -84,6 +105,12 @@
                     <div class="header__lang">
                         <span>Ру</span>
                         <img src="@/assets/logo/basic/arrowDown.svg">
+                    </div>
+
+                    <div class="header__menu">
+                        <button @click="openMenu">
+                            <img src="@/assets/logo/basic/menu.svg">
+                        </button>
                     </div>
                 </div>
             </div>
