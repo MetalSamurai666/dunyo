@@ -41,12 +41,20 @@
                     drag: false,
                     pagination: false,
                     lazyLoad: true,
+                    pauseOnFocus: false,
                     classes: {
                         arrows: 'splide__arrows slider__arrows',
                         arrow : 'splide__arrow slider__arrow',
                         prev  : 'splide__arrow--prev slider__prev',
                         next  : 'splide__arrow--next slider__next',
                     },
+                    breakpoints: {
+                        500: {
+                            height: 0,
+                            arrows: false,
+                            drag: true,
+                        }
+                    }
 
                 }">
                 <SplideSlide class="splide__slide slider__slide" v-for="item, index of slides" :key="index">

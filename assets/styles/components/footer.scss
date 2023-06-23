@@ -70,4 +70,29 @@
     &__nav{
         flex-direction: column;
     }
+    &__link{
+        font-size: 14px;
+    }
+    &__top{
+        padding: 40px 0px;
+    }
+    &__list{
+        width: 100%;
+        flex-basis: unset;
+        padding: 10px 20px;
+        li{
+            &:first-child{
+                margin-bottom: 10px;
+            }
+        }
+        &.contacts{
+            border: 0;
+        }
+    }
+    &__bot{
+        padding: 20px 0px;
+    }
+    &__copyright{
+        line-height: 18px;
+    }
 }

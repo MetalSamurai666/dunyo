@@ -49,4 +49,35 @@
             object-fit: cover;
         }
     }
+
+    /* ====================================================================== */
+    /* Mobile */
+    /* ====================================================================== */
+    @media (max-width: 500px) {
+        &__main{
+            flex-wrap: wrap;
+        }
+        &__title{
+            width: 100%;
+        }
+        &__grid, &__poster{
+            flex-basis: 100%;
+            width: 100%;
+        }
+        &__grid{
+            grid-template-columns: repeat(2, 1fr);
+        }
+        &__item{
+            height: auto;
+        }
+        &__poster{
+            padding: 20px 0px 0px 0px;
+        }
+    }
+
+    @media (max-width: 375px) {
+        &__grid{
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
 }

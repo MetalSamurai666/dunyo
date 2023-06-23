@@ -4,6 +4,7 @@
 .slides{
     background-color: #000;
     .slider{
+        position: relative;
         /* ================================================================== */
         /* Progress */
         /* ================================================================== */
@@ -138,6 +139,57 @@
                 }
                 &:hover{
                     background-color: darken($colorOrange, 10%);
+                }
+            }
+        }
+    }
+
+    /* ====================================================================== */
+    /* Mobile */
+    /* ====================================================================== */
+    @media (max-width: 500px) {
+        .slider{
+            &__box{
+                flex-direction: column;
+                padding: 40px 20px 0px 20px;
+            }
+            &__left{
+                flex-basis: unset;
+                width: 100%;
+            }
+            &__right{
+                flex-basis: unset;
+                width: 100%;
+                position: relative;
+                margin: 40px -20px 0px -20px;
+                padding: 20px 20px 40px 20px;
+                box-sizing: content-box;
+            }
+            &__progress{
+                width: fit-content;
+                top: unset;
+                bottom: 20px;
+                left: 0;
+                right: 0;
+                margin: auto;
+                z-index: 5;
+            }
+            &__title{
+                font-size: 24px;
+                line-height: 32px;
+            }
+            &__text{
+                p{
+                    font-size: 15px;
+                    line-height: 24px;
+                }
+            }
+            &__more{
+                margin: 20px 0px 0px -20px;
+                a{
+                    padding: 5px 15px;
+                    font-size: 15px;
+                    line-height: 24px;
                 }
             }
         }

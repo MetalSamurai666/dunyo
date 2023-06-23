@@ -90,6 +90,11 @@
                             pagination: 'splide__pagination slider-pagination',
                             page: 'splide__pagination__page slider-page',
                         },
+                        breakpoints: {
+                            500: {
+                                fixedWidth: 200
+                            }
+                        }
                     }">
                     <SplideSlide 
                         class="splide__slide slider__slide" 

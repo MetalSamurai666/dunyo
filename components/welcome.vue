@@ -112,7 +112,7 @@
                     pauseOnHover: false,
                     breakpoints: {
                         500:{
-                            height: 'auto',
+                            height: 600,
                         }
                     }
                 }">
