@@ -1,0 +1,118 @@
+@import '../main.scss';
+
+.catWrapper{
+    &__top{
+        display: flex;
+    }
+    &__left{
+        flex-basis: 75%;
+        width: 75%;
+        padding-right: 20px;
+    }
+    &__poster{
+        background-color: #ccc;
+        background-image: url('@/assets/img/economy/poster.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 40px;
+        color: #fff;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        &::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.46) 100%);
+        }
+    }
+    &__cat{
+        position: relative;
+        z-index: 3;
+        padding-left: 20px;
+        &::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 10px;
+            height: 10px;
+            margin: auto;
+            background-color: $colorOrange;
+            border-radius: 50%;
+        }
+    }
+    &__date{
+        position: relative;
+        z-index: 3;
+        font-size: 14px;
+    }
+    &__title{
+        font-size: 32px;
+        font-weight: 600;
+        padding-top: 20px;
+    }
+    &__right{
+        flex-basis: 25%;
+        width: 25%;
+    }
+    &__list{
+        display: flex;
+        flex-direction: column;
+        margin: -10px 0px;
+        .item{
+            padding: 10px 0px;
+            &__img{
+                a{
+                    width: 100%;
+                    height: 100px;
+                    overflow: hidden;
+                    img{
+                        @include tr(.2s);
+                        width: 100%;
+                        height: 100%;
+                        object-position: center;
+                        object-fit: cover;
+                    }
+                    &:hover{
+                        img{
+                            width: 110%;
+                            height: 110%;
+                        }
+                    }
+                }
+            }
+            &__title{
+                font-size: 14px;
+                margin: 10px 0px 5px;
+                font-weight: 600;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 4;
+                line-clamp: 4;
+                -webkit-box-orient: vertical;
+                white-space: break-spaces;
+            }
+            &__date{
+                font-size: 12px;
+                color: #4F4D4D;
+            }
+        }
+    }
+    &__banner{
+        padding-top: 30px;
+        img{
+            width: 100%;
+            height: 90px;
+            object-position: center;
+            object-fit: cover;
+        }
+    }
+}

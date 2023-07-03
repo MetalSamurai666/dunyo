@@ -1,0 +1,62 @@
+@import '../main.scss';
+
+.breadcrumbs{
+    background-color: #fff;
+    &__box{
+        @include df-aic-jcsb;
+        padding: 45px 0px;
+    }
+    &__title{
+        font-size: 34px;
+        font-weight: 700;
+    }
+    &__list{
+        @include df-aic;
+        margin: 0px -15px;
+        .item{
+            font-size: 16px;
+            padding: 0px 20px;
+            margin: -5px;
+            position: relative;
+            &::after{
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 2px;
+                margin: auto;
+                width: 4px;
+                height: 4px;
+                background-color: #000;
+                border-radius: 50%;
+                pointer-events: none;
+            }
+            a{
+                padding: 5px;
+                span{
+                    position: relative;
+                    &::after{
+                        @include tr(.2s);
+                        content: '';
+                        position: absolute;
+                        bottom: -2px;
+                        left: 0;
+                        width: 0%;
+                        height: 1px;
+                        background-color: #000;
+                    }
+                    &:hover{
+                        &::after{
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            &:last-child{
+                &::after{
+                    display: none;
+                }
+            }
+        }
+    }
+}

@@ -25,8 +25,10 @@
 </script>
 
 <template>
-  <meta name="theme-color" content="#1C4077" />
-  <NuxtPage />
+  <div>
+    <meta name="theme-color" content="#1C4077" />
+    <NuxtPage />
+  </div>
 </template>
 
 <style lang="scss">
