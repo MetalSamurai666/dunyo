@@ -2,7 +2,7 @@
     import cardCat from "@/components/cards/cardCat.vue"
 
     const listProps = defineProps({
-        listData: Object
+        news: Array
     })
 
 </script>
@@ -12,9 +12,9 @@
         <div class="catList__box">
             <ul class="catList__list">
                 <cardCat
-                    :class="listData.mode"
+                    :class="`big`"
                     :card="item"
-                    v-for="item, index of listData?.list"
+                    v-for="item, index of news"
                     :key="index"
                 />
             </ul>

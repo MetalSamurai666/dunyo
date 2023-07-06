@@ -85,6 +85,20 @@
         },
     ])
 
+    const benefitsv = ref(list)
+
+    const changeBenefit = ((id) => {
+        benefitsv.value = benefitsv.value.map((status, index) => {
+            if (index === id) {
+                status.active = !status.active 
+            } else {
+                status.active = false
+            }
+            return status
+        }) 
+    })
+
+
     function closeMenu() {
         menuStore.menuChange()
     }
@@ -102,16 +116,23 @@
                 </div>
             </div>
             <div class="menu__mid">
-                <div class="menu__list">
-                    <ul>
-                        <li 
-                            v-for="item, index of list" :key="index"
-                            :class="item.list ? 'item listly' : 'item'"
-                            >
-                            <NuxtLink :to="item.link">{{ item.title }}</NuxtLink>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="menu__list">
+                    <!-- :class="item.list ? 'item listly' : 'item'" -->
+                    <li 
+                        v-for="item, index of benefitsv" :key="index"
+                        
+                        :class="item.active ? 'item active' : 'item'" 
+                        @click="item.list ? changeBenefit(index) : null"
+                        >
+                        <NuxtLink :class="item.list ? 'item__link listly' : 'item__link'" :to="item.link">{{ item.title }}</NuxtLink>
+
+                        <ul class="item__list" v-if="item?.list">
+                            <li v-for="subItem, index of item?.list" :key="index">
+                                <NuxtLink :to="subItem.link">{{ subItem.title }}</NuxtLink>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
             <div class="menu__bot">
                 <ul class="menu__more">

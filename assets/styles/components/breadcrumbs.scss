@@ -32,6 +32,13 @@
                 pointer-events: none;
             }
             a{
+                &.router-link-active.router-link-exact-active{
+                    span{
+                        &::after{
+                            width: 100%;
+                        }
+                    }
+                }
                 padding: 5px;
                 span{
                     position: relative;
@@ -56,6 +63,23 @@
                 &::after{
                     display: none;
                 }
+            }
+        }
+    }
+
+    @media (max-width: 500px) {
+        &__box{
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 20px 0px;
+        }
+        &__title{
+            font-size: 24px;
+        }
+        &__list{
+            padding-top: 10px;
+            .item{
+                padding: 0px 15px;
             }
         }
     }

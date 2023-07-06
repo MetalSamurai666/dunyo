@@ -3,6 +3,7 @@
 .cardCat{
     &__box{
         display: flex;
+        gap: 15px;
     }
     &.big{
         .cardCat__img{
@@ -27,7 +28,8 @@
             width: 100%;
             height: 100%;
             object-position: center;
-            object-fit: cover;
+            object-fit: contain;
+            background-color: #fff;
         }
         &:hover{
             img{
@@ -36,7 +38,6 @@
         }
     }
     &__right{
-        padding-left: 15px;
         font-weight: 600;
         display: flex;
         flex-direction: column;
@@ -60,5 +61,28 @@
         margin-top: auto;
         font-size: 14px;
         color: #4f4d4d;
+    }
+
+    @media (max-width: 500px) {
+        &__box{
+            gap: 10px;
+        }
+        &__title{
+            span{
+                font-size: 15px;
+            }
+        }
+        &__date{
+            font-size: 12px;
+        }
+        &.big{
+            .cardCat__img{
+                width: 100px;
+                height: 90px;
+            }
+            .cardCat__date{
+                margin-top: auto;
+            }
+        }
     }
 }

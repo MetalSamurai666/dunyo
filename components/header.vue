@@ -1,9 +1,11 @@
 <script setup>
 /* Imports */
     import { storeToRefs } from 'pinia'
+    import { useMainStore } from '~/store/main';
     import { useMenuStore } from '~/store/menu';
 
     const menuStore = useMenuStore()
+    const mainStore = useMainStore()
     const { menuState } = storeToRefs(menuStore)
 
 /* Header fixed on scroll */
@@ -33,19 +35,46 @@
             title: 'Главная',
         },
         {
-            link: '/',
+            link: '/politics',
             title: 'Политика',
-            list: []
+            list: [
+                {
+                    link: '/',
+                    title: 'Политика 1'
+                },
+                {
+                    link: '/',
+                    title: 'Политика 2'
+                },
+            ]
         },
         {
-            link: '/',
+            link: '/economy',
             title: 'Экономика',
-            list: []
+            list: [
+                {
+                    link: '/',
+                    title: 'Экономика 1'
+                },
+                {
+                    link: '/',
+                    title: 'Экономика 2'
+                },
+            ]
         },
         {
             link: '/',
             title: 'Актуально',
-            list: []
+            list: [
+                {
+                    link: '/',
+                    title: 'Актуально 1'
+                },
+                {
+                    link: '/',
+                    title: 'Актуально 2'
+                },
+            ]
         },
         {
             link: '/',
@@ -58,7 +87,16 @@
         {
             link: '/',
             title: 'Мир об Узбекистане',
-            list: []
+            list: [
+                {
+                    link: '/',
+                    title: 'Мир об Узбекистане 1'
+                },
+                {
+                    link: '/',
+                    title: 'Мир об Узбекистане 2'
+                },
+            ]
         },
         {
             link: '/',
@@ -74,6 +112,23 @@
     function openMenu() {
         menuStore.menuChange()
     }
+
+/* Lang Open */
+    const langOpen = ref(false)
+
+/* Getting CATegorieS🐈 */
+    const cats = ref([])
+    const getData = async () => {
+        let res = await mainStore.getCats()
+        if (res.data.value) {
+            cats.value = res.data.value
+            // console.log(cats.value)
+        }
+    }
+
+onMounted(() => {
+    getData()
+})
 </script>
 
 <template>
@@ -102,7 +157,8 @@
                         <img src="@/assets/logo/basic/calendar.svg">
                         <span>31/01/2003</span>
                     </div>
-                    <div class="header__lang">
+                    <div :class="langOpen ? 'header__lang open' : 'header__lang'" @click="langOpen = !langOpen">
+                        <!-- {{ langOpen }} -->
                         <span>Ру</span>
                         <img src="@/assets/logo/basic/arrowDown.svg">
                     </div>
@@ -126,13 +182,34 @@
                     </NuxtLink>
                 </div>
 
-                <nav class="header__nav">
-                    <ul>
-                        <li :class="item?.list ? 'item listly' : 'item'" v-for="(item, index) of nav" :key="index">
-                            <NuxtLink :to="item?.link"><span>{{ item?.title }}</span></NuxtLink>
-                        </li>
-                    </ul>
-                </nav>
+                <ul class="header__list">
+                    <li 
+                        :class="item?.list ? 'item listly' : 'item'" 
+                        v-for="(item, index) of cats" 
+                        :key="index"
+                    >
+                        <NuxtLink 
+                            class="item__link" 
+                            :to="`/${item?.slug}`"
+                        >
+                            <span>{{ item?.title }}</span>
+                        </NuxtLink>
+
+                        <ul 
+                            class="item__list" 
+                            v-if="item?.subs.length > 0"
+                        >
+                            <li
+                                v-for="subItem, index of item?.subs" 
+                                :key="index"
+                            >
+                                <NuxtLink :to="`/${subItem?.slug}`">
+                                    <span>{{ subItem?.title }}</span>
+                                </NuxtLink>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
 
                 <div class="header__search">
                     <button>
@@ -145,5 +222,5 @@
 </template>
 
 <style lang="scss">
-@import '@/assets/styles/components/header';
+@import '@/assets/styles/components/header.scss';
 </style>

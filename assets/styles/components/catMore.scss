@@ -16,4 +16,10 @@
             padding: 7px 0px;
         }
     }
+    
+    @media (max-width: 500px) {
+        &__box{
+            padding: 15px;
+        }
+    }
 }

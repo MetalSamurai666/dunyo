@@ -27,4 +27,13 @@
             object-position: center;
         }
     }
+
+    @media (max-width: 500px) {
+        &__box{
+            p{
+                font-size: 15px;
+                line-height: 20px;
+            }
+        }
+    }
 }

@@ -6,7 +6,7 @@
 
     const slider = ref([])
     const getSlider = async () => {
-        let res = await indexStore.getArray('abroor')
+        let res = await indexStore.getArraySlider('abroor')
         slider.value = res.data.value
     }
 
@@ -110,6 +110,7 @@
                     autoplay: true,
                     resetProgress: false,
                     pauseOnHover: false,
+                    lazyLoad: true,
                     breakpoints: {
                         500:{
                             height: 600,
@@ -117,7 +118,7 @@
                     }
                 }">
                 <SplideSlide v-for="(item, index) of slider" class="splide__slide slider__slide" :key="index">
-                    <img class="slider__img" :src="item.img">
+                    <img class="slider__img" :src="item.img" :data-splide-lazy="item.img">
 
                     <div class="container">
                         <div class="slider__text">

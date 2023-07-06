@@ -1,12 +1,29 @@
 import { defineStore } from 'pinia'
 
 export const useMainStore = defineStore('indexId', () => {
-    const url = ref('https://umft-merch.of-astora.uz/abroor')
+    const url = ref('https://dunyo-back.doom.uz')
 
-    const getArray = async () => {
-        return await useFetch(url)
+    const getArraySlider = async () => {
+        return await useFetch('https://umft-merch.of-astora.uz/abroor')
     }
 
-        return { url, getArray }
+    const getCats =  () => {
+        return  useFetch(url.value+`/api/category/all`)
+        .catch(er => console.log(er))
+    }
+
+    const getOneCat =  (slug) => {
+        // console.log(slug);
+        return  useFetch(url.value+`/api/category/get/${slug}`)
+        .catch(er => console.log(er))
+    }
+
+    const getNews =  (slug) => {
+        // console.log(slug);
+        return  useFetch(url.value+`/api/news/${slug}`)
+        .catch(er => console.log(er))
+    }
+
+        return { url, getArraySlider, getCats, getOneCat, getNews }
     }
 )

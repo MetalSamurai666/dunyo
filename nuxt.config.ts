@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: [
     '@pinia/nuxt',
+    'nuxt-lazy-load'
   ],
   nitro: {
     compressPublicAssets: true
