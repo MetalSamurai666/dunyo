@@ -69,9 +69,21 @@
         }
         .header__bot{
             background-color: $colorLightBlue;
-            // img{
-            //     filter: invert(1);
-            // }
+        }
+        .header__lang{
+            .item{
+                &::after{
+                    background-color: #000;
+                }
+                button{
+                    color: #000;
+                    span{
+                        &::after{
+                            background-color: #000;
+                        }
+                    }
+                }
+            }
         }
         &.alt{
             .header__list{
@@ -130,9 +142,53 @@
     &__lang{
         @include df-aic;
         margin-left: 45px;
-        cursor: pointer;
-        &:hover{
-            opacity: 0.8;
+        gap: 10px;
+        .item{
+            position: relative;
+            &::after{
+                content: '';
+                position: absolute;
+                top: 0;
+                right: -5px;
+                width: 1px;
+                height: 100%;
+                background-color: #fff;
+            }
+            &:last-child{
+                &::after{
+                    display: none;
+                }
+            }
+            button{
+                font-family: Lora, serif;
+                color: #fff;
+                padding: 0px 5px;
+                span{
+                    position: relative;
+                    display: block;
+                    z-index: 6;
+                    &::after{
+                        @include tr(.2s);
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        bottom: -2px;
+                        margin: auto;
+                        width: 0%;
+                        height: 1px;
+                        background-color: #fff;
+                        z-index: 5;
+                    }
+                }
+                &.active{
+                    span{
+                        &::after{
+                            width: 100%;
+                        }
+                    }
+                }
+            }
         }
     }
     /* ====================================================================== */

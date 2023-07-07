@@ -7,8 +7,9 @@ export const useMainStore = defineStore('indexId', () => {
         return await useFetch('https://umft-merch.of-astora.uz/abroor')
     }
 
-    const getCats =  () => {
-        return  useFetch(url.value+`/api/category/all`)
+    const getCats =  (lang) => {
+        console.log(lang);
+        return  useFetch(url.value+`/api/category/all/?lang=${lang}`)
         .catch(er => console.log(er))
     }
 

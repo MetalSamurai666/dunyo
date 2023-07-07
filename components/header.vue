@@ -1,12 +1,27 @@
 <script setup>
 /* Imports */
-    import { storeToRefs } from 'pinia'
+    import { storeToRefs } from 'pinia';
     import { useMainStore } from '~/store/main';
     import { useMenuStore } from '~/store/menu';
 
+    import { useLocaleStore } from '~/store/i18n';
+    
     const menuStore = useMenuStore()
     const mainStore = useMainStore()
-    const { menuState } = storeToRefs(menuStore)
+    
+    const localeStore = useLocaleStore()
+    const { locale, locales, setLocale } = useI18n()
+    const { book }  = storeToRefs(localeStore)
+
+    const availableLocales = computed(() => {
+        return (locales.value)
+    })
+
+/* Functions */
+    function changeLang(val) {
+        // localeStore.getTranslations(val)
+        getData(val)
+    }
 
 /* Header fixed on scroll */
     var scrollTrigger = 0;
@@ -28,106 +43,22 @@
         };
     }
 
-/* Nav List */
-    const nav = ref([
-        {
-            link: '/',
-            title: 'Главная',
-        },
-        {
-            link: '/politics',
-            title: 'Политика',
-            list: [
-                {
-                    link: '/',
-                    title: 'Политика 1'
-                },
-                {
-                    link: '/',
-                    title: 'Политика 2'
-                },
-            ]
-        },
-        {
-            link: '/economy',
-            title: 'Экономика',
-            list: [
-                {
-                    link: '/',
-                    title: 'Экономика 1'
-                },
-                {
-                    link: '/',
-                    title: 'Экономика 2'
-                },
-            ]
-        },
-        {
-            link: '/',
-            title: 'Актуально',
-            list: [
-                {
-                    link: '/',
-                    title: 'Актуально 1'
-                },
-                {
-                    link: '/',
-                    title: 'Актуально 2'
-                },
-            ]
-        },
-        {
-            link: '/',
-            title: 'Выборы Президента-2023',
-        },
-        {
-            link: '/',
-            title: 'Центральная Азия',
-        },
-        {
-            link: '/',
-            title: 'Мир об Узбекистане',
-            list: [
-                {
-                    link: '/',
-                    title: 'Мир об Узбекистане 1'
-                },
-                {
-                    link: '/',
-                    title: 'Мир об Узбекистане 2'
-                },
-            ]
-        },
-        {
-            link: '/',
-            title: 'Еще',
-        },
-        {
-            link: '/',
-            title: 'Архив',
-        },
-    ])
-
 /* Mobile Menu */
     function openMenu() {
         menuStore.menuChange()
     }
 
-/* Lang Open */
-    const langOpen = ref(false)
-
 /* Getting CATegorieS🐈 */
     const cats = ref([])
-    const getData = async () => {
-        let res = await mainStore.getCats()
+    const getData = async (val) => {
+        let res = await mainStore.getCats(val)
         if (res.data.value) {
             cats.value = res.data.value
-            // console.log(cats.value)
         }
     }
 
 onMounted(() => {
-    getData()
+    getData(locale.value)
 })
 </script>
 
@@ -157,10 +88,18 @@ onMounted(() => {
                         <img src="@/assets/logo/basic/calendar.svg">
                         <span>31/01/2003</span>
                     </div>
-                    <div :class="langOpen ? 'header__lang open' : 'header__lang'" @click="langOpen = !langOpen">
-                        <!-- {{ langOpen }} -->
-                        <span>Ру</span>
-                        <img src="@/assets/logo/basic/arrowDown.svg">
+                    <div class="header__lang">
+                        <div class="item" 
+                            v-for="lang in availableLocales"
+                            :key="lang.code"
+                        >
+                            <button
+                                :class="lang.code == locale ? 'active' : ''"
+                                @click.prevent.stop="setLocale(lang.code), changeLang(lang.code)"
+                            >
+                                <span>{{ lang.name }}</span>
+                            </button>
+                        </div>
                     </div>
 
                     <div class="header__menu">
