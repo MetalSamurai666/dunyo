@@ -4,6 +4,8 @@
     &__box{
         background-color: #fff;
         padding: 20px;
+        z-index: 3;
+        position: relative;
         p{
             text-align: justify;
             font-size: 18px;

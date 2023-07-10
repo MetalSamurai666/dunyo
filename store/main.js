@@ -8,20 +8,19 @@ export const useMainStore = defineStore('indexId', () => {
     }
 
     const getCats =  (lang) => {
-        console.log(lang);
         return  useFetch(url.value+`/api/category/all/?lang=${lang}`)
         .catch(er => console.log(er))
     }
 
-    const getOneCat =  (slug) => {
+    const getOneCat =  (slug, lang) => {
         // console.log(slug);
-        return  useFetch(url.value+`/api/category/get/${slug}`)
+        return  useFetch(url.value+`/api/category/get/${slug}/?lang=${lang}`)
         .catch(er => console.log(er))
     }
 
-    const getNews =  (slug) => {
-        // console.log(slug);
-        return  useFetch(url.value+`/api/news/${slug}`)
+    const getNews =  (slug, lang) => {
+        console.log(slug);
+        return  useFetch(url.value+`/api/news/${slug}/?lang=${lang}`)
         .catch(er => console.log(er))
     }
 

@@ -54,6 +54,7 @@
         let res = await mainStore.getCats(val)
         if (res.data.value) {
             cats.value = res.data.value
+            // console.log(cats.value);
         }
     }
 
@@ -123,7 +124,7 @@ onMounted(() => {
 
                 <ul class="header__list">
                     <li 
-                        :class="item?.list ? 'item listly' : 'item'" 
+                        :class="item?.subs.length > 0 ? 'item listly' : 'item'" 
                         v-for="(item, index) of cats" 
                         :key="index"
                     >

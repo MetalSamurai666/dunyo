@@ -21,7 +21,6 @@
 
   function changeBody() {
     if (menuState.value == true) {
-      console.log('yes');
       document.body.classList.add('noscroll')
     } else {
       document.body.classList.remove('noscroll')

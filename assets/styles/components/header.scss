@@ -246,6 +246,7 @@
             &.listly{
                 position: relative;
                 &::after{
+                    @include tr(.2s);
                     content: '';
                     position: absolute;
                     bottom: 0px;
@@ -266,14 +267,15 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 15px;
-                background-color: #fff;
+                background-color: $colorLightBlue;
                 width: 250px;
                 max-height: 0%;
                 overflow-y: hidden;
                 padding: inherit;
+                opacity: 0;
                 a{
                     @include tr(.2s);
-                    color: #000;
+                    color: #fff;
                     padding: 5px;
                     span{
                         position: relative;
@@ -288,13 +290,12 @@
                             left: 0;
                             width: 0%;
                             height: 1px;
-                            background-color: #000;
+                            background-color: #fff;
                         }
                     }
                     &:hover{
-                        color: $colorLightBlue;
-                            span{
-                                &::after{
+                        span{
+                            &::after{
                                 width: 100%;
                             }
                         }
@@ -305,6 +306,10 @@
                 .item__list{
                     padding: 10px 0px;
                     max-height: 500px;
+                    opacity: 1;
+                }
+                &::after{
+                    opacity: 0;
                 }
             }
         }

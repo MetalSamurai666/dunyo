@@ -153,6 +153,10 @@
         &__list{
             flex-direction: row;
             gap: 20px;
+            .item{
+                flex-basis: 50%;
+                width: 50%;
+            }
         }
     }
 }

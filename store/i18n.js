@@ -6,7 +6,6 @@ export const useLocaleStore = defineStore('i18nId', () => {
         const main = useMainStore()
 
         const getTranslations = async (lang) => {
-            console.log(lang);
             const res = await useFetch(main.url+`/api/languages/all/?lang=${lang}`)
             if (res.data.value){
                 book.value = res.data.value

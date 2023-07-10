@@ -1,92 +1,38 @@
 <script setup>
 /* Imports */
     import { storeToRefs } from 'pinia'
+    import { useMainStore } from '~/store/main';
     import { useMenuStore } from '~/store/menu';
+
+    import { useLocaleStore } from '~/store/i18n';
+
+/* Consts */
+    const router = useRouter()
+
+    const mainStore = useMainStore()
 
     const menuStore = useMenuStore()
     const { menuState } = storeToRefs(menuStore)
 
-    const list = ref([
-        {
-            link: '',
-            title: 'Главная'
-        },
-        {
-            link: '',
-            title: 'Политика',
-            list: [
-                {
-                    link: '/',
-                    title: 'Политика 1'
-                },
-                {
-                    link: '/',
-                    title: 'Политика 2'
-                },
-            ]
-        },
-        {
-            link: '',
-            title: 'Экономика',
-            list: [
-                {
-                    link: '/',
-                    title: 'Экономика 1'
-                },
-                {
-                    link: '/',
-                    title: 'Экономика 2'
-                },
-            ]
-        },
-        {
-            link: '',
-            title: 'Актуально',
-            list: [
-                {
-                    link: '/',
-                    title: 'Актуально 1'
-                },
-                {
-                    link: '/',
-                    title: 'Актуально 2'
-                },
-            ]
-        },
-        {
-            link: '',
-            title: 'Выборы Президента-2023'
-        },
-        {
-            link: '',
-            title: 'Центральная Азия'
-        },
-        {
-            link: '',
-            title: 'Мир об Узбекистане',
-            list: [
-                {
-                    link: '/',
-                    title: 'Мир об Узбекистане 1'
-                },
-                {
-                    link: '/',
-                    title: 'Мир об Узбекистане 2'
-                },
-            ]
-        },
-        {
-            link: '',
-            title: 'Архив'
-        },
-        {
-            link: '',
-            title: 'Ещё'
-        },
-    ])
+    const { locale, locales, setLocale } = useI18n()
+    const availableLocales = computed(() => {
+        return (locales.value)
+    })
 
-    const benefitsv = ref(list)
 
+/* Getting CATegorieS🐈 */
+    const cats = ref([])
+    const getData = async (val) => {
+        let res = await mainStore.getCats(val)
+        if (res.data.value) {
+            cats.value = res.data.value
+            // console.log(cats.value);
+        } else {
+            console.log('no cats');
+        }
+    }
+
+    const benefitsv = ref(cats)
     const changeBenefit = ((id) => {
         benefitsv.value = benefitsv.value.map((status, index) => {
             if (index === id) {
@@ -98,10 +44,25 @@
         }) 
     })
 
+/* Functions */
+    function changeLang(val) {
+        // localeStore.getTranslations(val)
+        getData(val)
+    }
 
     function closeMenu() {
         menuStore.menuChange()
     }
+
+    async function changeRoute(slug) {
+        console.log(slug);
+        await router.push(`/${slug}`)
+        menuStore.menuChange()
+    }
+    
+    onMounted(() => {
+        getData(locale.value)
+    })
 
 </script>
 
@@ -117,18 +78,30 @@
             </div>
             <div class="menu__mid">
                 <ul class="menu__list">
-                    <!-- :class="item.list ? 'item listly' : 'item'" -->
+                    <!-- :class="item.subs ? 'item listly' : 'item'" -->
                     <li 
                         v-for="item, index of benefitsv" :key="index"
-                        
-                        :class="item.active ? 'item active' : 'item'" 
-                        @click="item.list ? changeBenefit(index) : null"
+                        :class="item?.active ? 'item active' : 'item'" 
                         >
-                        <NuxtLink :class="item.list ? 'item__link listly' : 'item__link'" :to="item.link">{{ item.title }}</NuxtLink>
+                        <NuxtLink :class="item?.subs.length > 0 ? 'item__link listly' : 'item__link'"
+                            @click="changeRoute(item?.slug)"
+                            >
+                            {{ item.title }}
+                        </NuxtLink>
 
-                        <ul class="item__list" v-if="item?.list">
-                            <li v-for="subItem, index of item?.list" :key="index">
-                                <NuxtLink :to="subItem.link">{{ subItem.title }}</NuxtLink>
+                        <span class="item__open"
+                            v-if="item?.subs.length > 0" 
+                            @click="item?.subs ? changeBenefit(index) : null">
+                            <img src="@/assets/logo/basic/arrowRight.svg">
+                        </span>
+
+                        <ul class="item__list" v-if="item?.subs">
+                            <li v-for="subItem, index of item?.subs" :key="index">
+                                <NuxtLink 
+                                    :to="subItem?.slug" 
+                                    @click="closeMenu">
+                                    {{ subItem?.title }}
+                                </NuxtLink>
                             </li>
                         </ul>
                     </li>
@@ -137,30 +110,35 @@
             <div class="menu__bot">
                 <ul class="menu__more">
                     <li class="item">
-                        <button>
-                            <div class="item__logo">
-                                <img src="@/assets/logo/basic/globe.svg">
+                        <div class="item__logo">
+                            <img src="@/assets/logo/basic/globe.svg">
+                        </div>
+                        <div class="menu__lang">
+                            <div class="item" 
+                                v-for="lang in availableLocales"
+                                :key="lang.code"
+                            >
+                                <button
+                                    :class="lang.code == locale ? 'active' : ''"
+                                    @click.prevent.stop="setLocale(lang.code), changeLang(lang.code)"
+                                >
+                                    <span>{{ lang.name }}</span>
+                                </button>
                             </div>
-                            <span class="item__title">Ру</span>
-                            <img src="@/assets/logo/basic/arrowDown.svg">
-                        </button>
+                        </div>
                     </li>
                     <li class="item">
-                        <button>
-                            <div class="item__logo">
-                                <img src="@/assets/logo/basic/calendar.svg">
-                            </div>
-                            <span class="item__title">13/06/2023</span>
-                        </button>
+                        <div class="item__logo">
+                            <img src="@/assets/logo/basic/calendar.svg">
+                        </div>
+                        <span class="item__title">13/06/2023</span>
                     </li>
                     <li class="item">
-                        <button>
-                            <div class="item__logo">
-                                <img src="@/assets/logo/basic/cloudRizzel.svg">
-                            </div>
-                            <span class="item__title">Ташкент</span>
-                            <span class="item__title">32°C</span>
-                        </button>
+                        <div class="item__logo">
+                            <img src="@/assets/logo/basic/cloudRizzel.svg">
+                        </div>
+                        <span class="item__title">Ташкент</span>
+                        <span class="item__title">32°C</span>
                     </li>
                 </ul>
             </div>

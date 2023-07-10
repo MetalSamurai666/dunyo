@@ -11,25 +11,31 @@
 </script>
 
 <template>
-    <div class="singleWelcome" :style="`background-image: url(${mainStore.url}/${news?.img})`">
+    <div 
+        class="singleWelcome" 
+        >
+        <div 
+            class="singleWelcome__back" 
+            :style="`background-image: url(${mainStore.url}/${news?.img})`">
+        </div>
         <div class="singleWelcome__box">
             <div class="container">
                 <div class="singleWelcome__title">{{ news?.title }}</div>
 
                 <ul class="singleWelcome__breadcrumbs">
                     <li class="item">
-                        <NuxtLink to="/">Главная</NuxtLink>
+                        <NuxtLink to="/"><span>Главная</span></NuxtLink>
                     </li>
 
                     <li class="item">
                         <NuxtLink :to="`/${route.fullPath.split('/')[1]}`">
-                            {{ news.category?.title }}
+                            <span>{{ news?.category?.title }}</span>
                         </NuxtLink>
                     </li>
 
                     <li class="item">
                         <NuxtLink :to="`http://localhost:3000${route.fullPath}`">
-                            {{ news?.title }}
+                            <span>{{ news?.title }}</span>
                         </NuxtLink>
                     </li>
                 </ul>

@@ -4,6 +4,7 @@
 <template>
   <NuxtLayout>
     <div class="home">
+      <NuxtLoadingIndicator />
       <Welcome />
       <Economy />
       <Slides />
