@@ -58,6 +58,28 @@
         }
     }
 
+    // Get the current date
+        var currentDate = new Date();
+
+        // Extract the day, month, and year
+        var day = currentDate.getDate();
+        var month = currentDate.getMonth() + 1; // Months are zero-based
+        var year = currentDate.getFullYear();
+
+        // Add leading zeros to day and month if necessary
+        if (day < 10) {
+            day = '0' + day;
+        }
+        if (month < 10) {
+            month = '0' + month;
+        }
+
+        // Create the formatted date string
+        var formattedDate = day + '/' + month + '/' + year;
+
+        // Output the formatted date
+        console.log(formattedDate);
+
 onMounted(() => {
     getData(locale.value)
 })
@@ -87,7 +109,7 @@ onMounted(() => {
                 <div class="header__right">
                     <div class="header__date">
                         <img src="@/assets/logo/basic/calendar.svg">
-                        <span>31/01/2003</span>
+                        <span>{{ formattedDate }}</span>
                     </div>
                     <div class="header__lang">
                         <div class="item" 
