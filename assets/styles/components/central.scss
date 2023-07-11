@@ -47,6 +47,7 @@
         flex-direction: column;
         justify-content: flex-end;
         position: relative;
+        min-height: 400px;
         &::after{
             content: '';
             position: absolute;
@@ -67,6 +68,7 @@
                 line-height: 41px;
                 text-align: center;
                 z-index: 4;
+                color: #fff;
             }
         }
     }
@@ -92,6 +94,10 @@
             button{
                 @include tr(0.2s);
                 padding: 15px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 100px;
                 &.active{
                     color: #316AC0;
                 }

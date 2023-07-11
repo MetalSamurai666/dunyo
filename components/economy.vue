@@ -1,159 +1,64 @@
 <script setup>
     import cardCat from "@/components/cards/cardCat.vue"
+    import { useMainStore } from "~/store/main"
     import cardNews from "./cards/cardNews.vue"
 
-    const cards = ref([
-        {
-            link: '/',
-            title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-            date: '13/06 22:46'
-        },
-        {
-            link: '/',
-            title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-            date: '13/06 22:46'
-        },
-        {
-            link: '/',
-            title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-            date: '13/06 22:46'
-        },
-        {
-            link: '/',
-            title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-            date: '13/06 22:46'
-        },
-    ])
+    const mainStore = useMainStore()
 
     const tabFilter = ref('latest')
+    
+/* First Category */
+    const cards = ref([])
+    const getFirst = async (slug) => {
+        let res = await mainStore.getFirstCats(slug)
+        if (res.data.value) {
+            cards.value = res.data.value
+            // console.log(cards.value)
+        }
+    }
+
+    const tabs = ref([])
+    const getTabs = async () => {
+        let res = await mainStore.getFirstTabs()
+        if (res.data.value) {
+            tabs.value = res.data.value
+            // console.log(tabs.value)
+            tabList.value.map((listItem) => {
+                if (listItem.slug == "important") {
+                    listItem.news = tabs.value.important
+                } else if(listItem.slug == "latest") {
+                    listItem.news = tabs.value.latest
+                } else if(listItem.slug == "popular") {
+                    listItem.news = tabs.value.popular
+                }
+
+                return listItem
+            })
+        }
+    }
+
     const tabList = ref([
         {
             title: 'Последние',
             slug: 'latest',
-            news: [
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    date: '13/06 22:46',
-                    cat: 'Событие'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    date: '13/06 22:46',
-                    cat: 'Событие'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    date: '13/06 22:46',
-                    cat: 'Событие'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    date: '13/06 22:46',
-                    cat: 'Событие'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    date: '13/06 22:46',
-                    cat: 'Событие'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    date: '13/06 22:46',
-                    cat: 'Событие'
-                },
-            ]
+            news: []
         },
         {
             title: 'Популярные',
-            slug: 'popular',
-            news: [
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    date: '13/06 22:46',
-                    cat: 'Спорт'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    date: '13/06 22:46',
-                    cat: 'Спорт'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    date: '13/06 22:46',
-                    cat: 'Спорт'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    date: '13/06 22:46',
-                    cat: 'Спорт'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    date: '13/06 22:46',
-                    cat: 'Спорт'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    date: '13/06 22:46',
-                    cat: 'Спорт'
-                },
-            ]
+            slug: 'important',
+            news: []
         },
         {
             title: 'Срочные',
-            slug: 'breaking',
-            news: [
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    date: '13/06 22:46',
-                    cat: 'Политика'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    date: '13/06 22:46',
-                    cat: 'Политика'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    date: '13/06 22:46',
-                    cat: 'Политика'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    date: '13/06 22:46',
-                    cat: 'Политика'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    date: '13/06 22:46',
-                    cat: 'Политика'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    date: '13/06 22:46',
-                    cat: 'Политика'
-                },
-            ]
+            slug: 'popular',
+            news: []
         },
     ])
+    
+    onMounted(() => {
+        getFirst('economics')
+        getTabs()
+    })
 </script>
 
 <template>
@@ -162,17 +67,17 @@
             <div class="economy__box">
                 <div class="economy__row">
                     <div class="economy__small">
-                        <div class="economy__title">Экономика</div>
+                        <div class="economy__title">{{ cards?.category?.title }}</div>
                         <ul class="economy__news">
                             <cardCat 
                                 class="economy__card"
                                 :card="item"
-                                v-for="item, index of cards"
+                                v-for="item, index of cards?.news"
                                 :key="index"
                             />
                         </ul>
                         <div class="economy__more">
-                            <NuxtLink to="/">Больше новостей</NuxtLink>
+                            <NuxtLink :to="cards?.category?.slug">Больше новостей</NuxtLink>
                         </div>
                     </div>
 
@@ -190,22 +95,31 @@
                     <div class="economy__small">
                         <div class="economy__tabs">
                             <ul class="btns">
-                                <li v-for="item of tabList" :key="item.slug">
-                                    <button @click="tabFilter = item.slug" :class="tabFilter == item.slug ? 'active' : ''">{{ item.title }}</button>
+                                <li v-for="item of tabList" :key="item">
+                                    <button 
+                                        @click="tabFilter = item.slug" 
+                                        :class="tabFilter == item.slug 
+                                        ? 'active' 
+                                        : ''"
+                                    >
+                                        {{ item.title }}
+                                    </button>
                                 </li>
                             </ul>
 
                             <ul class="news">
-                                <div v-for="item of tabList" :key="item.slug" :class="`news__content ${tabFilter == item.slug ? 'active' : ''}`">
+                                <div 
+                                    v-for="item of tabList" :key="item.slug" 
+                                    :class="`news__content ${tabFilter == item.slug ? 'active' : ''}`">
                                     <cardNews 
                                         :class="
                                             tabFilter == 'latest' ? 'latest news__item' 
-                                            : tabFilter == 'popular' ? 'popular news__item' 
-                                            : tabFilter == 'breaking' ? 'breaking news__item' 
+                                            : tabFilter == 'important' ? 'popular news__item' 
+                                            : tabFilter == 'popular' ? 'breaking news__item' 
                                             : 'news__item'
                                         "
                                         :card="item"
-                                        v-for="item, index of item.news"
+                                        v-for="item, index of item?.news"
                                         :key="index"
                                     />
                                 </div>

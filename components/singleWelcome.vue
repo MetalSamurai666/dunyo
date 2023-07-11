@@ -34,7 +34,7 @@
                     </li>
 
                     <li class="item">
-                        <NuxtLink :to="`http://localhost:3000${route.fullPath}`">
+                        <NuxtLink :to="`${route.fullPath}`">
                             <span>{{ news?.title }}</span>
                         </NuxtLink>
                     </li>

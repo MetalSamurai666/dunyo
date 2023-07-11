@@ -85,10 +85,10 @@
                             <img src="@/assets/img/economy/poster.jpg">
                         </div>
 
-                        <catMore 
+                        <!-- <catMore 
                             :moreData="sportData"
                             class="categories__more"
-                        />
+                        /> -->
                     </div>
                 </div>
             </div>

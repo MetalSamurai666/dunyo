@@ -111,15 +111,16 @@
             padding: 55px 100px 75px 35px;
         }
         &__text{
-            p{
-                font-size: 18px;
-                line-height: 32px;
-                overflow: hidden;
-                display: -webkit-box;
-                -webkit-line-clamp: 12;
-                line-clamp: 12;
-                -webkit-box-orient: vertical;
-                white-space: break-spaces;
+            font-size: 18px;
+            line-height: 32px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 12;
+            line-clamp: 12;
+            -webkit-box-orient: vertical;
+            white-space: break-spaces;
+            img{
+                display: none;
             }
         }
         &__more{

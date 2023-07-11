@@ -95,36 +95,15 @@
             font-size: 24px;
         }
         &__breadcrumbs{
-            flex-wrap: wrap;
-            gap: 10px;
+            overflow-x: scroll;
+            padding-bottom: 15px;
             .item{
                 padding: 0px 15px;
                 flex-basis: 100%;
                 width: 100%;
-                &::after{
-                    display: none;
-                }
                 a{
-                    position: relative;
-                    &::after{
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        bottom: 0;
-                        right: -4px;
-                        margin: auto;
-                        width: 4px;
-                        height: 4px;
-                        background-color: #000;
-                        border-radius: 50%;
-                        pointer-events: none;
-                    }
-                }
-                &:last-child{
-                    a{
-                        &::after{
-                            display: none;
-                        }
+                    span{
+                        white-space: nowrap;
                     }
                 }
             }

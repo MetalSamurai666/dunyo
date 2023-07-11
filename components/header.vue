@@ -11,7 +11,7 @@
     
     const localeStore = useLocaleStore()
     const { locale, locales, setLocale } = useI18n()
-    const { book }  = storeToRefs(localeStore)
+    // const { book }  = storeToRefs(localeStore)
 
     const availableLocales = computed(() => {
         return (locales.value)

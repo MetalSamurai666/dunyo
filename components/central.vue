@@ -1,177 +1,57 @@
 <script setup>
     import cardCat from './cards/cardCat.vue';
     import cardDate from './cards/cardDate.vue';
+    import { useMainStore } from "~/store/main"
 
-    const cards = ref([
-        {
-            link: '/',
-            title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-            date: '13/06 22:46'
-        },
-        {
-            link: '/',
-            title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-            date: '13/06 22:46'
-        },
-        {
-            link: '/',
-            title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-            date: '13/06 22:46'
-        },
-        {
-            link: '/',
-            title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-            date: '13/06 22:46'
-        },
-    ])
+    const mainStore = useMainStore()
 
-    const tabFilter = ref('tourism')
+    const tabFilter = ref('president')
     const tabList = ref([
         {
-            title: 'Туризм',
-            slug: 'tourism',
-            news: [
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    day: '12',
-                    month: 'июнь'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    day: '12',
-                    month: 'июнь'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    day: '12',
-                    month: 'июнь'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    day: '12',
-                    month: 'июнь'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    day: '12',
-                    month: 'июнь'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    day: '12',
-                    month: 'июнь'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    day: '12',
-                    month: 'июнь'
-                },
-            ]
+            title: 'Президент',
+            slug: 'president',
+            news: []
         },
         {
-            title: 'Наука',
-            slug: 'science',
-            news: [
-                {
-                    link: '/',
-                    title: 'Ученые обнаружили новый вид микроорганизмов, способных перерабатывать пластик, что может помочь в решении проблемы загрязнения окружающей среды.',
-                    day: '1',
-                    month: 'март'
-                },
-                {
-                    link: '/',
-                    title: 'Ученые обнаружили новый вид микроорганизмов, способных перерабатывать пластик, что может помочь в решении проблемы загрязнения окружающей среды.',
-                    day: '1',
-                    month: 'март'
-                },
-                {
-                    link: '/',
-                    title: 'Ученые обнаружили новый вид микроорганизмов, способных перерабатывать пластик, что может помочь в решении проблемы загрязнения окружающей среды.',
-                    day: '1',
-                    month: 'март'
-                },
-                {
-                    link: '/',
-                    title: 'Ученые обнаружили новый вид микроорганизмов, способных перерабатывать пластик, что может помочь в решении проблемы загрязнения окружающей среды.',
-                    day: '1',
-                    month: 'март'
-                },
-                {
-                    link: '/',
-                    title: 'Ученые обнаружили новый вид микроорганизмов, способных перерабатывать пластик, что может помочь в решении проблемы загрязнения окружающей среды.',
-                    day: '1',
-                    month: 'март'
-                },
-                {
-                    link: '/',
-                    title: 'Ученые обнаружили новый вид микроорганизмов, способных перерабатывать пластик, что может помочь в решении проблемы загрязнения окружающей среды.',
-                    day: '1',
-                    month: 'март'
-                },
-                {
-                    link: '/',
-                    title: 'Ученые обнаружили новый вид микроорганизмов, способных перерабатывать пластик, что может помочь в решении проблемы загрязнения окружающей среды.',
-                    day: '1',
-                    month: 'март'
-                },
-            ]
+            title: 'Год заботы о человеке и качественного образования',
+            slug: 'god_zaboti_o_cheloveke_i_kachestvennogo_obrazovaniya',
+            news: []
         },
         {
-            title: 'Образование',
-            slug: 'education',
-            news: [
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    day: '25',
-                    month: 'июнь'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    day: '25',
-                    month: 'июнь'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    day: '25',
-                    month: 'июнь'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    day: '25',
-                    month: 'июнь'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    day: '25',
-                    month: 'июнь'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    day: '25',
-                    month: 'июнь'
-                },
-                {
-                    link: '/',
-                    title: 'Узбекские дипломаты провели встречу с соотечественниками, находящими в китайской провинции Ляонин',
-                    day: '25',
-                    month: 'июнь'
-                },
-            ]
+            title: 'Правительство',
+            slug: 'pravitelystvo',
+            news: []
         },
     ])
+
+    const second = ref([])
+    const tabs = ref([])
+
+    const getSecond = async (slug) => {
+        let res = await mainStore.getSecondCats(slug)
+        if (res.data.value) {
+            second.value = res.data.value
+            // console.log(second.value)
+
+            tabs.value = res.data.value.categories
+            // console.log(tabs.value);
+            tabList.value.map((listItem) => {
+                if (listItem.slug == "president") {
+                    listItem.news = tabs.value[0]
+                } else if(listItem.slug == "god_zaboti_o_cheloveke_i_kachestvennogo_obrazovaniya") {
+                    listItem.news = tabs.value[1]
+                } else if(listItem.slug == "pravitelystvo") {
+                    listItem.news = tabs.value[2]
+                }
+
+                return listItem
+            })
+        }
+    }
+
+    onMounted(() => {
+        getSecond('politics')
+    })
 </script>
 
 <template>
@@ -179,19 +59,26 @@
         <div class="container">
             <div class="central__box">
                 <div class="central__left">
-                    <div class="central__title">Центральная Азия</div>
+                    <div class="central__title">{{ second?.parent_category?.title }}</div>
 
                     <div class="central__main">
                         <div class="central__poster poster">
-                            <div class="poster__date">13/06 22:46</div>
-                            <div class="poster__title">Информационное сообщение ИА «Дунё» по ситуации вокруг Тайваня</div>
+                            <div class="poster__date">
+                                {{ second?.main_news?.date?.slice(0, 10) }}
+                            </div>
+                            <NuxtLink 
+                                :to="`${second?.parent_category?.slug}/${second?.main_news?.slug}`" 
+                                class="poster__title"
+                            >
+                                {{ second?.main_news?.title }}
+                            </NuxtLink>
                         </div>
 
                         <ul class="central__cards">
                             <cardCat 
                                 class="central__card"
                                 :card="item"
-                                v-for="item, index of cards"
+                                v-for="item, index of second?.category_news?.slice(1)"
                                 :key="index"
                             />
                         </ul>
@@ -208,13 +95,13 @@
                         <div v-for="item of tabList" :key="item.slug" :class="`news__content ${tabFilter == item.slug ? 'active' : ''}`">
                             <cardDate
                                 :class="
-                                    tabFilter == 'tourism' ? 'tourism news__item' 
-                                    : tabFilter == 'science' ? 'science news__item' 
-                                    : tabFilter == 'education' ? 'education news__item' 
+                                    tabFilter == 'president' ? 'president news__item' 
+                                    : tabFilter == 'god_zaboti_o_cheloveke_i_kachestvennogo_obrazovaniya' ? 'god_zaboti_o_cheloveke_i_kachestvennogo_obrazovaniya news__item' 
+                                    : tabFilter == 'pravitelystvo' ? 'pravitelystvo news__item' 
                                     : 'news__item'
                                 "
                                 :card="item"
-                                v-for="item, index of item.news"
+                                v-for="item, index of item?.news?.news"
                                 :key="index"
                             />
                         </div>

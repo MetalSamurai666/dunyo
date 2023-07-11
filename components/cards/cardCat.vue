@@ -22,7 +22,7 @@
                 <NuxtLink class="cardCat__title" :to="`${card?.category?.slug}/${card?.slug}`">
                     <span>{{ card?.title }}</span>
                 </NuxtLink>
-                <div class="cardCat__date">{{ card?.date }}</div>
+                <div class="cardCat__date">{{ card?.date?.slice(0, 10) }}</div>
             </div>
         </div>
     </li>

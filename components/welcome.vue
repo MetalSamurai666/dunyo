@@ -2,94 +2,39 @@
     import { Splide, SplideSlide } from '@splidejs/vue-splide';
     import { useMainStore } from '~/store/main'
 
-    const indexStore = useMainStore()
+    const mainStore = useMainStore()
 
+/* Slider News */    
     const slider = ref([])
     const getSlider = async () => {
-        let res = await indexStore.getArraySlider('abroor')
-        slider.value = res.data.value
+        let res = await mainStore.getSliderNews()
+        if (res.data.value) {
+            slider.value = res.data.value
+        }
     }
 
-    const news = ref([
-        {
-            cat: 'Событие',
-            title: 'В Хиве стартовала Международная олимпиада по химии имени Абу Райхана Беруни',
-            link: '',
-            date: '13/02 22:46'
-        },
-        {
-            cat: 'Событие',
-            title: 'В Хиве стартовала Международная олимпиада по химии имени Абу Райхана Беруни',
-            link: '',
-            date: '13/02 22:46'
-        },
-        {
-            cat: 'Событие',
-            title: 'В Хиве стартовала Международная олимпиада по химии имени Абу Райхана Беруни',
-            link: '',
-            date: '13/02 22:46'
-        },
-        {
-            cat: 'Событие',
-            title: 'В Хиве стартовала Международная олимпиада по химии имени Абу Райхана Беруни',
-            link: '',
-            date: '13/02 22:46'
-        },
-        {
-            cat: 'Событие',
-            title: 'В Хиве стартовала Международная олимпиада по химии имени Абу Райхана Беруни',
-            link: '',
-            date: '13/02 22:46'
-        },
-        {
-            cat: 'Событие',
-            title: 'В Хиве стартовала Международная олимпиада по химии имени Абу Райхана Беруни',
-            link: '',
-            date: '13/02 22:46'
-        },
-        {
-            cat: 'Событие',
-            title: 'В Хиве стартовала Международная олимпиада по химии имени Абу Райхана Беруни',
-            link: '',
-            date: '13/02 22:46'
-        },
-        {
-            cat: 'Событие',
-            title: 'В Хиве стартовала Международная олимпиада по химии имени Абу Райхана Беруни',
-            link: '',
-            date: '13/02 22:46'
-        },
-    ])
+/* LatestNews */
+    const latest = ref([])
+    const getLatest = async () => {
+        let res = await mainStore.getLatestNews()
+        if (res.data.value) {
+            latest.value = res.data.value
+        }
+    }
 
-    const actual = ref([
-        {
-            link: '',
-            date: '12',
-            cat: 'Президент',
-            text: 'Президент Узбекистана на встрече с губернатором Ломбардии отметил большой потенциал узбекско-итальянского межрегионального'
-        },
-        {
-            link: '',
-            date: '12',
-            cat: 'Президент',
-            text: 'Президент Узбекистана на встрече с губернатором Ломбардии отметил большой потенциал узбекско-итальянского межрегионального'
-        },
-        {
-            link: '',
-            date: '12',
-            cat: 'Президент',
-            text: 'Президент Узбекистана на встрече с губернатором Ломбардии отметил большой потенциал узбекско-итальянского межрегионального'
-        },
-        {
-            link: '',
-            date: '12',
-            cat: 'Президент',
-            text: 'Президент Узбекистана на встрече с губернатором Ломбардии отметил большой потенциал узбекско-итальянского межрегионального'
-        },
-    ])
+/* Actual News */
+    const actual = ref([])
+    const getActual = async () => {
+        let res = await mainStore.getActualNews()
+        if (res.data.value) {
+            actual.value = res.data.value
+        }
+    }
 
     onMounted(() => {
         getSlider()
+        getLatest()
+        getActual()
     })
 
 </script>
@@ -118,19 +63,16 @@
                     }
                 }">
                 <SplideSlide v-for="(item, index) of slider" class="splide__slide slider__slide" :key="index">
-                    <img class="slider__img" :src="item.img" :data-splide-lazy="item.img">
-
+                    <img class="slider__img" 
+                        :src="`${mainStore.url}/${item?.img}`" 
+                        :data-splide-lazy="`${mainStore.url}/${item?.img}`">
                     <div class="container">
                         <div class="slider__text">
-                            <div class="slider__info">{{ item.category }}</div>
-                            <div class="slider__title">{{ item.title }}</div>
+                            <div class="slider__info">{{ item?.category?.title }}</div>
+                            <div class="slider__title">{{ item?.title }}</div>
                         </div>
-
                     </div>
                 </SplideSlide>
-                <!-- <SplideSlide>
-                    <img src="~/assets/img/welcome/slider2.jpg">
-                </SplideSlide> -->
             </Splide>
         </div>
         <div class="welcome__main">
@@ -141,18 +83,18 @@
                         <ul>
                             <li 
                                 class="item"
-                                v-for="item, index of news" 
+                                v-for="item, index of latest" 
                                 :key="index"
                             >
                                 <div class="item__box">
-                                    <div class="item__cat">{{ item.cat }}</div>
+                                    <div class="item__cat">{{ item?.category?.title }}</div>
                                     <NuxtLink 
                                         class="item__title" 
-                                        :to="`/${item.link}`"
+                                        :to="`${item?.category?.slug}/${item?.slug}`"
                                     >
-                                        {{ item.title }}
+                                        {{ item?.title }}
                                     </NuxtLink>
-                                    <div class="item__date">{{ item.date }}</div>
+                                    <div class="item__date">{{ item?.date .slice(0, 10)}}</div>
                                 </div>
                             </li>
                         </ul>
@@ -169,17 +111,19 @@
                             >
                                 <div class="item__box">
                                     <div class="item__left">
-                                        <div class="item__img">
-                                            <img src="@/assets/img/welcome/actual.jpg">
-                                        </div>
+                                        <NuxtLink :to="`${item?.category?.slug}/${item?.slug}`" class="item__img">
+                                            <img :src="`${mainStore.url}/${item?.img}`">
+                                        </NuxtLink>
                                     </div>
                                     <div class="item__right">
                                         <div class="item__top">
-                                            <div class="item__date">{{ item.date }} минут назад</div>
-                                            <div class="item__cat">{{ item.cat }}</div>
+                                            <div class="item__date">{{ item?.date.slice(0,10) }}</div>
+                                            <div class="item__cat">{{ item?.category?.title }}</div>
                                         </div>
                                         <div class="item__bot">
-                                            <NuxtLink :to="`/${item.link}`">{{ item.text }}</NuxtLink>
+                                            <NuxtLink :to="`${item?.category?.slug}/${item?.slug}`">
+                                                {{ item?.title }}
+                                            </NuxtLink>
                                         </div>
                                     </div>
                                 </div>

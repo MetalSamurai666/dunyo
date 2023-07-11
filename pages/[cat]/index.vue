@@ -14,6 +14,7 @@
         if (res.data.value) {
             cat.value = res.data.value
             console.log(cat.value)
+            console.log(cat?.value.important_dates);
         }
     }
 
@@ -37,7 +38,7 @@
             />
             <div class="categories__body">
                 <div class="container">
-                    <div class="categories__box">
+                <div class="categories__box">
                         <div class="categories__left">
                             <catWrapper 
                                 :news="cat.news?.slice(0,2)"
