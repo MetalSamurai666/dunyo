@@ -3,16 +3,13 @@
     import { storeToRefs } from 'pinia';
     import { useMainStore } from '~/store/main';
     import { useMenuStore } from '~/store/menu';
-
     import { useLocaleStore } from '~/store/i18n';
     
     const menuStore = useMenuStore()
     const mainStore = useMainStore()
     
-    const localeStore = useLocaleStore()
     const { locale, locales, setLocale } = useI18n()
     // const { book }  = storeToRefs(localeStore)
-
     const availableLocales = computed(() => {
         return (locales.value)
     })
@@ -58,31 +55,37 @@
         }
     }
 
-    // Get the current date
-        var currentDate = new Date();
+/* Get the current date  */
+    var currentDate = new Date();
+    var day = currentDate.getDate();
+    var month = currentDate.getMonth() + 1;
+    var year = currentDate.getFullYear();
+    if (day < 10) { day = '0' + day }
+    if (month < 10) { month = '0' + month }
+    var formattedDate = day + '/' + month + '/' + year;
 
-        // Extract the day, month, and year
-        var day = currentDate.getDate();
-        var month = currentDate.getMonth() + 1; // Months are zero-based
-        var year = currentDate.getFullYear();
 
-        // Add leading zeros to day and month if necessary
-        if (day < 10) {
-            day = '0' + day;
+/* Weather */
+    const location = ref({})
+    const successCallback = async (position) => {
+        // console.log(position);
+        let res = await mainStore.getWeather(
+            position?.coords?.latitude, position?.coords?.longitude
+        )
+        if (res.data.value) {
+            location.value = res.data.value
+            // console.log(location.value);
         }
-        if (month < 10) {
-            month = '0' + month;
-        }
+    }
+    const errorCallback = (error) => {
+        // console.log(error);
+    }
 
-        // Create the formatted date string
-        var formattedDate = day + '/' + month + '/' + year;
+    onMounted(() => {
+        getData(locale.value)
 
-        // Output the formatted date
-        console.log(formattedDate);
-
-onMounted(() => {
-    getData(locale.value)
-})
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback)
+    })
 </script>
 
 <template>
@@ -173,11 +176,11 @@ onMounted(() => {
                     </li>
                 </ul>
 
-                <div class="header__search">
+                <!-- <div class="header__search">
                     <button>
                         <img src="@/assets/logo/basic/magnifier.svg">
                     </button>
-                </div>
+                </div> -->
             </div>
         </div>
     </header>

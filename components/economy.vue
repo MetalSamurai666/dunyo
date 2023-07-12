@@ -13,7 +13,15 @@
         let res = await mainStore.getFirstCats(slug)
         if (res.data.value) {
             cards.value = res.data.value
-            // console.log(cards.value)
+        }
+    }
+
+    const rand = ref({})
+    const getRand = async (slug) => {
+        let res = await mainStore.getRandNews(slug)
+        if (res.data.value) {
+            rand.value = res.data.value
+            // console.log(rand.value);
         }
     }
 
@@ -57,6 +65,7 @@
     
     onMounted(() => {
         getFirst('economics')
+        getRand('politics')
         getTabs()
     })
 </script>
@@ -82,12 +91,12 @@
                     </div>
 
                     <div class="economy__big">
-                        <div class="economy__poster poster">
+                        <div class="economy__poster poster" :style="`background-image: url(${mainStore.url}/${rand?.news?.img})`">
                             <div class="economy__title">Политика</div>
 
                             <div class="poster__text">
-                                <div class="poster__date">13/06 22:46</div>
-                                <div class="poster__title">Информационное сообщение ИА «Дунё» по ситуации вокруг Тайваня</div>
+                                <div class="poster__date">{{ rand?.news?.date.slice(0, 10) }}</div>
+                                <NuxtLink :to="`${rand?.category?.slug}/${rand?.news?.slug}`" class="poster__title">{{ rand?.news?.title }}</NuxtLink>
                             </div>
                         </div>
                     </div>
@@ -124,6 +133,8 @@
                                     />
                                 </div>
                             </ul>
+
+
                         </div>
                     </div>
                 </div>

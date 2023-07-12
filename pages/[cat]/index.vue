@@ -1,8 +1,12 @@
 <script setup>
+    import { storeToRefs } from "pinia";
     import { useMainStore } from "~/store/main"
+    import { useLocaleStore } from "~/store/i18n";
 
     const mainStore = useMainStore()
+    const localeStore = useLocaleStore()
     const { locale } = useI18n()
+    const { book } = storeToRefs(localeStore)
 
     const route = useRoute()
 
@@ -13,8 +17,8 @@
         let res = await mainStore.getOneCat(route.params.cat, lang)
         if (res.data.value) {
             cat.value = res.data.value
-            console.log(cat.value)
-            console.log(cat?.value.important_dates);
+            // console.log(cat.value)
+            // console.log(cat?.value.important_dates);
         }
     }
 
@@ -50,7 +54,7 @@
                         </div>
                         <div class="categories__right">
                             <catMore
-                                :moreTitle="'Важные даты'"
+                                :moreTitle="book?.important_dates"
                                 :moreData="cat?.important_dates"
                                 class="categories__more"
                             />
@@ -96,7 +100,7 @@
         margin: -15px 0px;
     }
     &__more{
-        padding: 15px 0px;
+        // padding: 15px 0px;
     }
     &__banner{
         height: 130px;

@@ -265,7 +265,7 @@
                 left: 0;
                 display: flex;
                 flex-direction: column;
-                align-items: center;
+                // align-items: center;
                 gap: 15px;
                 background-color: $colorLightBlue;
                 width: 250px;
@@ -276,12 +276,12 @@
                 a{
                     @include tr(.2s);
                     color: #fff;
-                    padding: 5px;
+                    padding: 5px 15px;
                     span{
                         position: relative;
                         width: 100%;
                         display: block;
-                        text-align: center;
+                        text-align: left;
                         &::after{
                             @include tr(.2s);
                             content: '';

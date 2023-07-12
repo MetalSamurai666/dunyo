@@ -1,11 +1,7 @@
 import { defineStore } from 'pinia'
 
 export const useMainStore = defineStore('indexId', () => {
-    const url = ref('https://dunyo-back.doom.uz')
-
-    // const getArraySlider = async () => {
-    //     return await useFetch('https://umft-merch.of-astora.uz/abroor')
-    // }
+    const url = ref('https://dunyoapi.gsoft.uz')
 
     const getCats = (lang) => {
         return useFetch(url.value+`/api/category/all/?lang=${lang}`)
@@ -13,20 +9,20 @@ export const useMainStore = defineStore('indexId', () => {
     }
     
     const getOneCat = (slug, lang) => {
-        // console.log(slug);
+        // console.log(slug, lang);
         return useFetch(url.value+`/api/category/get/${slug}/?lang=${lang}`)
         .catch(er => console.log(er))
     }
     
     const getNews = (slug, lang) => {
-        // console.log(slug);
+        // console.log(slug, lang);
         return useFetch(url.value+`/api/news/get/${slug}/?lang=${lang}`)
         .catch(er => console.log(er))
     }
     
-    const getWeather = (position) => {
-        // console.log(position);
-        return useFetch(url.value+`/api/waether/?=${position}`)
+    const getWeather = (lat, long) => {
+        // console.log(lat, long);
+        return useFetch(url.value+`/api/weather/?lat=${lat}/?long=${long}`)
         .catch(er => console.log(er))
     }
 
@@ -48,12 +44,18 @@ export const useMainStore = defineStore('indexId', () => {
 
 /* First Section */
     const getFirstCats = (slug) => {
-        // console.log(slug);
+        console.log(slug);
         return useFetch(url.value+`/api/category/main/${slug}`)
         .catch(er => console.log(er))
     }
+    
+    const getRandNews = (slug) => {
+        // console.log(slug);
+        return useFetch(url.value+`/api/category/latest/${slug}`)
+        .catch(er => console.log(er))
+    }
 
-    const getFirstTabs = (slug) => {
+    const getFirstTabs = () => {
         // console.log(slug);
         return useFetch(url.value+`/api/news/tabs`)
         .catch(er => console.log(er))
@@ -67,11 +69,12 @@ export const useMainStore = defineStore('indexId', () => {
     }
     
 /* Slider Section */
-    const getSlides = () => {
-        return useFetch(url.value+`/api/news/slider`)
+    const getSlides = (slug) => {
+        return useFetch(url.value+`/api/news/slider/${slug}`)
         .catch(er => console.log(er))
     }
-    
+
+
         return { 
             url, 
             // getArraySlider, 
@@ -83,9 +86,10 @@ export const useMainStore = defineStore('indexId', () => {
             getActualNews, 
             getLatestNews,
             getFirstCats,
+            getRandNews,
             getFirstTabs,
             getSecondCats,
-            getSlides
+            getSlides,
         }
     }
 )

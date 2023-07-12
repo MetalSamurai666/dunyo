@@ -1,12 +1,34 @@
 <script setup> 
+    import { storeToRefs } from "pinia"
+    import { useLocaleStore } from "~/store/i18n"
     import { useMainStore } from "~/store/main"
+
+
+    const route = useRoute()
+    const { locale } = useI18n()
+    const localeStore = useLocaleStore()
+    const { book } = storeToRefs(localeStore)
 
     const mainStore = useMainStore()
 
-    const route = useRoute()
+    const getBook = async (lang) => {
+        await localeStore.getKeywords(lang)
+    }
 
     defineProps({
-        news: Object
+        news: Object,
+        category: Object
+    })
+
+    watch(
+        () => locale.value,
+        () => {
+            getBook(locale.value)
+        }
+    )
+
+    onMounted(() => {
+        getBook(locale.value)
     })
 </script>
 
@@ -14,22 +36,23 @@
     <div 
         class="singleWelcome" 
         >
-        <div 
+        <!-- <div 
             class="singleWelcome__back" 
             :style="`background-image: url(${mainStore.url}/${news?.img})`">
-        </div>
+        </div> -->
         <div class="singleWelcome__box">
             <div class="container">
                 <div class="singleWelcome__title">{{ news?.title }}</div>
 
                 <ul class="singleWelcome__breadcrumbs">
+                    <!-- <pre>{{ news }}</pre> -->
                     <li class="item">
-                        <NuxtLink to="/"><span>Главная</span></NuxtLink>
+                        <NuxtLink to="/"><span>{{ book?.main }}</span></NuxtLink>
                     </li>
 
                     <li class="item">
                         <NuxtLink :to="`/${route.fullPath.split('/')[1]}`">
-                            <span>{{ news?.category?.title }}</span>
+                            <span>{{ category?.title }}</span>
                         </NuxtLink>
                     </li>
 

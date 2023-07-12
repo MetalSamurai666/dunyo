@@ -1,81 +1,30 @@
 <script setup>
-    const nav = ref([
-        {
-            title: 'Политика',
-            list: [
-                {
-                    link: '/',
-                    title: 'Президент'
-                },
-                {
-                    link: '/',
-                    title: 'Правительство'
-                },
-                {
-                    link: '/',
-                    title: 'Парламент'
-                },
-                {
-                    link: '/',
-                    title: 'Год заботы о человеке и качественного образования'
-                },
-                {
-                    link: '/',
-                    title: 'Председательство Узбекистана в ШОС'
-                },
-            ]
-        },
-        {
-            title: 'Экономика',
-            list: [
-                {
-                    link: '/',
-                    title: 'Инвестиции'
-                },
-                {
-                    link: '/',
-                    title: 'Экспорт'
-                },
-                {
-                    link: '/',
-                    title: 'ИА “Дунё” представляет экспортеров '
-                },
-                {
-                    link: '/',
-                    title: 'Узбекистан'
-                },
-                {
-                    link: '/',
-                    title: 'Точка роста'
-                },
-            ]
-        },
-        {
-            title: 'Актуально',
-            list: [
-                {
-                    link: '/',
-                    title: 'Знакомьтесь: Узбекистан'
-                },
-                {
-                    link: '/',
-                    title: 'Деятельность ИА "Дунё"'
-                },
-                {
-                    link: '/',
-                    title: 'Культура'
-                },
-                {
-                    link: '/',
-                    title: 'Туризм'
-                },
-                {
-                    link: '/',
-                    title: 'Аналитика'
-                },
-            ]
-        },
-    ])
+/* Imports */
+    import { useMainStore } from '~/store/main';
+
+/* Сonsts */
+    const mainStore = useMainStore()
+    const { locale } = useI18n()
+
+    const cats = ref([])
+    const getData = async (val) => {
+        let res = await mainStore.getCats(val)
+        if (res.data.value) {
+            cats.value = res.data.value
+            // console.log(cats.value);
+        }
+    }
+
+    watch(
+        () => locale.value,
+        () => {
+            getData(locale.value)
+        }
+    )
+
+    onMounted(() => {
+        getData(locale.value)
+    })
 </script>
 
 <template>
@@ -83,11 +32,17 @@
         <div class="footer__top">
             <div class="container">
                 <div class="footer__nav">
-                    <ul class="footer__list" v-for="list, index of nav" :key="index">
-                        <li><span class="footer__title">{{ list?.title }}</span></li>
+                    <ul class="footer__list" v-for="list, index of cats?.slice(0, 3)" :key="index">
+                        <li>
+                            <NuxtLink class="footer__title" 
+                                :to="list?.slug"
+                            >    
+                                {{ list?.title }}
+                            </NuxtLink>
+                        </li>
 
-                        <li v-for="item, index of list.list" :key="index">
-                            <NuxtLink :to="item?.link" class="footer__link">
+                        <li v-for="item, index of list?.subs" :key="index">
+                            <NuxtLink :to="`/${item?.slug}`" class="footer__link">
                                 {{ item?.title }}
                             </NuxtLink>
                         </li>

@@ -16,8 +16,8 @@
                 <cardCat
                     :class="moreData?.mode"
                     :card="item"
-                    v-for="item, index of moreData"
-                    :key="index"
+                    v-for="item of moreData"
+                    :key="item?._id"
                 />
             </ul>
         </div>

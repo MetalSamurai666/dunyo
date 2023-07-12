@@ -1,19 +1,18 @@
 <script setup>
 /* Imports */
   import { storeToRefs } from 'pinia'
-  import { useMainStore } from '~/store/main';
   import { useMenuStore } from '~/store/menu';
   import { useLocaleStore } from '~~/store/i18n'
+  import { useMainStore } from './store/main';
+  
 
   /* Consts */
   const localeStore = useLocaleStore()
   const { locale } = useI18n()
 
   const menuStore = useMenuStore()
-  const {
-    menuState
-  } = storeToRefs(menuStore)
-
+  const { menuState } = storeToRefs(menuStore)
+  const mainStore = useMainStore()
 
   function changeBody() {
     if (menuState.value == true) {
@@ -23,21 +22,11 @@
     }
   }
 
-
-/* Weather */
-  const location = ref({})
-  const successCallback = async (position) => {
-    console.log(position);
-    let res = await mainStore.getWeather(position)
-    if (res.data.value) {
-      location.value = res.data.value
-    }
+  /* Getting CATegorieS🐈 */
+  const cats = ref([])
+  const getData = async (val) => {
+    await mainStore.getCats(val)
   }
-
-  const errorCallback = (error) => {
-    console.log(error);
-  }
-
 
   watch(
     () => menuState.value,
@@ -48,9 +37,8 @@
   
   onMounted(() => {
     document.title = 'Dunyo'
-    localeStore.getTranslations(locale.value)
-
-    // navigator.geolocation.getCurrentPosition(successCallback, errorCallback)
+    getData(locale.value)
+    // localeStore.getTranslations(locale.value)
   })
 </script>
 

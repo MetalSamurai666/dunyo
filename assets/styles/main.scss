@@ -5,7 +5,7 @@
 /* ========================================================================== */
 /* Fonts */
 /* ========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 /* ========================================================================== */
 /* Main Settings */
@@ -13,7 +13,7 @@
 body{
     background-color: #f2ede7;
     font-size: 15px;
-    font-family: 'Lora', serif;
+    font-family: 'Roboto', serif;
     color: #000;
     &.noscroll{
         overflow-y: hidden;

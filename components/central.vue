@@ -62,7 +62,9 @@
                     <div class="central__title">{{ second?.parent_category?.title }}</div>
 
                     <div class="central__main">
-                        <div class="central__poster poster">
+                        <div class="central__poster poster" 
+                            :style="`background-image: url(${mainStore.url}/${second?.main_news?.img})`"
+                        >
                             <div class="poster__date">
                                 {{ second?.main_news?.date?.slice(0, 10) }}
                             </div>
@@ -78,7 +80,7 @@
                             <cardCat 
                                 class="central__card"
                                 :card="item"
-                                v-for="item, index of second?.category_news?.slice(1)"
+                                v-for="item, index of second?.category_news"
                                 :key="index"
                             />
                         </ul>
@@ -87,7 +89,12 @@
                 <div class="central__right">
                     <ul class="btns">
                         <li v-for="item of tabList" :key="item.slug">
-                            <button @click="tabFilter = item.slug" :class="tabFilter == item.slug ? 'active' : ''">{{ item.title }}</button>
+                            <button 
+                                @click="tabFilter = item.slug" 
+                                :class="tabFilter == item.slug ? 'active' : ''"
+                            >
+                                {{ item.title }}
+                            </button>
                         </li>
                     </ul>
 

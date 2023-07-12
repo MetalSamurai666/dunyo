@@ -1,11 +1,11 @@
 <script setup>
     const videos = ref([
-        { link: 'https://www.youtube.com/embed/B9cC2_V7JwE?controls=0' },
-        { link: 'https://www.youtube.com/embed/fuFbQ-Mewfw?controls=0' },
-        { link: 'https://www.youtube.com/embed/B9cC2_V7JwE?controls=0' },
-        { link: 'https://www.youtube.com/embed/fuFbQ-Mewfw?controls=0' },
-        { link: 'https://www.youtube.com/embed/B9cC2_V7JwE?controls=0' },
-        { link: 'https://www.youtube.com/embed/fuFbQ-Mewfw?controls=0' },
+        { link: 'https://www.youtube.com/embed/94Y3SKYB-bg?controls=0' },
+        { link: 'https://www.youtube.com/embed/09LSGUfmkBU?controls=0' },
+        { link: 'https://www.youtube.com/embed/94Y3SKYB-bg?controls=0' },
+        { link: 'https://www.youtube.com/embed/09LSGUfmkBU?controls=0' },
+        { link: 'https://www.youtube.com/embed/94Y3SKYB-bg?controls=0' },
+        { link: 'https://www.youtube.com/embed/09LSGUfmkBU?controls=0' },
     ])
 </script>
 

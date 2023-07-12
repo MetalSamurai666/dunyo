@@ -3,41 +3,19 @@
     import { useMainStore } from '~/store/main';
     
     const mainStore = useMainStore()
-    // const slides = ref([
-    //     {
-    //         link: '/',
-    //         img: 'https://picsum.photos/1920/1080',
-    //         cat: 'Спорт',
-    //         title: 'Сборная Узбекистана по велоспорту продолжает завоевывать медали на чемпионате Азии в Таиланде',
-    //         text: 'Вчерашний день чемпионата Азии по велоспорту в Таиланде также оказался плодотворным для сборной Узбекистана, сообщает корреспондент ИА «Дунё» со ссылкой на данные Национального олимпийского комитета. В индивидуальной гонке среди спортсменок до 20 и 23 лет соотечественницы заняли призовые места.'
-    //     },
-    //     {
-    //         link: '/',
-    //         img: 'https://picsum.photos/1920/1079',
-    //         cat: 'Природа',
-    //         title: 'Восстановление лесов получает приоритет в российской экологической политике.',
-    //         text: 'Сегодня в лесу произошло удивительное открытие! Ученые обнаружили редкое растение, которое считалось вымершим более 50 лет. Это открытие может помочь в сохранении уязвимых экосистем и биоразнообразия лесов. Эксперты призывают общественность заботиться о природе и сохранять наши ценные лесные ресурсы для будущих поколений.'
-    //     },
-    //     {
-    //         link: '/',
-    //         img: 'https://picsum.photos/1920/1078',
-    //         cat: 'Природа',
-    //         title: 'Восстановление лесов получает приоритет в российской экологической политике.',
-    //         text: 'Сегодня в лесу произошло удивительное открытие! Ученые обнаружили редкое растение, которое считалось вымершим более 50 лет. Это открытие может помочь в сохранении уязвимых экосистем и биоразнообразия лесов. Эксперты призывают общественность заботиться о природе и сохранять наши ценные лесные ресурсы для будущих поколений.'
-    //     },
-    // ])
 
     const slides = ref([])
     const getSlides = async (slug) => {
         let res = await mainStore.getSlides(slug)
+        // let res = await mainStore.getFirstCats(slug)
         if (res.data.value) {
             slides.value = res.data.value
-            // console.log(slides.value)
+            console.log(slides.value)
         }
     }
 
     onMounted(() => {
-        getSlides()
+        getSlides('Nauka')
     })
 </script>
 
@@ -79,14 +57,14 @@
 
                     <div class="slider__box">
                         <div class="slider__left">
-                            <!-- <div class="slider__cat">{{ item?.category }}</div> -->
+                            <div class="slider__cat">{{ item?.category?.title }}</div>
                             <div class="slider__title">{{ item?.title }}</div>
                         </div>
                         <div class="slider__right">
                             <div class="slider__text" v-html="item?.content"></div>
                             <div class="slider__more">
-                                <NuxtLink :to="`${item?.slug}`">
-                                    <span>Подробне</span>
+                                <NuxtLink :to="`${item?.category?.slug}/${item?.slug}`">
+                                    <span>Подробнее</span>
                                     <img src="@/assets/logo/basic/arrowRight.svg">
                                 </NuxtLink>
                             </div>
