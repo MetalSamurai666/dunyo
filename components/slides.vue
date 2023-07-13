@@ -10,7 +10,7 @@
         // let res = await mainStore.getFirstCats(slug)
         if (res.data.value) {
             slides.value = res.data.value
-            console.log(slides.value)
+            // console.log(slides.value)
         }
     }
 
@@ -58,7 +58,7 @@
                     <div class="slider__box">
                         <div class="slider__left">
                             <div class="slider__cat">{{ item?.category?.title }}</div>
-                            <div class="slider__title">{{ item?.title }}</div>
+                            <div class="slider__title"><span>{{ item?.title }}</span></div>
                         </div>
                         <div class="slider__right">
                             <div class="slider__text" v-html="item?.content"></div>

@@ -9,16 +9,16 @@
     const mainStore = useMainStore()
     
     const { locale, locales, setLocale } = useI18n()
-    // const { book }  = storeToRefs(localeStore)
+    const { cats }  = storeToRefs(mainStore)
     const availableLocales = computed(() => {
         return (locales.value)
     })
 
 /* Functions */
-    function changeLang(val) {
-        // localeStore.getTranslations(val)
-        getData(val)
-    }
+    // function changeLang(val) {
+    //     // localeStore.getTranslations(val)
+    //     // getData(val)
+    // }
 
 /* Header fixed on scroll */
     var scrollTrigger = 0;
@@ -29,7 +29,7 @@
             } else {
                 document.querySelector('header').classList.remove('alt');
             }
-        };
+        }
     } else {
         window.onscroll = function() {
             if (window.scrollY > scrollTrigger || window.pageYOffset > scrollTrigger) {
@@ -46,14 +46,14 @@
     }
 
 /* Getting CATegorieS🐈 */
-    const cats = ref([])
-    const getData = async (val) => {
-        let res = await mainStore.getCats(val)
-        if (res.data.value) {
-            cats.value = res.data.value
-            // console.log(cats.value);
-        }
-    }
+    // const cats = ref([])
+    // const getData = async (val) => {
+    //     let res = await mainStore.getCats(val)
+    //     if (res.data.value) {
+    //         cats.value = res.data.value
+    //         // console.log(cats.value);
+    //     }
+    // }
 
 /* Get the current date  */
     var currentDate = new Date();
@@ -66,30 +66,30 @@
 
 
 /* Weather */
-    const location = ref({})
-    const successCallback = async (position) => {
-        // console.log(position);
-        let res = await mainStore.getWeather(
-            position?.coords?.latitude, position?.coords?.longitude
-        )
-        if (res.data.value) {
-            location.value = res.data.value
-            // console.log(location.value);
-        }
-    }
-    const errorCallback = (error) => {
-        // console.log(error);
-    }
+    // const location = ref({})
+    // const successCallback = async (position) => {
+    //     // console.log(position);
+    //     let res = await mainStore.getWeather(
+    //         position?.coords?.latitude, position?.coords?.longitude
+    //     )
+    //     if (res.data.value) {
+    //         location.value = res.data.value
+    //         // console.log(location.value);
+    //     }
+    // }
+    // const errorCallback = (error) => {
+    //     // console.log(error);
+    // }
 
     onMounted(() => {
-        getData(locale.value)
+        // getData(locale.value)
 
-        navigator.geolocation.getCurrentPosition(successCallback, errorCallback)
+        // navigator.geolocation.getCurrentPosition(successCallback, errorCallback)
     })
 </script>
 
 <template>
-    <header class="header">
+    <header class="header" >
         <!-- =============================================================== -->
         <!-- Top Section -->
         <!-- =============================================================== -->
@@ -98,20 +98,20 @@
                 <div class="header__left">
                     <span class="header__region">Ташкент</span>
                     <div class="header__weather">
-                        <img src="@/assets/logo/basic/cloudRizzel.svg">
+                        <img src="@/assets/logo/basic/cloudRizzel.svg" data-not-lazy>
                         <span>32°C</span>
                     </div>
                 </div>
 
                 <div class="header__logo">
                     <NuxtLink to="/">
-                        <img src="@/assets/logo/logo.png">
+                        <img src="@/assets/logo/logo.png" data-not-lazy>
                     </nuxtLink>
                 </div>
 
                 <div class="header__right">
                     <div class="header__date">
-                        <img src="@/assets/logo/basic/calendar.svg">
+                        <img src="@/assets/logo/basic/calendar.svg" data-not-lazy>
                         <span>{{ formattedDate }}</span>
                     </div>
                     <div class="header__lang">
@@ -130,7 +130,7 @@
 
                     <div class="header__menu">
                         <button @click="openMenu">
-                            <img src="@/assets/logo/basic/menu.svg">
+                            <img src="@/assets/logo/basic/menu.svg" data-not-lazy>
                         </button>
                     </div>
                 </div>
@@ -148,6 +148,7 @@
                 </div>
 
                 <ul class="header__list">
+
                     <li 
                         :class="item?.subs.length > 0 ? 'item listly' : 'item'" 
                         v-for="(item, index) of cats" 

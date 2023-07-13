@@ -2,10 +2,19 @@ import { defineStore } from 'pinia'
 
 export const useMainStore = defineStore('indexId', () => {
     const url = ref('https://dunyoapi.gsoft.uz')
+    const cats = ref([])
 
     const getCats = (lang) => {
         return useFetch(url.value+`/api/category/all/?lang=${lang}`)
         .catch(er => console.log(er))
+    }
+
+    const getSuperCats = async (lang) => {
+        const res = await useFetch(url.value+`/api/category/all/?lang=${lang}`)
+        if (res.data.value) {
+            cats.value = res.data.value
+            // console.log(cats.value)
+        }
     }
     
     const getOneCat = (slug, lang) => {
@@ -44,7 +53,7 @@ export const useMainStore = defineStore('indexId', () => {
 
 /* First Section */
     const getFirstCats = (slug) => {
-        console.log(slug);
+        // console.log(slug);
         return useFetch(url.value+`/api/category/main/${slug}`)
         .catch(er => console.log(er))
     }
@@ -78,7 +87,9 @@ export const useMainStore = defineStore('indexId', () => {
         return { 
             url, 
             // getArraySlider, 
+            cats,
             getCats, 
+            getSuperCats,
             getOneCat, 
             getNews, 
             getWeather, 

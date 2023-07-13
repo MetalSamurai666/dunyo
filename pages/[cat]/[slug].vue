@@ -86,6 +86,7 @@
         flex-basis: 33.3333%;
         width: 33.3333%;
         padding: 30px 0px;
+        margin: -15px 0px;
     }
     &__banner{
         height: 130px;

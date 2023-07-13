@@ -23,9 +23,8 @@
   }
 
   /* Getting CATegorieS🐈 */
-  const cats = ref([])
   const getData = async (val) => {
-    await mainStore.getCats(val)
+    await mainStore.getSuperCats(val)
   }
 
   watch(
@@ -34,10 +33,18 @@
       changeBody()
     }
   )
+
+  watch(
+    () => locale.value,
+    () => {
+      getData(locale.value)
+    }
+  )
   
   onMounted(() => {
     document.title = 'Dunyo'
     getData(locale.value)
+
     // localeStore.getTranslations(locale.value)
   })
 </script>

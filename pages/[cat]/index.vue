@@ -42,7 +42,7 @@
             />
             <div class="categories__body">
                 <div class="container">
-                <div class="categories__box">
+                    <div class="categories__box">
                         <div class="categories__left">
                             <catWrapper 
                                 :news="cat.news?.slice(0,2)"
@@ -100,7 +100,7 @@
         margin: -15px 0px;
     }
     &__more{
-        // padding: 15px 0px;
+        padding: 15px 0px;
     }
     &__banner{
         height: 130px;

@@ -101,8 +101,8 @@
                         v-for="item, index of sponsors" 
                         :key="index"
                     >
-                        <div class="slider__img" data-not-lazy>
-                            <img src="@/assets/img/sponsors/sponsors1.png">
+                        <div class="slider__img" >
+                            <img data-not-lazy src="@/assets/img/sponsors/sponsors1.png">
                             <span>Законодательная палата Олий Мажлиса Республики Узбекистан</span>
                         </div>
                     </SplideSlide>
