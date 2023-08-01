@@ -1,22 +1,42 @@
 <script setup>
-import { useMainStore } from "~/store/main"
+    import { storeToRefs } from "pinia"
+    import { useLocaleStore } from "~/store/i18n"
+    import { useMainStore } from "~/store/main"
 
-const mainStore = useMainStore()
+    const { locale } = useI18n()
+    const mainStore = useMainStore()
+    const localeStore = useLocaleStore()
+    const { book } = storeToRefs(localeStore)
 
-defineProps({
-    news: Array,
-    actual: Object
-})
+    const getBook = async (lang) => {
+        await localeStore.getKeywords(lang)
+    }
+
+    defineProps({
+        news: Array,
+        actual: Object
+    })
+
+    watch(
+        () => locale.value,
+        () => {
+            getBook(locale.value)
+        }
+    )
+
+    onMounted(() => {
+        getBook(locale.value)
+    })
 </script>
 
 <template>
-    <div class="catWrapper">
+    <div class="catWrapper" v-if="news?.length > 0">
         <div class="catWrapper__box">
             <div class="catWrapper__top">
                 <div class="catWrapper__left">
                     <div class="catWrapper__poster" :style="`background-image: url(${mainStore.url}/${actual?.img})`">
                         <div class="catWrapper__cat">Актуально</div>
-                        <div class="catWrapper__date">{{ actual?.date }}</div>
+                        <div class="catWrapper__date">{{ actual?.date.slice(0, 10) }}</div>
                     </div>
                     <div class="catWrapper__title">
                         <NuxtLink :to="`${actual?.category?.slug}/${actual?.slug}`">{{ actual?.title }}</NuxtLink>
@@ -38,7 +58,7 @@ defineProps({
                                 {{ item?.title }}
                             </NuxtLink>
 
-                            <div class="item__date">{{ item?.date }}</div>
+                            <div class="item__date">{{ item?.date.slice(0, 10) }}</div>
                         </li>
                     </ul>
                 </div>
@@ -49,6 +69,9 @@ defineProps({
                 </div>
             </div>
         </div>
+    </div>
+    <div class="catWrapper__none" v-else>
+        {{ book?.no_news }}
     </div>
 </template>
 

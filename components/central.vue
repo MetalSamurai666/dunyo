@@ -31,7 +31,7 @@
         let res = await mainStore.getSecondCats(slug)
         if (res.data.value) {
             second.value = res.data.value
-            // console.log(second.value)
+            console.log(second.value)
 
             tabs.value = res.data.value.categories
             // console.log(tabs.value);

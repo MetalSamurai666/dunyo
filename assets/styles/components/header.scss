@@ -194,6 +194,9 @@
     /* ====================================================================== */
     /* Bottom Section */
     /* ====================================================================== */
+    &__container{
+        @include df-aic-jcc;
+    }
     &__bot{
         border-top: 1px solid rgba(255, 255, 255, 0.19);
         border-bottom: 1px solid rgba(255, 255, 255, 0.19);
@@ -215,9 +218,9 @@
     &__list{
         display: flex;
         margin: 0px -22px;
+        gap: 40px;
         .item{
             margin: -11px;
-            padding: 0px 22px;
             position: relative;
             &__link{
                 padding: 11px;
@@ -266,7 +269,7 @@
                 display: flex;
                 flex-direction: column;
                 // align-items: center;
-                gap: 15px;
+                gap: 10px;
                 background-color: $colorLightBlue;
                 width: 250px;
                 max-height: 0%;
@@ -282,6 +285,8 @@
                         width: 100%;
                         display: block;
                         text-align: left;
+                        font-size: 12px;
+                        font-weight: 400;
                         &::after{
                             @include tr(.2s);
                             content: '';
@@ -329,6 +334,7 @@
     /* ====================================================================== */
     /* Mobile */
     /* ====================================================================== */
+    
     @media (max-width: 500px) {
         &__left, &__date, &__lang, &__bot{
             display: none;
@@ -362,4 +368,61 @@
             }
         }
     }
+    @media (max-width: 1280px) {
+        &__bot{
+            display: none;
+        }
+        &__menu{
+            display: block;
+        }
+        &.alt{
+            background-color: $colorLightBlue;
+            .header__list{
+                .listly{
+                    &::after{
+                        background-color: #000;
+                    }
+                }
+            }
+            &.secondary{
+                color: #fff;
+                a, span{
+                    color: #fff;
+                }
+                .header__top{
+                    img{
+                        filter: unset;
+                    }
+                }
+            }
+            a{
+                color: #fff;
+            }
+            .header__subLogo{
+                filter: invert(1);
+            }
+            .header__search{
+                button{
+                    img{
+                        filter: invert(1);
+                    }
+                }
+            }
+            .header__top{
+                padding: 10px 0px;
+                max-height: unset;
+            }
+            .header__subLogo{
+                width: 180px;
+                margin-right: 40px;
+            }
+            .header__bot{
+                .container{
+                    max-width: 1000px;
+                }
+            }
+        }
+        
+    }
+    
 }

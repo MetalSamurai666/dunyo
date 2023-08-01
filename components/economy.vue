@@ -1,9 +1,14 @@
 <script setup>
+    import { storeToRefs } from "pinia"
     import cardCat from "@/components/cards/cardCat.vue"
-    import { useMainStore } from "~/store/main"
     import cardNews from "./cards/cardNews.vue"
+    import { useMainStore } from "~/store/main"
+    import { useLocaleStore } from "~/store/i18n"
 
+    const { t, locale } = useI18n()
     const mainStore = useMainStore()
+    const localeStore = useLocaleStore()
+    const { book } = storeToRefs(localeStore)
 
     const tabFilter = ref('latest')
     
@@ -30,7 +35,7 @@
         let res = await mainStore.getFirstTabs()
         if (res.data.value) {
             tabs.value = res.data.value
-            // console.log(tabs.value)
+            console.log(tabs.value)
             tabList.value.map((listItem) => {
                 if (listItem.slug == "important") {
                     listItem.news = tabs.value.important
@@ -45,28 +50,44 @@
         }
     }
 
-    const tabList = ref([
-        {
-            title: 'Последние',
-            slug: 'latest',
-            news: []
-        },
-        {
-            title: 'Популярные',
-            slug: 'important',
-            news: []
-        },
-        {
-            title: 'Срочные',
-            slug: 'popular',
-            news: []
-        },
-    ])
+    const getBook = async (lang) => {
+        await localeStore.getKeywords(lang)
+    }
+
+    const tabList = computed(()=>{
+        return [
+            {
+                title: t('latest_news'),
+                slug: 'latest',
+                news: tabs.value.latest
+            },
+            {
+                title: t('actual_news'),
+                slug: 'important',
+                news: tabs.value.important
+            },
+            {
+                title: t('most_read_news'),
+                slug: 'popular',
+                news: tabs.value.popular
+            },
+        ]
+    })
+
+    watch(
+        () => locale.value,
+        () => {
+            getBook(locale.value)
+        }
+    )
+
+    
     
     onMounted(() => {
         getFirst('economics')
         getRand('politics')
         getTabs()
+        getBook(locale.value)
     })
 </script>
 
@@ -109,9 +130,9 @@
                                         @click="tabFilter = item.slug" 
                                         :class="tabFilter == item.slug 
                                         ? 'active' 
-                                        : ''"
+                                        : '' "
                                     >
-                                        {{ item.title }}
+                                        {{ item?.title }}
                                     </button>
                                 </li>
                             </ul>

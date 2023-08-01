@@ -105,6 +105,12 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li class="item">
+                        <NuxtLink class="item__link" @click="changeRoute('contacts')"> 
+                            <span>{{ $t('contacts') }}</span>
+                        </NuxtLink>
+                    </li>
                 </ul>
             </div>
             <div class="menu__bot">

@@ -15,7 +15,7 @@
     }
 
     onMounted(() => {
-        getSlides('Nauka')
+        getSlides('economics')
     })
 </script>
 
@@ -42,6 +42,11 @@
                         next  : 'splide__arrow--next slider__next',
                     },
                     breakpoints: {
+                        800: {
+                            height: 0,
+                            arrows: false,
+                            drag: true,
+                        },
                         500: {
                             height: 0,
                             arrows: false,

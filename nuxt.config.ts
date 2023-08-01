@@ -12,7 +12,13 @@ export default defineNuxtConfig({
   },
   i18n: {
     strategy: 'no_prefix',
+    vueI18n: './i18n.config.ts',
     locales: [
+      {
+        code: "uz",
+        iso: "uz",
+        name: "O`zb",
+      },
       {
         code: "ru",
         iso: "ru",
@@ -23,12 +29,7 @@ export default defineNuxtConfig({
         iso: "en",
         name: "Eng",
       },
-      {
-        code: "uz",
-        iso: "uz",
-        name: "O`zb",
-      },
     ],
-    defaultLocale: "ru"
+    defaultLocale: "uz",
   },
 })

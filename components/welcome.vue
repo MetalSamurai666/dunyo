@@ -3,11 +3,12 @@
     import { useMainStore } from '~/store/main'
 
     const mainStore = useMainStore()
+    const { locale } = useI18n()
 
 /* Slider News */    
     const slider = ref([])
-    const getSlider = async () => {
-        let res = await mainStore.getSliderNews()
+    const getSlider = async (lang) => {
+        let res = await mainStore.getSliderNews(lang)
         if (res.data.value) {
             slider.value = res.data.value
         }
@@ -31,8 +32,15 @@
         }
     }
 
+    watch(
+        () => locale.value,
+        () => {
+            getSlider(locale.value)
+        }
+    )
+
     onMounted(() => {
-        getSlider()
+        getSlider(locale.value)
         getLatest()
         getActual()
     })
@@ -57,12 +65,15 @@
                     pauseOnHover: false,
                     lazyLoad: true,
                     breakpoints: {
+                        800: {
+                            height: 800,
+                        },
                         500:{
                             height: 600,
                         }
                     }
                 }">
-                <SplideSlide v-for="(item, index) of slider" class="splide__slide slider__slide" :key="index">
+                <SplideSlide class="splide__slide slider__slide" v-for="(item, index) of slider" :key="index" >
                     <img class="slider__img" 
                         :src="`${mainStore.url}/${item?.img}`" 
                         :data-splide-lazy="`${mainStore.url}/${item?.img}`">
@@ -70,6 +81,11 @@
                         <div class="slider__text">
                             <div class="slider__info">{{ item?.category?.title }}</div>
                             <div class="slider__title">{{ item?.title }}</div>
+                            <div class="slider__link">
+                                <NuxtLink :to="`${item?.category?.title}/${item?.slug}`">
+                                    <img src="@/assets/logo/basic/arrowR.svg">
+                                </NuxtLink>
+                            </div>
                         </div>
                     </div>
                 </SplideSlide>
@@ -79,7 +95,7 @@
             <div class="container">
                 <div class="welcome__top">
                     <div class="welcome__news">
-                        <span>Последние новости</span>
+                        <span>{{ $t('latest_news') }}</span>
                         <ul>
                             <li 
                                 class="item"

@@ -36,8 +36,9 @@ export const useMainStore = defineStore('indexId', () => {
     }
 
 /* Welcome Section */
-    const getSliderNews = () => {
-        return useFetch(url.value+`/api/news/main`)
+    const getSliderNews = (lang) => {
+        console.log(lang);
+        return useFetch(url.value+`/api/news/main/?lang=${lang}`)
         .catch(er => console.log(er))
     }
     

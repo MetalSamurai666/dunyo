@@ -3,8 +3,7 @@
   import { storeToRefs } from 'pinia'
   import { useMenuStore } from '~/store/menu';
   import { useLocaleStore } from '~~/store/i18n'
-  import { useMainStore } from './store/main';
-  
+  import { useMainStore } from '~/store/main';
 
   /* Consts */
   const localeStore = useLocaleStore()
@@ -44,6 +43,8 @@
   onMounted(() => {
     document.title = 'Dunyo'
     getData(locale.value)
+
+
 
     // localeStore.getTranslations(locale.value)
   })

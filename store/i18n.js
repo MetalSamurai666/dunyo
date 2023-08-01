@@ -21,7 +21,6 @@ export const useLocaleStore = defineStore('i18nId', () => {
             }
         }
 
-
         return { book, getTranslations, getKeywords }
     }
 )

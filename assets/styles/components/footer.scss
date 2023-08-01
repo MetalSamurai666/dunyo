@@ -97,4 +97,25 @@
             line-height: 18px;
         }
     }
+    @media (max-width: 800px) {
+        &__nav{
+            flex-direction: column;
+        }
+        &__top{
+            padding: 40px 0px;
+        }
+        &__list{
+            width: 100%;
+            flex-basis: unset;
+            padding: 10px 20px;
+            li{
+                &:first-child{
+                    margin-bottom: 10px;
+                }
+            }
+            &.contacts{
+                border: 0;
+            }
+        }
+    }
 }

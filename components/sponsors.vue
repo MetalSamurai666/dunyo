@@ -91,6 +91,9 @@
                             page: 'splide__pagination__page slider-page',
                         },
                         breakpoints: {
+                            800: {
+                                perPage: 4,
+                            },
                             500: {
                                 fixedWidth: 200
                             }

@@ -1,6 +1,10 @@
 @import '../main.scss';
 
 .catWrapper{
+    &__none{
+        font-size: 22px;
+        font-weight: 600;
+    }
     &__top{
         display: flex;
     }

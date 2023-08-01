@@ -99,6 +99,20 @@
         }
     }
     
+    @media (max-width: 800px) {
+        &__body{
+            .container{
+                flex-direction: column;
+            }
+        }
+        &__left, &__right{
+            width: 100%;
+            flex-basis: unset;
+        }
+        &__left{
+            // transform: translateY(-50px);
+        }
+    }
     @media (max-width: 500px) {
         &__body{
             .container{

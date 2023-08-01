@@ -121,7 +121,7 @@
                         >
                             <button
                                 :class="lang.code == locale ? 'active' : ''"
-                                @click.prevent.stop="setLocale(lang.code), changeLang(lang.code)"
+                                @click.prevent.stop="setLocale(lang.code)"
                             >
                                 <span>{{ lang.name }}</span>
                             </button>
@@ -140,7 +140,7 @@
         <!-- Bottom Section -->
         <!-- =============================================================== -->
         <div class="header__bot">
-            <div class="container">
+            <div class="header__container">
                 <div class="header__subLogo">
                     <NuxtLink to="/">
                         <img src="@/assets/logo/logo.png">
@@ -156,7 +156,7 @@
                     >
                         <NuxtLink 
                             class="item__link" 
-                            :to="`/${item?.slug}`"
+                            :to="item?.slug.length > 1 ? `/${item?.slug}` : ``"
                         >
                             <span>{{ item?.title }}</span>
                         </NuxtLink>
@@ -174,6 +174,12 @@
                                 </NuxtLink>
                             </li>
                         </ul>
+                    </li>
+
+                    <li class="item">
+                        <NuxtLink to="/contacts" class="item__link">
+                            <span>{{ $t('contacts') }}</span>
+                        </NuxtLink>
                     </li>
                 </ul>
 
