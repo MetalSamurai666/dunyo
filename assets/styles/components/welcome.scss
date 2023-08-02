@@ -25,7 +25,6 @@
             position: relative;
         }
         &__link{
-            display: none;
         }
         &__slide{
             &::after{
@@ -250,6 +249,11 @@
                     }
                 }
             }
+        }
+    }
+    @media (max-width: 1366px) {
+        &__main{
+            padding-top: 200px;
         }
     }
     @media (max-width: 1280px) {

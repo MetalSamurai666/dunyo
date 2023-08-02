@@ -11,6 +11,7 @@
         let res = await mainStore.getSliderNews(lang)
         if (res.data.value) {
             slider.value = res.data.value
+            console.log(slider.value);
         }
     }
 
@@ -118,7 +119,7 @@
                 </div>
                 <div class="welcome__bot">
                     <div class="welcome__actual">
-                        <span>Актуально</span>
+                        <span>{{ $t('actual') }}</span>
                         <ul>
                             <li 
                                 class="item" 

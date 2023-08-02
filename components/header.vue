@@ -105,7 +105,7 @@
 
                 <div class="header__logo">
                     <NuxtLink to="/">
-                        <img src="@/assets/logo/logo.png" data-not-lazy>
+                        <img src="@/assets/logo/logo.svg" data-not-lazy>
                     </nuxtLink>
                 </div>
 
@@ -143,7 +143,7 @@
             <div class="header__container">
                 <div class="header__subLogo">
                     <NuxtLink to="/">
-                        <img src="@/assets/logo/logo.png">
+                        <img src="@/assets/logo/logo.svg">
                     </NuxtLink>
                 </div>
 
