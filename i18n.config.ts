@@ -5,23 +5,26 @@ export default defineI18nConfig(() => ({
         uz: {
             latest_news: 'So`nggi yangiliklar',
             actual_news: 'Dolzarb yangiliklar',
-            most_read_news: 'Eng ko`p o`qilgan yangiliklar',
+            most_viewed: 'Eng ko`p o`qilgan yangiliklar',
             contacts: 'Aloqa',
-            actual: 'Dolzarb'
+            actual: 'Dolzarb',
+            more: 'Batafsil'
         },
         ru: {
             latest_news: 'Последние новости',
             actual_news: 'Актуальные новости',
-            most_read_news: 'Самые читаемые новости',
+            most_viewed: 'Самые читаемые новости',
             contacts: 'Контакты',
-            actual: 'Актуально'
+            actual: 'Актуально',
+            more: 'Подробнее'
         },
         en: {
             latest_news: 'Latest news',
             actual_news: 'Actual news',
-            most_read_news: 'Most read news',
+            most_viewed: 'Most read news',
             contacts: 'Contacts',
-            actual: 'Actual'
+            actual: 'Actual',
+            more: 'More'
         }
     }
 }))

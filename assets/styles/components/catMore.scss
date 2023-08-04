@@ -16,6 +16,12 @@
             padding: 7px 0px;
         }
     }
+    &.vertical{
+        .catMore__list{
+            display: flex;
+            overflow: auto;
+        }
+    }
     
     @media (max-width: 500px) {
         &__box{

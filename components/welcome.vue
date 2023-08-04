@@ -55,15 +55,16 @@
                 class="slider splide"
                 :options="{
                     type: 'fade',
-                    interval: 5000,
                     cover: true,
                     width: '100vw',
                     height: '100vh',
                     arrows: false,
                     pagination: false,
                     autoplay: true,
-                    resetProgress: false,
-                    pauseOnHover: false,
+                    interval: 3000,
+                    rewind: true,
+                    pauseOnHover: true,
+                    pauseOnFocus: false,
                     lazyLoad: true,
                     breakpoints: {
                         800: {
@@ -77,14 +78,16 @@
                 <SplideSlide class="splide__slide slider__slide" v-for="(item, index) of slider" :key="index" >
                     <img class="slider__img" 
                         :src="`${mainStore.url}/${item?.img}`" 
-                        :data-splide-lazy="`${mainStore.url}/${item?.img}`">
+                        :data-splide-lazy="`${mainStore.url}/${item?.img}`"
+                        data-not-lazy>
                     <div class="container">
                         <div class="slider__text">
                             <div class="slider__info">{{ item?.category?.title }}</div>
                             <div class="slider__title">{{ item?.title }}</div>
                             <div class="slider__link">
-                                <NuxtLink :to="`${item?.category?.title}/${item?.slug}`">
-                                    <img src="@/assets/logo/basic/arrowR.svg">
+                                <NuxtLink :to="`${item?.category?.slug}/${item?.slug}`">
+                                    <span>{{ $t('more') }}</span>
+                                    <img src="@/assets/logo/basic/arrowRight.svg">
                                 </NuxtLink>
                             </div>
                         </div>
@@ -92,8 +95,8 @@
                 </SplideSlide>
             </Splide>
         </div>
-        <div class="welcome__main">
-            <div class="container">
+        <!-- <div class="welcome__main">-->
+            <div class="container welcome__container"> 
                 <div class="welcome__top">
                     <div class="welcome__news">
                         <span>{{ $t('latest_news') }}</span>
@@ -149,7 +152,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
     </div>
 </template>
 

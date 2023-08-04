@@ -29,6 +29,18 @@
             object-position: center;
         }
     }
+    &__most{
+        margin-top: 20px;
+        background-color: #fff;
+        padding: 20px;
+        .slider{
+        }
+    }
+    &__subtitle{
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: 600;
+    }
 
     @media (max-width: 500px) {
         &__box{

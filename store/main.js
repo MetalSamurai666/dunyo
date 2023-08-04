@@ -24,7 +24,7 @@ export const useMainStore = defineStore('indexId', () => {
     }
     
     const getNews = (slug, lang) => {
-        // console.log(slug, lang);
+        console.log(slug, lang);
         return useFetch(url.value+`/api/news/get/${slug}/?lang=${lang}`)
         .catch(er => console.log(er))
     }

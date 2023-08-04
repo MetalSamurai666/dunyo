@@ -8,7 +8,7 @@
     left: 0;
     width: 100%;
     color: #fff;
-    z-index: 5;
+    z-index: 10;
     font-size: 14px;
     a{
         @include tr(0.2s);
@@ -332,9 +332,81 @@
     }
 
     /* ====================================================================== */
-    /* Mobile */
+    /* Media */
     /* ====================================================================== */
-    
+    @media (max-width: 1280px) {
+        &__bot{
+            display: none;
+        }
+        &__menu{
+            display: block;
+            margin-left: 10px;
+            button{
+                display: flex;
+            }
+        }
+        &.alt{
+            background-color: $colorLightBlue;
+            .header__list{
+                .listly{
+                    &::after{
+                        background-color: #000;
+                    }
+                }
+            }
+            &.secondary{
+                color: #fff;
+                a, span{
+                    color: #fff;
+                }
+                .header__top{
+                    img{
+                        filter: unset;
+                    }
+                }
+                .header__lang{
+                    .item{
+                        &::after{
+                            background-color: #fff;
+                        }
+                        span{
+                            &::after{
+                                background-color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+            a{
+                color: #fff;
+            }
+            .header__subLogo{
+                filter: invert(1);
+            }
+            .header__search{
+                button{
+                    img{
+                        filter: invert(1);
+                    }
+                }
+            }
+            .header__top{
+                padding: 10px 0px;
+                max-height: unset;
+            }
+            .header__subLogo{
+                width: 180px;
+                margin-right: 40px;
+            }
+            .header__bot{
+                .container{
+                    max-width: 1000px;
+                }
+            }
+        }
+        
+    }
+
     @media (max-width: 500px) {
         &__left, &__date, &__lang, &__bot{
             display: none;
@@ -368,61 +440,4 @@
             }
         }
     }
-    @media (max-width: 1280px) {
-        &__bot{
-            display: none;
-        }
-        &__menu{
-            display: block;
-        }
-        &.alt{
-            background-color: $colorLightBlue;
-            .header__list{
-                .listly{
-                    &::after{
-                        background-color: #000;
-                    }
-                }
-            }
-            &.secondary{
-                color: #fff;
-                a, span{
-                    color: #fff;
-                }
-                .header__top{
-                    img{
-                        filter: unset;
-                    }
-                }
-            }
-            a{
-                color: #fff;
-            }
-            .header__subLogo{
-                filter: invert(1);
-            }
-            .header__search{
-                button{
-                    img{
-                        filter: invert(1);
-                    }
-                }
-            }
-            .header__top{
-                padding: 10px 0px;
-                max-height: unset;
-            }
-            .header__subLogo{
-                width: 180px;
-                margin-right: 40px;
-            }
-            .header__bot{
-                .container{
-                    max-width: 1000px;
-                }
-            }
-        }
-        
-    }
-    
 }

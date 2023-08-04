@@ -13,7 +13,7 @@
         let res = await mainStore.getNews(route.params.slug, lang)
         if (res.data.value) {
             newsObj.value = res.data.value
-            // console.log(newsObj.value, 'news')
+            console.log(newsObj.value, 'news')
         }
     }
 
@@ -41,23 +41,21 @@
                     <div class="single__left">
                         <SingleArticle 
                             :content="newsObj?.news?.content"
+                            :mostViewed="newsObj?.most_viewed"
                         />
                     </div>
                     <div class="single__right">
                         <catMore 
-                            :moreTitle="newsObj?.rand_category?.title"
-                            :moreData="newsObj?.rand_news"
+                            :moreTitle="$t('actual_news')"
+                            :moreData="newsObj?.actual"
                             class="categories__more"
                         />
-
-                        <div class="single__banner">
-                            <img src="@/assets/img/economy/poster.jpg">
-                        </div>
-
-                        <!-- <catMore 
-                            :moreData="sportData"
+                        
+                        <catMore 
+                            :moreTitle="$t('latest_news')"
+                            :moreData="newsObj?.latest"
                             class="categories__more"
-                        /> -->
+                        />
                     </div>
                 </div>
             </div>

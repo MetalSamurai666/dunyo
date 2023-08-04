@@ -25,6 +25,29 @@
             position: relative;
         }
         &__link{
+            display: block;
+            margin-top: 10px;
+            a{
+                @include df-aic;
+                gap: 7px;
+                @include tr(.2s);
+                color: #fff;
+                margin-top: 10px;
+                font-size: 15px;
+                padding: 7px 15px 7px 20px;
+                border: 1px solid #fff;
+                width: fit-content;
+                img{
+                    width: 20px;
+                }
+                span{
+                    font-size: 16px;
+                }
+                &:hover{
+                    background-color: $colorLightBlue;
+                    border-color: $colorLightBlue;
+                }
+            }
         }
         &__slide{
             &::after{
@@ -84,8 +107,19 @@
             height: 100%;
         }
     }
+    &__container{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+    }
     &__top{
+        position: relative;
+        z-index: 5;
         max-width: 25%;
+        height: fit-content;
+        margin-left: auto;
     }
     &__news{
         color: #fff;
@@ -176,6 +210,9 @@
         }
     }
     &__bot{
+        position: absolute;
+        bottom: 0;
+        z-index: 5;
         width: 100%;
         margin-top: auto;
     }
@@ -251,84 +288,9 @@
             }
         }
     }
-    @media (max-width: 1366px) {
-        &__main{
-            padding-top: 200px;
-        }
-    }
+
     @media (max-width: 1280px) {
-        height: unset;
-        &__slider{
-            height: 100%;
-            position: relative;
-        }
-        .slider{
-            height: 100%;
-            .splide__slide{
-                background-size: cover;
-                background-position: center;
-            }
-            &__text{
-                position: relative;
-                top: unset;
-                justify-content: center;
-            }
-            &__title{
-                max-width: 100%;
-            }
-            
-        }
-        &__top{
-            max-width: 100%;
-        }
-        &__bot{
-            padding-top: 40px;
-        }
-        &__actual{
-            ul{
-                flex-wrap: wrap;
-                .item{
-                    flex-basis: 100%;
-                    width: 100%;
-                }
-            }
-        }
-        &__main{
-            padding-top: 40px;
-            background-color: #F2EDE7;
-            color: #000;
-        }
-        &__news{
-            span{
-                color: #000;
-            }
-            ul{
-                display: flex;
-                overflow-y: unset;
-                overflow-x: auto;
-                .item{
-                    white-space: nowrap;
-                    padding: 10px 10px 10px 0px;
-                    &__box{
-                        width: 100%;
-                    }
-                    &__cat, &__title, &__date{
-                        color: #000;
-                    }
-                    &__title{
-                        font-size: 15px;
-                        line-height: 18px;
-                        width: 200px;
-                        &::after{
-                            background-color: #000;
-                        }
-                    }
-                    &__date{
-                        font-size: 14px;
-                    }
-                }
-            }
-        }
+        
     }
 
     @media (max-width: 500px) {
@@ -348,20 +310,7 @@
             &__title{
                 max-width: 100%;
             }
-            &__link{
-                display: block;
-                a{
-                    color: #fff;
-                    margin-top: 10px;
-                    font-size: 15px;
-                    padding: 10px 25px;
-                    border: 1px solid #fff;
-                    img{
-                        width: 20px;
-                        filter: invert(1);
-                    }
-                }
-            }
+            
         }
         &__top{
             max-width: 100%;
