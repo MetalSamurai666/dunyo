@@ -16,7 +16,9 @@ export default defineI18nConfig(() => ({
             address: '100000, Toshkent, Amir Temur ko`chasi, 3',
             phone_number: 'Telefon raqami',
             copyright: '© 2023-yil O`zbekiston Respublikasi tashqi ishlar vazirligi Dunyo axborot agentligining rasmiy veb-sayti. Mualliflik huquqi himoyalangan.',
-            no_country_news: 'Bu davlat bo`yicha yangiliklar hozircha yo`q'
+            no_country_news: 'Bu davlat bo`yicha yangiliklar hozircha yo`q',
+            old: 'Saytning eski versiyasi',
+            tashkent: 'Toshkent'
         },
         ru: {
             latest_news: 'Последние новости',
@@ -32,7 +34,9 @@ export default defineI18nConfig(() => ({
             address: '100000, Ташкент, ул. Амира Темура, 3',
             phone_number: 'Номер телефона',
             copyright: '© 2023 Официальный веб-сайт Информационного агентства «Дунё» Министерства иностранных дел Республики Узбекистан. Авторские права защищены.',
-            no_country_news: 'Новостей связанных с этой страной пока нет'
+            no_country_news: 'Новостей связанных с этой страной пока нет',
+            old: 'Старая версия сайта',
+            tashkent: 'Ташкент'
         },
         en: {
             latest_news: 'Latest news',
@@ -48,7 +52,9 @@ export default defineI18nConfig(() => ({
             address: '3, Amir Temur str., Tashkent, 100000',
             phone_number: 'Phone number',
             copyright: '© 2023 Official website of the Dunyo News Agency of the Ministry of Foreign Affairs of the Republic of Uzbekistan. Copyright reserved.',
-            no_country_news: 'There is no news related to this country yet'
+            no_country_news: 'There is no news related to this country yet',
+            old: 'Old version of website',
+            tashkent: 'Tashkent'
         }
     }
 }))

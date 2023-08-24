@@ -61,14 +61,21 @@
 
 /* Weather */
     const location = ref({})
-    const successCallback = async (position) => {
-        // console.log(position);
-        let res = await mainStore.getWeather(
-            position?.coords?.latitude, position?.coords?.longitude
-        )
+    // const successCallback = async (position) => {
+    //     // console.log(position);
+    //     let res = await mainStore.getWeather(
+    //         position?.coords?.latitude, position?.coords?.longitude
+    //     )
+    //     if (res.data.value) {
+    //         location.value = res.data.value
+    //         console.log(location.value);
+    //     }
+    // }
+    const getWeat = async () => {
+        let res = await mainStore.getWeather()
         if (res.data.value) {
             location.value = res.data.value
-            // console.log(location.value);
+            console.log(location.value);
         }
     }
     const errorCallback = (error) => {
@@ -76,9 +83,9 @@
     }
 
     onMounted(() => {
-        // getData(locale.value)
+        getWeat(locale.value)
 
-        navigator.geolocation.getCurrentPosition(successCallback, errorCallback)
+        // navigator.geolocation.getCurrentPosition(successCallback, errorCallback)
     })
 </script>
 
@@ -90,10 +97,10 @@
         <div class="header__top">
             <div class="container">
                 <div class="header__left">
-                    <span class="header__region">Ташкент</span>
+                    <span class="header__region">{{ $t('tashkent') }}</span>
                     <div class="header__weather">
                         <img src="@/assets/logo/basic/cloudRizzel.svg" data-not-lazy>
-                        <span>32°C</span>
+                        <span> {{location}} °C</span>
                     </div>
                 </div>
 

@@ -31,8 +31,9 @@ export const useMainStore = defineStore('indexId', () => {
     }
     
     const getWeather = (lat, long) => {
-        console.log(lat, long)
-        return useFetch(url.value+`/api/weather/?lat=${lat}/?long=${long}`)
+        // console.log(lat, long)
+        // return useFetch(url.value+`/api/weather/?lat=${lat}&long=${long}`)
+        return useFetch(url.value+`/api/weather/`)
         .catch(er => console.log(er))
     }
 
@@ -97,6 +98,12 @@ export const useMainStore = defineStore('indexId', () => {
         .catch(er => console.log(er))
     }
 
+    const getVideos = (param) => {
+        // console.log(id, lang)
+        return useFetch(url.value+`/api/youtube/?next=${param}`)
+        .catch(er => console.log(er))
+    }
+
         return { 
             url, 
             mainUrl,
@@ -116,7 +123,8 @@ export const useMainStore = defineStore('indexId', () => {
             getSecondCats,
             getSlides,
             getAllCountries,
-            getCountry
+            getCountry,
+            getVideos
         }
     }
 )

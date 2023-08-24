@@ -10,6 +10,8 @@
     const getData = async (val) => {
         let res = await mainStore.getCats(val)
         if (res.data.value) {
+            // console.log(res.data.value)
+            res.data.value = res.data.value.filter(val => val.subs.length > 0)
             cats.value = res.data.value
             // console.log(cats.value);
         }

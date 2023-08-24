@@ -45,7 +45,7 @@
                 </div>
                 <div class="catWrapper__right">
                     <ul class="catWrapper__list">
-                        <li class="item" v-for="item of news" :key="item?.id">
+                        <li class="item" v-for="item, index of news" :key="item?.id">
                             <cardCat
                                 :class="actual ? 'vertical' : 'big'"
                                 :card="item"

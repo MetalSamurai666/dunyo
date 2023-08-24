@@ -2,36 +2,43 @@
     import { storeToRefs } from "pinia";
     import { useMainStore } from "~/store/main"
     import { useLocaleStore } from "~/store/i18n";
-
+    import cardVideo from "@/components/cards/cardVideo.vue";
+    import {getId} from '@/utils/video'
     const mainStore = useMainStore()
     const localeStore = useLocaleStore()
-    const { locale } = useI18n()
     const { book } = storeToRefs(localeStore)
+    // const { locale } = useI18n()
+    // const route = useRoute()
 
-    const route = useRoute()
 
-/* Getting CATegory🐈 */
-    const cat = ref({})
+    const videos = ref({
+        category: {
+            title: 'Видео'
+        },
+        list: []
+    })
     
-    const getData = async (lang) => {
-        let res = await mainStore.getOneCat(route.params.cat, lang)
+    const getData = async () => {
+        let res = await mainStore.getVideos()
         if (res.data.value) {
-            cat.value = res.data.value
-            console.log(route.params.cat);
-            console.log(cat.value)
-            // console.log(cat?.value.important_dates);
+            videos.value.list = res.data.value.map(item => {
+                item.link = getId(item.url)
+                return item
+            })
+            console.log(videos.value.list)
+
         }
     }
 
-    watch(
-        () => locale.value,
-        () => {
-            getData(locale.value)
-        }
-    )
+    // watch(
+    //     () => locale.value,
+    //     () => {
+    //         getData(locale.value)
+    //     }
+    // )
 
     onMounted(() => {
-        getData(locale.value)
+        getData()
     })
 </script>
 
@@ -39,22 +46,24 @@
     <NuxtLayout name="alt-header">
         <div class="categories page">
             <Breadcrumbs  
-                :breadObj="cat?.category"
+                :breadObj="videos?.category"
             />
             <div class="categories__body">
                 <div class="container">
                     <div class="categories__box">
                         <div class="categories__left">
-                            <catWrapper 
+                            <!-- <catWrapper 
                                 :news="cat.news?.slice(0,2)"
                                 :actual="cat.actual"
-                            />
-                            <catList 
-                                :news="cat.news?.slice(2)"
+                            /> -->
+                            <card-video 
+                                v-for="item, index of videos?.list"
+                                :card="item"
+                                :key="index"
                             />
                         </div>
                         <div class="categories__right">
-                            <catMore
+                            <!-- <catMore
                                 :moreTitle="book?.important_dates"
                                 :moreData="cat?.important_dates"
                                 class="categories__more"
@@ -76,7 +85,7 @@
                                 :moreTitle="'Другие новости'"
                                 :moreData="cat?.other_news"
                                 class="categories__more"
-                            />
+                            /> -->
                         </div>
                     </div>
                 </div>

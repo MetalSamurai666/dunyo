@@ -15,6 +15,8 @@
             <div class="video__box">
                 <div class="video__head">
                     <div class="video__title">{{ $t('videos') }}</div>
+                    
+                    <NuxtLink class="video__more" to="/videos">{{ $t('more') }}</NuxtLink>
                 </div>
 
                 <div class="video__main">
@@ -24,7 +26,7 @@
                             v-for="item, index of videos" 
                             :key="index"
                         >
-                            <iframe width="100%" height="100%" :src="item.link" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <iframe width="100%" height="100%" :src="item.link" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen data-not-lazy></iframe>
                         </div>
                     </div>
 

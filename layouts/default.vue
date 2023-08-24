@@ -7,6 +7,7 @@
         <slot/>
         
         <Footer />
+        <Old />
     </div>
 </template>
 
