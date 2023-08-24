@@ -48,6 +48,8 @@
         justify-content: flex-end;
         position: relative;
         min-height: 400px;
+        flex-basis: 33.3333%;
+        width: 33.3333%;
         &::after{
             content: '';
             position: absolute;
@@ -75,6 +77,8 @@
     &__cards{
         margin: -12.5px 0px;
         padding-left: 20px;
+        flex-basis: 66.6666%;
+        width: 66.6666%;
     }
     &__card{
         padding: 12.5px 0px;

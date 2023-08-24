@@ -11,7 +11,7 @@
                 <NuxtLink class="cardNews__title" :to="`${card?.category?.slug}/${card?.slug}`">{{ card?.title }}</NuxtLink>
             </div>
             <div class="cardNews__bot">
-                <div class="cardNews__date">{{ card?.date }}</div>
+                <div class="cardNews__date">{{ card?.date.slice(0, 10) }}</div>
                 <div class="cardNews__cat">{{ card?.cat }}</div>
             </div>
         </div>

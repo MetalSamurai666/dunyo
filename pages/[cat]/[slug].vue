@@ -31,7 +31,7 @@
 
 <template>
     <NuxtLayout name="alt-header">
-        <div class="single">
+        <div class="single page">
             <singleWelcome
                 :category="newsObj?.category"
                 :news="newsObj?.news"
@@ -40,7 +40,7 @@
                 <div class="container">
                     <div class="single__left">
                         <SingleArticle 
-                            :content="newsObj?.news?.content"
+                            :news="newsObj?.news"
                             :mostViewed="newsObj?.most_viewed"
                         />
                     </div>
@@ -122,7 +122,7 @@
             flex-basis: unset;
         }
         &__left{
-            // transform: translateY(-50px);
+            padding-bottom: 0;
         }
     }
 }

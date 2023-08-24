@@ -20,9 +20,12 @@
     "vue": "latest"
   },
   "dependencies": {
+    "@amcharts/amcharts5": "^5.4.2",
     "@pinia/nuxt": "^0.4.11",
     "@splidejs/vue-splide": "^0.6.12",
+    "firebase": "^10.1.0",
     "nuxt-lazy-load": "^3.0.4",
-    "pinia": "^2.1.4"
+    "pinia": "^2.1.4",
+    "vue-social-sharing": "^4.0.0-alpha4"
   }
 }

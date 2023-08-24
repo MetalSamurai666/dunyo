@@ -2,6 +2,7 @@
     import { storeToRefs } from "pinia"
     import { useLocaleStore } from "~/store/i18n"
     import { useMainStore } from "~/store/main"
+    import cardCat from "@/components/cards/cardCat.vue";
 
     const { locale } = useI18n()
     const mainStore = useMainStore()
@@ -30,11 +31,11 @@
 </script>
 
 <template>
-    <div class="catWrapper" v-if="news?.length > 0">
+    <div :class="actual ? 'catWrapper' : 'catWrapper no-actual'" v-if="news?.length > 0">
         <div class="catWrapper__box">
             <div class="catWrapper__top">
-                <div class="catWrapper__left">
-                    <div class="catWrapper__poster" :style="`background-image: url(${mainStore.url}/${actual?.img})`">
+                <div class="catWrapper__left" v-if="actual">
+                    <div class="catWrapper__poster" :style="`background-image: url(${mainStore.url}/${encodeURI(actual?.img)})`">
                         <div class="catWrapper__cat">Актуально</div>
                         <div class="catWrapper__date">{{ actual?.date.slice(0, 10) }}</div>
                     </div>
@@ -45,7 +46,12 @@
                 <div class="catWrapper__right">
                     <ul class="catWrapper__list">
                         <li class="item" v-for="item of news" :key="item?.id">
-                            <div class="item__img">
+                            <cardCat
+                                :class="actual ? 'vertical' : 'big'"
+                                :card="item"
+                                :key="index"
+                            />
+                            <!-- <div class="item__img">
                                 <NuxtLink :to="`${item?.category?.slug}/${item?.slug}`">
                                     <img :src="`${mainStore.url}/${item?.img}`">
                                 </NuxtLink>
@@ -58,7 +64,7 @@
                                 {{ item?.title }}
                             </NuxtLink>
 
-                            <div class="item__date">{{ item?.date.slice(0, 10) }}</div>
+                            <div class="item__date">{{ item?.date.slice(0, 10) }}</div> -->
                         </li>
                     </ul>
                 </div>

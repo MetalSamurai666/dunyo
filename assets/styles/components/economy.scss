@@ -175,6 +175,30 @@
     /* ====================================================================== */
     /* Mobile */
     /* ====================================================================== */
+    @media (max-width: 1024px) {
+        &__row{
+            flex-wrap: wrap;
+        }
+        &__small{
+            flex-basis: 50%;
+            width: 50%;
+            &:first-child{
+                order: 1;
+                padding-right: 10px;
+            }
+            &:last-child{
+                order: 2;
+                padding-left: 10px;
+            }
+        }
+        &__big{
+            flex-basis: 100%;
+            width: 100%;
+            order: 3;
+            margin-top: 20px;
+            padding: 0;
+        }
+    }
     @media (max-width: 800px) {
         &__row{
             flex-direction: column;

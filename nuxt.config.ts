@@ -5,8 +5,11 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/i18n',
-    'nuxt-lazy-load'
+    'nuxt-lazy-load',
   ],
+  // plugins: [
+  //   'vue-social-sharing'
+  // ],
   nitro: {
     compressPublicAssets: true
   },

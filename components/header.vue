@@ -14,14 +14,8 @@
         return (locales.value)
     })
 
-/* Functions */
-    // function changeLang(val) {
-    //     // localeStore.getTranslations(val)
-    //     // getData(val)
-    // }
-
 /* Header fixed on scroll */
-    var scrollTrigger = 0;
+    var scrollTrigger = 50;
     if (window.innerWidth > 500) {
         window.onscroll = function() {
             if (window.scrollY > scrollTrigger || window.pageYOffset > scrollTrigger) {
@@ -66,25 +60,25 @@
 
 
 /* Weather */
-    // const location = ref({})
-    // const successCallback = async (position) => {
-    //     // console.log(position);
-    //     let res = await mainStore.getWeather(
-    //         position?.coords?.latitude, position?.coords?.longitude
-    //     )
-    //     if (res.data.value) {
-    //         location.value = res.data.value
-    //         // console.log(location.value);
-    //     }
-    // }
-    // const errorCallback = (error) => {
-    //     // console.log(error);
-    // }
+    const location = ref({})
+    const successCallback = async (position) => {
+        // console.log(position);
+        let res = await mainStore.getWeather(
+            position?.coords?.latitude, position?.coords?.longitude
+        )
+        if (res.data.value) {
+            location.value = res.data.value
+            // console.log(location.value);
+        }
+    }
+    const errorCallback = (error) => {
+        console.log(error);
+    }
 
     onMounted(() => {
         // getData(locale.value)
 
-        // navigator.geolocation.getCurrentPosition(successCallback, errorCallback)
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback)
     })
 </script>
 
@@ -105,7 +99,7 @@
 
                 <div class="header__logo">
                     <NuxtLink to="/">
-                        <img src="@/assets/logo/logo.svg" data-not-lazy>
+                        <img src="@/assets/logo/logo.png" data-not-lazy>
                     </nuxtLink>
                 </div>
 
@@ -143,7 +137,7 @@
             <div class="header__container">
                 <div class="header__subLogo">
                     <NuxtLink to="/">
-                        <img src="@/assets/logo/logo.svg">
+                        <img src="@/assets/logo/logo.png">
                     </NuxtLink>
                 </div>
 

@@ -4,7 +4,8 @@
     const mainStore = useMainStore()
 
     defineProps({
-        card: Object
+        card: Object,
+        notLazy: Boolean
     })
 
 </script>
@@ -14,7 +15,7 @@
         <div class="cardCat__box">
             <div class="cardCat__left">
                 <NuxtLink class="cardCat__img" :to="`/${card?.category?.slug}/${card?.slug}`">
-                    <img :src="`${mainStore.url}/${card?.img}`">
+                    <img :src="`${mainStore.url}/${encodeURI(card?.img)}`" data-not-lazy>
                 </NuxtLink>
             </div>
             <div class="cardCat__right">

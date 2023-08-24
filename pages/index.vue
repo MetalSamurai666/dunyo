@@ -4,11 +4,12 @@
 
 <template>
   <NuxtLayout>
-    <div class="home">
+    <div class="home page">
       <Welcome />
       <Economy />
       <Slides />
       <Central />
+      <Map />
       <Video />
       <Sponsors />
     </div>

@@ -14,7 +14,7 @@
         <div class="container">
             <div class="video__box">
                 <div class="video__head">
-                    <div class="video__title">Видео</div>
+                    <div class="video__title">{{ $t('videos') }}</div>
                 </div>
 
                 <div class="video__main">

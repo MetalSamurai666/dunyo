@@ -14,6 +14,11 @@
         @include tr(0.2s);
         color: #fff;
     }
+    &__logo{
+        img{
+            filter: brightness(0) invert(1);
+        }
+    }
     &.alt{
         background-color: #fff;
         .header__list{
@@ -27,7 +32,9 @@
             color: #000;
         }
         .header__subLogo{
-            filter: invert(1);
+            img{
+                height: 50px;
+            }
         }
         .header__search{
             button{
@@ -52,7 +59,6 @@
     }
     &.secondary{
         background-color: #fff;
-        position: sticky;
         .header__top{
             color: #000;
             a{
@@ -62,9 +68,14 @@
                 filter: invert(1);
             }
         }
+        .header__logo{
+            img{
+                filter: unset;
+            }
+        }
         .header__subLogo{
             img{
-                filter: invert(1);
+                filter: brightness(0) invert(1);
             }
         }
         .header__bot{
@@ -86,6 +97,7 @@
             }
         }
         &.alt{
+            
             .header__list{
                 .item__link{
                     color: #fff;
@@ -100,6 +112,10 @@
                 img{
                     filter: unset
                 }
+            }
+            .header__top{
+                // padding: 20px 0px;
+                // max-height: 200px;
             }
         }
     }
@@ -117,7 +133,7 @@
     }
     &__logo{
         img{
-            image-rendering: -webkit-optimize-contrast;
+            width: 180px;
         }
     }
     &__left{
@@ -345,6 +361,9 @@
                 display: flex;
             }
         }
+        &__lang{
+            display: none;
+        }
         &.alt{
             background-color: $colorLightBlue;
             .header__list{
@@ -376,13 +395,25 @@
                         }
                     }
                 }
+                &.alt{
+                    .header__logo{
+                        img{
+                            filter: brightness(0) invert(1);
+                        }
+                    }
+                }
             }
             a{
                 color: #fff;
             }
-            .header__subLogo{
-                filter: invert(1);
+            .header__logo{
+                img{
+                    filter: brightness(0) invert(1);
+                }
             }
+            // .header__subLogo{
+            //     filter: invert(1);
+            // }
             .header__search{
                 button{
                     img{
@@ -414,28 +445,29 @@
         &__menu{
             display: block;
         }
-        &.mobile-alt{
-            background-color: $colorDarkBlue;
-            .header__top{
-                padding: 10px 0px;
-            }
-            // .header__logo{
-            //     img{
-            //         filter: invert(1);
-            //     }
-            // }
-            // .header__menu{
-            //     img{
-            //         filter: invert(1);
-            //     }
-            // }
-        }
+        
         &.secondary{
             &.mobile-alt{
                 .header__top{
                     img{
                         filter: unset;
                     }
+                }
+                .header__logo{
+                    img{
+                        filter: brightness(0) invert(1);
+                    }
+                }
+            }
+        }
+        &.mobile-alt{
+            background-color: $colorDarkBlue;
+            .header__top{
+                padding: 10px 0px;
+            }
+            .header__logo{
+                img{
+                    filter: brightness(0) invert(1);
                 }
             }
         }

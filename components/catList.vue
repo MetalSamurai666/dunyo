@@ -1,5 +1,5 @@
 <script setup>
-    import cardCat from "@/components/cards/cardCat.vue"
+    import cardCat from "@/components/cards/cardCat.vue";
 
     const listProps = defineProps({
         news: Array

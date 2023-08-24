@@ -1,4 +1,22 @@
 <script setup>
+  import { initializeApp } from "firebase/app";
+  import { getAnalytics } from "firebase/analytics";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyClSNunuFqvT8pIXrAiX4J0gO2BJseT-iM",
+    authDomain: "dunyo-395404.firebaseapp.com",
+    projectId: "dunyo-395404",
+    storageBucket: "dunyo-395404.appspot.com",
+    messagingSenderId: "153619766375",
+    appId: "1:153619766375:web:6f19f037d9c0dcc3e008c2",
+    measurementId: "G-GSNY0ZS6HR"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  // console.log(analytics);
+
+
 /* Imports */
   import { storeToRefs } from 'pinia'
   import { useMenuStore } from '~/store/menu';
@@ -43,8 +61,6 @@
   onMounted(() => {
     document.title = 'Dunyo'
     getData(locale.value)
-
-
 
     // localeStore.getTranslations(locale.value)
   })

@@ -49,22 +49,22 @@
                     </ul>
 
                     <ul class="footer__list contacts">
-                        <li><span class="footer__title">Контакты</span></li>
+                        <li><span class="footer__title">{{ $t('contacts') }}</span></li>
 
                         <li class="footer__link">
-                            <span>Адрес</span>
+                            <span>{{ $t('address_title') }}</span>
                             <a href="#">
-                                <b>100000, Ташкент, ул. Амира Темура, 3</b>
+                                <b>{{ $t('address') }}</b>
                             </a>
                         </li>
                         <li class="footer__link">
-                            <span>Телефон</span>
+                            <span>{{ $t('phone_number') }}</span>
                             <a href="tel:+998712331410">
                                 <b>+99871-233-14-10</b>
                             </a>
                         </li>
                         <li class="footer__link">
-                            <span>Email</span>
+                            <span>E-mail</span>
                             <a href="mailto:jahon@mfa.uz">
                                 <b>jahon@mfa.uz</b>
                             </a>
@@ -77,7 +77,7 @@
         <div class="footer__bot">
             <div class="container">
                 <div class="footer__copyright">
-                    <p>© 2023 Официальный веб-сайт Информационного агентства «Дунё» Министерства иностранных дел Республики Узбекистан. Авторские права защищены.</p>
+                    <p>{{ $t('copyright') }}</p>
                 </div>
 
                 <div class="footer__socials">

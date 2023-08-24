@@ -123,6 +123,15 @@
             line-clamp: 12;
             -webkit-box-orient: vertical;
             white-space: break-spaces;
+            color: #fff !important;
+            * {
+                color: #fff !important;
+            }
+            p {
+                a{
+                    color: $colorLightBlue !important;
+                }
+            }
             img{
                 display: none;
             }

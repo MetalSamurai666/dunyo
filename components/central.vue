@@ -4,6 +4,7 @@
     import { useMainStore } from "~/store/main"
 
     const mainStore = useMainStore()
+    const { locale } = useI18n()
 
     const tabFilter = ref('president')
     const tabList = ref([
@@ -27,11 +28,11 @@
     const second = ref([])
     const tabs = ref([])
 
-    const getSecond = async (slug) => {
-        let res = await mainStore.getSecondCats(slug)
+    const getSecond = async (slug, lang) => {
+        let res = await mainStore.getSecondCats(slug, lang)
         if (res.data.value) {
             second.value = res.data.value
-            console.log(second.value)
+            // console.log(second.value)
 
             tabs.value = res.data.value.categories
             // console.log(tabs.value);
@@ -49,8 +50,13 @@
         }
     }
 
+    watch(
+        () => locale.value,
+        () => getSecond('politics', locale.value)
+    )
+
     onMounted(() => {
-        getSecond('politics')
+        getSecond('politics', locale.value)
     })
 </script>
 
@@ -63,7 +69,7 @@
 
                     <div class="central__main">
                         <div class="central__poster poster" 
-                            :style="`background-image: url(${mainStore.url}/${second?.main_news?.img})`"
+                            :style="`background-image: url(${mainStore.url}/${encodeURI(second?.main_news?.img)})`"
                         >
                             <div class="poster__date">
                                 {{ second?.main_news?.date?.slice(0, 10) }}

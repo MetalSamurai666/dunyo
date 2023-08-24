@@ -1,9 +1,16 @@
 <script setup>
+    import { storeToRefs } from 'pinia';
     import { Splide, SplideSlide } from '@splidejs/vue-splide';
+    
     import cardCat from "@/components/cards/cardCat.vue"
+    import { useMainStore } from '@/store/main';
+    
+    const mainStore = useMainStore()
+    const { mainUrl } = storeToRefs(mainStore)
+    const route = useRoute()
 
     defineProps({
-        content: String,
+        news: Object,
         mostViewed: Array
     })
 
@@ -11,7 +18,7 @@
 
 <template>
     <div class="article">
-        <div class="article__box" v-html="content">
+        <div class="article__box" v-html="news?.content">
         </div>
 
         <div class="article__most">
@@ -23,15 +30,47 @@
                     gap: 20,
                     pagination: false,
                     breakpoints: {
+                        500: {
+                            perPage: 1,
+                            arrows: false
+                        }
                     }
                 }">
+
                 <SplideSlide class="splide__slide slider__slide" v-for="(item, index) of mostViewed" :key="index" >
                     <cardCat
                         :card="item"
                     />
                 </SplideSlide>
             </Splide>
+
+            
         </div>
+        
+        <ul class="article__send">
+            <ShareNetwork
+                class="item telegram"
+                network="telegram"
+                :url="`${mainUrl}${route.fullPath}`"
+                :title="news?.title"
+                description=""
+                quote=""
+                hashtags=""
+            >
+                <img src="@/assets/logo/socials/telegram.svg">
+            </ShareNetwork>
+            <ShareNetwork
+                class="item instagram"
+                network="facebook"
+                :url="`${mainUrl}${route.fullPath}`"
+                :title="news?.title"
+                description=""
+                quote=""
+                hashtags=""
+            >
+                <img src="@/assets/logo/socials/facebook.svg">
+            </ShareNetwork>
+        </ul>
     </div>
 </template>
 

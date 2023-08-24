@@ -14,16 +14,17 @@
     
 /* First Category */
     const cards = ref([])
-    const getFirst = async (slug) => {
-        let res = await mainStore.getFirstCats(slug)
+    const getFirst = async (lang) => {
+        let res = await mainStore.getFirstCats(lang)
         if (res.data.value) {
             cards.value = res.data.value
+            // console.log(cards.value)
         }
     }
 
     const rand = ref({})
-    const getRand = async (slug) => {
-        let res = await mainStore.getRandNews(slug)
+    const getRand = async (slug, lang) => {
+        let res = await mainStore.getRandNews(slug, lang)
         if (res.data.value) {
             rand.value = res.data.value
             // console.log(rand.value);
@@ -31,11 +32,11 @@
     }
 
     const tabs = ref([])
-    const getTabs = async () => {
-        let res = await mainStore.getFirstTabs()
+    const getTabs = async (lang) => {
+        let res = await mainStore.getFirstTabs(lang)
         if (res.data.value) {
             tabs.value = res.data.value
-            console.log(tabs.value)
+            // console.log(tabs.value)
             tabList.value.map((listItem) => {
                 if (listItem.slug == "important") {
                     listItem.news = tabs.value.important
@@ -67,7 +68,7 @@
                 news: tabs.value.important
             },
             {
-                title: t('most_read_news'),
+                title: t('most_viewed'),
                 slug: 'popular',
                 news: tabs.value.popular
             },
@@ -77,16 +78,17 @@
     watch(
         () => locale.value,
         () => {
+            getFirst(locale.value)
+            getRand('politics', locale.value)
+            getTabs(locale.value)
             getBook(locale.value)
         }
     )
-
-    
     
     onMounted(() => {
-        getFirst('economics')
-        getRand('politics')
-        getTabs()
+        getFirst(locale.value)
+        getRand('politics', locale.value)
+        getTabs(locale.value)
         getBook(locale.value)
     })
 </script>
@@ -107,13 +109,13 @@
                             />
                         </ul>
                         <div class="economy__more">
-                            <NuxtLink :to="cards?.category?.slug">Больше новостей</NuxtLink>
+                            <NuxtLink :to="cards?.category?.slug">{{ $t('more_news') }}</NuxtLink>
                         </div>
                     </div>
 
                     <div class="economy__big">
                         <div class="economy__poster poster" :style="`background-image: url(${mainStore.url}/${rand?.news?.img})`">
-                            <div class="economy__title">Политика</div>
+                            <div class="economy__title">{{ rand?.category?.title }}</div>
 
                             <div class="poster__text">
                                 <div class="poster__date">{{ rand?.news?.date.slice(0, 10) }}</div>

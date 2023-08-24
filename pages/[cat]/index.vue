@@ -36,7 +36,7 @@
 
 <template>
     <NuxtLayout name="alt-header">
-        <div class="categories">
+        <div class="categories page">
             <Breadcrumbs  
                 :breadObj="cat?.category"
             />
@@ -64,12 +64,14 @@
                             </div>
 
                             <catMore
+                                v-if="cat?.rand_category?.length > 0"
                                 :moreTitle="cat?.rand_category?.title"
                                 :moreData="cat?.rand_news"
                                 class="categories__more"
                             />
                             
-                            <catMore 
+                            <catMore
+                                v-if="cat?.other_news?.length > 0"
                                 :moreTitle="'Другие новости'"
                                 :moreData="cat?.other_news"
                                 class="categories__more"

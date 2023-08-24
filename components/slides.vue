@@ -3,19 +3,24 @@
     import { useMainStore } from '~/store/main';
     
     const mainStore = useMainStore()
+    const { locale } = useI18n()
 
     const slides = ref([])
-    const getSlides = async (slug) => {
-        let res = await mainStore.getSlides(slug)
-        // let res = await mainStore.getFirstCats(slug)
+    const getSlides = async (lang) => {
+        let res = await mainStore.getSlides(lang)
         if (res.data.value) {
             slides.value = res.data.value
             // console.log(slides.value)
         }
     }
 
+    watch(
+        () => locale.value,
+        () => getSlides(locale.value)
+    )
+
     onMounted(() => {
-        getSlides('economics')
+        getSlides(locale.value)
     })
 </script>
 
@@ -53,12 +58,11 @@
                             drag: true,
                         }
                     }
-
                 }">
                 <SplideSlide class="splide__slide slider__slide" v-for="item, index of slides" :key="index">
                     <div class="slider__progress">{{ index+1 }}/{{ slides.length }}</div>
 
-                    <img :src="`${mainStore.url}/${item?.img}`" :data-splide-lazy="`${mainStore.url}/${item?.img}`" class="slider__img">
+                    <img :src="`${mainStore.url}/${encodeURI(item?.img)}`" :data-splide-lazy="`${mainStore.url}/${item?.img}`" class="slider__img">
 
                     <div class="slider__box">
                         <div class="slider__left">
@@ -69,7 +73,7 @@
                             <div class="slider__text" v-html="item?.content"></div>
                             <div class="slider__more">
                                 <NuxtLink :to="`${item?.category?.slug}/${item?.slug}`">
-                                    <span>Подробнее</span>
+                                    <span>{{ $t('more') }}</span>
                                     <img src="@/assets/logo/basic/arrowRight.svg">
                                 </NuxtLink>
                             </div>
