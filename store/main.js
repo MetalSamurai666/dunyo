@@ -98,9 +98,9 @@ export const useMainStore = defineStore('indexId', () => {
         .catch(er => console.log(er))
     }
 
-    const getVideos = (param) => {
-        // console.log(id, lang)
-        return useFetch(url.value+`/api/youtube/?next=${param}`)
+    const getVideos = (param = 1, page = 6) => {
+        // console.log(param, page)
+        return useFetch(url.value+`/api/youtube/?next=${param}&page=${page}`)
         .catch(er => console.log(er))
     }
 

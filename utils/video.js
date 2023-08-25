@@ -1,11 +1,8 @@
 export function getId(url) {
-    var regExp = "/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/";
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     var match = url.match(regExp);
-    const xuy = ref()
-    console.log(match);
     if (match && match[2].length == 11) {
-        xuy.value = '<iframe src="//www.youtube.com/embed/${match[2]}" frameborder="0" allowfullscreen></iframe>'
-        console.log(xuy.value)
+        return `<iframe width="100%" height="100%" src="//www.youtube.com/embed/${match[2]}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen data-not-lazy></iframe> `
     } else {
         console.error('error');
     }

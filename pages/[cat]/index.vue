@@ -17,9 +17,7 @@
         let res = await mainStore.getOneCat(route.params.cat, lang)
         if (res.data.value) {
             cat.value = res.data.value
-            console.log(route.params.cat);
             console.log(cat.value)
-            // console.log(cat?.value.important_dates);
         }
     }
 

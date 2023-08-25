@@ -8,7 +8,6 @@
     const { t, locale } = useI18n()
     const mainStore = useMainStore()
     const localeStore = useLocaleStore()
-    const { book } = storeToRefs(localeStore)
 
     const tabFilter = ref('latest')
     
@@ -51,10 +50,6 @@
         }
     }
 
-    const getBook = async (lang) => {
-        await localeStore.getKeywords(lang)
-    }
-
     const tabList = computed(()=>{
         return [
             {
@@ -81,7 +76,6 @@
             getFirst(locale.value)
             getRand('politics', locale.value)
             getTabs(locale.value)
-            getBook(locale.value)
         }
     )
     
@@ -89,7 +83,6 @@
         getFirst(locale.value)
         getRand('politics', locale.value)
         getTabs(locale.value)
-        getBook(locale.value)
     })
 </script>
 
@@ -162,10 +155,11 @@
                     </div>
                 </div>
                 <div class="economy__banner">
-                    <img src="https://images.squarespace-cdn.com/content/v1/5940f2725016e1c79e469470/1540004147826-C6ZIE42DALBW63ZAKEVJ/DSC09847+%282%29-min.JPG?format=800w">
+                    <img src="@/assets/img/poster.png">
                 </div>
             </div>
         </div>
+        
     </div>
 </template>
 

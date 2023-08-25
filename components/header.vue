@@ -75,7 +75,7 @@
         let res = await mainStore.getWeather()
         if (res.data.value) {
             location.value = res.data.value
-            console.log(location.value);
+            // console.log(location.value)
         }
     }
     const errorCallback = (error) => {

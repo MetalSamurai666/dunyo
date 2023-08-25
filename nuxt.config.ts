@@ -23,6 +23,11 @@ export default defineNuxtConfig({
         name: "O`zb",
       },
       {
+        code: "uzk",
+        iso: "uzk",
+        name: "Ўз",
+      },
+      {
         code: "ru",
         iso: "ru",
         name: "Ру",

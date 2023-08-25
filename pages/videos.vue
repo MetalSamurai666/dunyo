@@ -1,41 +1,34 @@
 <script setup>
-    import { storeToRefs } from "pinia";
     import { useMainStore } from "~/store/main"
-    import { useLocaleStore } from "~/store/i18n";
-    import cardVideo from "@/components/cards/cardVideo.vue";
-    import {getId} from '@/utils/video'
+    import { getId } from '@/utils/video.js';
+    
     const mainStore = useMainStore()
-    const localeStore = useLocaleStore()
-    const { book } = storeToRefs(localeStore)
-    // const { locale } = useI18n()
-    // const route = useRoute()
+    const { t } = useI18n()
 
+    const sexy = computed(() => {
+        return t('videos')
+    }) 
 
     const videos = ref({
         category: {
-            title: 'Видео'
+            title: sexy
         },
         list: []
     })
     
-    const getData = async () => {
-        let res = await mainStore.getVideos()
+    const rightNews = ref({})
+    const getData = async (next = 1) => {
+        let res = await mainStore.getVideos(next)
         if (res.data.value) {
-            videos.value.list = res.data.value.map(item => {
+            console.log(res.data.value);
+            rightNews.value = res.data.value
+            console.log(rightNews.value)
+            videos.value.list = res.data.value.links.map(item => {
                 item.link = getId(item.url)
                 return item
             })
-            console.log(videos.value.list)
-
         }
     }
-
-    // watch(
-    //     () => locale.value,
-    //     () => {
-    //         getData(locale.value)
-    //     }
-    // )
 
     onMounted(() => {
         getData()
@@ -52,40 +45,32 @@
                 <div class="container">
                     <div class="categories__box">
                         <div class="categories__left">
-                            <!-- <catWrapper 
-                                :news="cat.news?.slice(0,2)"
-                                :actual="cat.actual"
-                            /> -->
-                            <card-video 
-                                v-for="item, index of videos?.list"
-                                :card="item"
-                                :key="index"
+                            <VideoList 
+                                :list="videos?.list"
+                            />
+
+                            <paginate 
+                                :data="videos?.count"
+                                @next="getData"
                             />
                         </div>
                         <div class="categories__right">
-                            <!-- <catMore
-                                :moreTitle="book?.important_dates"
-                                :moreData="cat?.important_dates"
+                            <catMore
+                                :moreTitle="$t('important_dates')"
+                                :moreData="rightNews?.important_dates"
                                 class="categories__more"
                             />
 
                             <div class="categories__banner">
                                 <img src="@/assets/img/economy/poster.jpg">
                             </div>
-
-                            <catMore
-                                v-if="cat?.rand_category?.length > 0"
-                                :moreTitle="cat?.rand_category?.title"
-                                :moreData="cat?.rand_news"
-                                class="categories__more"
-                            />
                             
                             <catMore
-                                v-if="cat?.other_news?.length > 0"
-                                :moreTitle="'Другие новости'"
-                                :moreData="cat?.other_news"
+                                v-if="rightNews?.news?.length > 0"
+                                :moreTitle="$t('other_news')"
+                                :moreData="rightNews?.news"
                                 class="categories__more"
-                            /> -->
+                            />
                         </div>
                     </div>
                 </div>

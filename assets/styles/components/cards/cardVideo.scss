@@ -1,5 +1,12 @@
 @import '../../main.scss';
 
 .cardVideo{
-    background: hotpink;
+    background: #000000;
+    height: 100%;
+    &__box{
+        height: 100%;
+    }
+    &__video{
+        height: 100%;
+    }
 }

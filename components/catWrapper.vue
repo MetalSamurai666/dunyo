@@ -71,7 +71,7 @@
             </div>
             <div class="catWrapper__bot">
                 <div class="catWrapper__banner">
-                    <img src="https://images.squarespace-cdn.com/content/v1/5940f2725016e1c79e469470/1540004147826-C6ZIE42DALBW63ZAKEVJ/DSC09847+%282%29-min.JPG?format=800w">
+                    <img src="@/assets/img/poster.png">
                 </div>
             </div>
         </div>

@@ -148,6 +148,8 @@
         &__poster{
             padding: 20px;
             height: 350px;
+            width: 100%;
+            flex-basis: unset;
             .poster{
                 &__title{
                     font-size: 24px;
@@ -156,6 +158,8 @@
             }
         }
         &__cards{
+            flex-basis: unset;
+            width: 100%;
             padding: 20px 0px 0px 0px;
         }
         &__main{
