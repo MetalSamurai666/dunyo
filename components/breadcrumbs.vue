@@ -40,7 +40,7 @@
                 <div class="breadcrumbs__right">
                     <ul class="breadcrumbs__list">
                         <li class="item">
-                            <nuxt-link to="/"><span>{{ $t('main') }}</span></nuxt-link>
+                            <nuxt-link :to="localePath('/')"><span>{{ $t('main') }}</span></nuxt-link>
                         </li>
                         <li 
                             v-for="item, index of route.fullPath.split('/')"

@@ -8,7 +8,7 @@
     <li class="cardNews">
         <div class="cardNews__box">
             <div class="cardNews__top">
-                <NuxtLink class="cardNews__title" :to="`${card?.category?.slug}/${card?.slug}`">{{ card?.title }}</NuxtLink>
+                <NuxtLink class="cardNews__title" :to="localePath(`/${card?.category?.slug}/${card?.slug}`)">{{ card?.title }}</NuxtLink>
             </div>
             <div class="cardNews__bot">
                 <div class="cardNews__date">{{ card?.date.slice(0, 10) }}</div>

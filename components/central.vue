@@ -75,7 +75,7 @@
                                 {{ second?.main_news?.date?.slice(0, 10) }}
                             </div>
                             <NuxtLink 
-                                :to="`${second?.parent_category?.slug}/${second?.main_news?.slug}`" 
+                                :to="localePath(`${second?.parent_category?.slug}/${second?.main_news?.slug}`)" 
                                 class="poster__title"
                             >
                                 {{ second?.main_news?.title }}

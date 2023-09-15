@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
 
 export const useMainStore = defineStore('indexId', () => {
-    const url = ref('https://dunyoapi.gsoft.uz')
-    const mainUrl = ref('https://dunyo.gsoft.uz')
+    const url = ref('https://api.dunyo.info')
+    const mainUrl = ref('https://dunyo.info')
     const cats = ref([])
 
     const getCats = (lang) => {

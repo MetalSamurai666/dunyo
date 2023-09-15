@@ -16,12 +16,12 @@ export default defineI18nConfig(() => ({
             map_title: 'Davlatlar bo`yicha yangiliklar',
             videos: 'Videolar',
             address_title: 'Manzil',
-            address: '100000, Toshkent, Amir Temur ko`chasi, 3',
+            address: '100066, Toshkent, Amir Temur ko`chasi, 4',
             phone_number: 'Telefon raqami',
             copyright: '© 2023-yil O`zbekiston Respublikasi tashqi ishlar vazirligi Dunyo axborot agentligining rasmiy veb-sayti. Mualliflik huquqi himoyalangan.',
             no_country_news: 'Bu davlat bo`yicha yangiliklar hozircha yo`q',
             old: 'Saytning eski versiyasi',
-            tashkent: 'Toshkent'
+            tashkent: 'Toshkent',
         },
         uzk: {
             main: 'Бош саҳифа',
@@ -37,12 +37,12 @@ export default defineI18nConfig(() => ({
             map_title: 'Давлатлар бўйича янгиликлар',
             videos: 'Видеолар',
             address_title: 'Манзил',
-            address: '100000, Тошкент, Амир Темур кўчаси, 3',
+            address: '100066, Тошкент, Амир Темур кўчаси, 4',
             phone_number: 'Телефон рақами',
             copyright: '© 2023-йил Ўзбекистон Республикаси ташқи ишлар вазирлиги Дунё ахборот агентлигининг расмий веб-сайти.  Муаллифлик ҳуқуқи ҳимояланган.',
             no_country_news: 'Бу давлат бўйича янгиликлар ҳозирча йўқ',
             old: 'Сайтнинг эски версияси',
-            tashkent: 'Тошкент'
+            tashkent: 'Тошкент',
         },
         ru: {
             main: 'Главная',
@@ -58,12 +58,12 @@ export default defineI18nConfig(() => ({
             map_title: 'Новости по странам',
             videos: 'Видео',
             address_title: 'Адрес',
-            address: '100000, Ташкент, ул. Амира Темура, 3',
+            address: '100066, Ташкент, ул. Амира Темура, 4',
             phone_number: 'Номер телефона',
             copyright: '© 2023 Официальный веб-сайт Информационного агентства «Дунё» Министерства иностранных дел Республики Узбекистан. Авторские права защищены.',
             no_country_news: 'Новостей связанных с этой страной пока нет',
             old: 'Старая версия сайта',
-            tashkent: 'Ташкент'
+            tashkent: 'Ташкент',
         },
         en: {
             main: 'Main page',
@@ -79,12 +79,12 @@ export default defineI18nConfig(() => ({
             map_title: 'News by countries',
             videos: 'Videos',
             address_title: 'Address',
-            address: '3, Amir Temur str., Tashkent, 100000',
+            address: '4, Amir Temur str., Tashkent, 100066',
             phone_number: 'Phone number',
             copyright: '© 2023 Official website of the Dunyo News Agency of the Ministry of Foreign Affairs of the Republic of Uzbekistan. Copyright reserved.',
             no_country_news: 'There is no news related to this country yet',
             old: 'Old version of website',
-            tashkent: 'Tashkent'
+            tashkent: 'Tashkent',
         }
     }
 }))

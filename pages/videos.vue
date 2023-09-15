@@ -13,20 +13,22 @@
         category: {
             title: sexy
         },
-        list: []
+        list: [],
+        count: 0
     })
     
     const rightNews = ref({})
     const getData = async (next = 1) => {
         let res = await mainStore.getVideos(next)
         if (res.data.value) {
-            console.log(res.data.value);
+            // console.log(res.data.value);
             rightNews.value = res.data.value
-            console.log(rightNews.value)
+            // console.log(rightNews.value)
             videos.value.list = res.data.value.links.map(item => {
                 item.link = getId(item.url)
                 return item
             })
+            videos.value.count = res.data.value.count
         }
     }
 
@@ -109,6 +111,9 @@
             object-position: center;
         }
     }
+    &__pag{
+            margin-top: 20px;
+        }
 
     @media (max-width: 500px) {
         &__box{
@@ -120,6 +125,7 @@
             flex-basis: unset;
             padding: 0;
         }
+        
     }
 }
 </style>

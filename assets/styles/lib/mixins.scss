@@ -26,3 +26,10 @@
     transition: $s linear;
 }
 
+@mixin oh($h: 2){
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: $h;
+    line-clamp: $h;
+    -webkit-box-orient: vertical;
+}

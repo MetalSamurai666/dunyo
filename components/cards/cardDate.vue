@@ -12,7 +12,7 @@
                 <div class="cardDate__date">{{ card?.date?.slice(8, 10) }} <span>{{ card?.date?.slice(5, 7) }}</span> </div>
             </div>
             <div class="cardDate__right">
-                <NuxtLink class="cardDate__title" :to="`${card?.category?.slug}/${card?.slug}`">{{ card?.title }}</NuxtLink>
+                <NuxtLink class="cardDate__title" :to="localePath(`/${card?.category?.slug}/${card?.slug}`)">{{ card?.title }}</NuxtLink>
             </div>
         </div>
     </li>

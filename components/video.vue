@@ -18,12 +18,11 @@
     const getData = async () => {
         let res = await mainStore.getVideos()
         if (res.data.value) {
-            console.log(res.data.value)
             videos.value.list = res.data.value.links.map(item => {
                 item.link = getId(item.url)
                 return item
             })
-            console.log(videos.value)
+            // console.log(videos.value)
         }
     }
 
@@ -39,7 +38,7 @@
                 <div class="video__head">
                     <div class="video__title">{{ $t('videos') }}</div>
                     
-                    <NuxtLink class="video__more" to="/videos">{{ $t('more') }}</NuxtLink>
+                    <NuxtLink class="video__more" :to="localePath('/videos')">{{ $t('more') }}</NuxtLink>
                 </div>
 
                 <div class="video__main">

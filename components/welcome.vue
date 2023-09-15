@@ -87,7 +87,7 @@
                             <div class="slider__info">{{ item?.category?.title }}</div>
                             <div class="slider__title">{{ item?.title }}</div>
                             <div class="slider__link">
-                                <NuxtLink :to="`${item?.category?.slug}/${item?.slug}`">
+                                <NuxtLink :to="localePath(`/${item?.category?.slug}/${item?.slug}`)">
                                     <span>{{ $t('more') }}</span>
                                     <img src="@/assets/logo/basic/arrowRight.svg">
                                 </NuxtLink>
@@ -112,7 +112,7 @@
                                 <div class="item__cat">{{ item?.category?.title }}</div>
                                 <NuxtLink 
                                     class="item__title" 
-                                    :to="`${item?.category?.slug}/${item?.slug}`"
+                                    :to="localePath(`/${item?.category?.slug}/${item?.slug}`)"
                                 >
                                     {{ item?.title }}
                                 </NuxtLink>
@@ -133,7 +133,7 @@
                         >
                             <div class="item__box">
                                 <div class="item__left">
-                                    <NuxtLink :to="`${item?.category?.slug}/${item?.slug}`" class="item__img">
+                                    <NuxtLink :to="localePath(`/${item?.category?.slug}/${item?.slug}`)" class="item__img">
                                         <img :src="`${mainStore.url}/${item?.img}`">
                                     </NuxtLink>
                                 </div>
@@ -143,7 +143,7 @@
                                         <div class="item__cat">{{ item?.category?.title }}</div>
                                     </div>
                                     <div class="item__bot">
-                                        <NuxtLink :to="`${item?.category?.slug}/${item?.slug}`">
+                                        <NuxtLink :to="localePath(`/${item?.category?.slug}/${item?.slug}`)">
                                             {{ item?.title }}
                                         </NuxtLink>
                                     </div>

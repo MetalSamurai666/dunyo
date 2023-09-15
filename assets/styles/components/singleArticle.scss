@@ -18,6 +18,10 @@
             width: 100%;
             margin: 20px 0px;
         }
+        a{
+            color: $colorLightBlue !important;
+            text-decoration: underline;
+        }
     }
     &__poster{
         height: 90px;
@@ -48,6 +52,9 @@
             }
             &.facebook{
                 background-color: #4267B2;
+            }
+            &.twitter{
+                background-color: #1DA1F2;
             }
         }
     }

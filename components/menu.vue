@@ -55,7 +55,7 @@
     }
 
     async function changeRoute(slug) {
-        console.log(slug);
+        // console.log(slug);
         await router.push(`/${slug}`)
         menuStore.menuChange()
     }
@@ -72,7 +72,7 @@
             <div class="menu__top">
                 <div class="menu__close">
                     <button @click="closeMenu">
-                        <img src="@/assets/logo/basic/close.svg">
+                        <img src="@/assets/logo/basic/close.svg" data-not-lazy>
                     </button>
                 </div>
             </div>
@@ -92,13 +92,13 @@
                         <span class="item__open"
                             v-if="item?.subs.length > 0" 
                             @click="item?.subs ? changeBenefit(index) : null">
-                            <img src="@/assets/logo/basic/arrowRight.svg">
+                            <img src="@/assets/logo/basic/arrowRight.svg" data-not-lazy>
                         </span>
 
                         <ul class="item__list" v-if="item?.subs">
                             <li v-for="subItem, index of item?.subs" :key="index">
                                 <NuxtLink 
-                                    :to="subItem?.slug" 
+                                    :to="localePath(`/${subItem?.slug}`)" 
                                     @click="closeMenu">
                                     {{ subItem?.title }}
                                 </NuxtLink>
@@ -117,7 +117,7 @@
                 <ul class="menu__more">
                     <li class="item">
                         <div class="item__logo">
-                            <img src="@/assets/logo/basic/globe.svg">
+                            <img src="@/assets/logo/basic/globe.svg" data-not-lazy>
                         </div>
                         <div class="menu__lang">
                             <div class="item" 
@@ -135,13 +135,13 @@
                     </li>
                     <li class="item">
                         <div class="item__logo">
-                            <img src="@/assets/logo/basic/calendar.svg">
+                            <img src="@/assets/logo/basic/calendar.svg" data-not-lazy>
                         </div>
                         <span class="item__title">13/06/2023</span>
                     </li>
                     <li class="item">
                         <div class="item__logo">
-                            <img src="@/assets/logo/basic/cloudRizzel.svg">
+                            <img src="@/assets/logo/basic/cloudRizzel.svg" data-not-lazy>
                         </div>
                         <span class="item__title">Ташкент</span>
                         <span class="item__title">32°C</span>

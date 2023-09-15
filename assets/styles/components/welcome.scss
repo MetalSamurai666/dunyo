@@ -310,7 +310,6 @@
         }
         .slider{
             height: 100%;
-            
             &__text{
                 position: relative;
                 top: unset;
@@ -319,6 +318,7 @@
             }
             &__title{
                 max-width: 100%;
+                @include oh(5);
             }
             
         }
@@ -380,5 +380,4 @@
             }
         }
     }
-    
 }

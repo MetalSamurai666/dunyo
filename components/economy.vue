@@ -102,7 +102,7 @@
                             />
                         </ul>
                         <div class="economy__more">
-                            <NuxtLink :to="cards?.category?.slug">{{ $t('more_news') }}</NuxtLink>
+                            <NuxtLink :to="localePath(`/${cards?.category?.slug}`)">{{ $t('more_news') }}</NuxtLink>
                         </div>
                     </div>
 
@@ -112,7 +112,7 @@
 
                             <div class="poster__text">
                                 <div class="poster__date">{{ rand?.news?.date.slice(0, 10) }}</div>
-                                <NuxtLink :to="`${rand?.category?.slug}/${rand?.news?.slug}`" class="poster__title">{{ rand?.news?.title }}</NuxtLink>
+                                <NuxtLink :to="localePath(`/${rand?.category?.slug}/${rand?.news?.slug}`)" class="poster__title">{{ rand?.news?.title }}</NuxtLink>
                             </div>
                         </div>
                     </div>

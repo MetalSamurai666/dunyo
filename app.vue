@@ -16,7 +16,6 @@
   const analytics = getAnalytics(app);
   // console.log(analytics);
 
-
 /* Imports */
   import { storeToRefs } from 'pinia'
   import { useMenuStore } from '~/store/menu';

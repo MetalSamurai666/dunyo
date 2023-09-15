@@ -37,14 +37,14 @@
                     <ul class="footer__list" v-for="list, index of cats?.slice(0, 3)" :key="index">
                         <li>
                             <NuxtLink class="footer__title" 
-                                :to="list?.slug"
+                                :to="localePath(`/${list?.slug}`)"
                             >    
                                 {{ list?.title }}
                             </NuxtLink>
                         </li>
 
                         <li v-for="item, index of list?.subs" :key="index">
-                            <NuxtLink :to="`/${item?.slug}`" class="footer__link">
+                            <NuxtLink :to="localePath(`/${item?.slug}`)" class="footer__link">
                                 {{ item?.title }}
                             </NuxtLink>
                         </li>
@@ -62,7 +62,7 @@
                         <li class="footer__link">
                             <span>{{ $t('phone_number') }}</span>
                             <a href="tel:+998712331410">
-                                <b>+99871-233-14-10</b>
+                                <b>+99871-239-17-76</b>
                             </a>
                         </li>
                         <li class="footer__link">

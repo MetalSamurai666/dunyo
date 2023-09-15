@@ -40,7 +40,7 @@
                         <div class="catWrapper__date">{{ actual?.date.slice(0, 10) }}</div>
                     </div>
                     <div class="catWrapper__title">
-                        <NuxtLink :to="`${actual?.category?.slug}/${actual?.slug}`">{{ actual?.title }}</NuxtLink>
+                        <NuxtLink :to="localePath(`/${actual?.category?.slug}/${actual?.slug}`)">{{ actual?.title }}</NuxtLink>
                     </div>
                 </div>
                 <div class="catWrapper__right">

@@ -60,7 +60,7 @@
 
 
 /* Weather */
-    const location = ref({})
+    const location = ref()
     // const successCallback = async (position) => {
     //     // console.log(position);
     //     let res = await mainStore.getWeather(
@@ -78,9 +78,9 @@
             // console.log(location.value)
         }
     }
-    const errorCallback = (error) => {
-        console.log(error);
-    }
+    // const errorCallback = (error) => {
+    //     console.log(error);
+    // }
 
     onMounted(() => {
         getWeat(locale.value)
@@ -100,12 +100,12 @@
                     <span class="header__region">{{ $t('tashkent') }}</span>
                     <div class="header__weather">
                         <img src="@/assets/logo/basic/cloudRizzel.svg" data-not-lazy>
-                        <span> {{location}} °C</span>
+                        <span v-if="location"> {{ location }} °C</span>
                     </div>
                 </div>
 
                 <div class="header__logo">
-                    <NuxtLink to="/">
+                    <NuxtLink :to="localePath('/')">
                         <img src="@/assets/logo/logo.png" data-not-lazy>
                     </nuxtLink>
                 </div>
@@ -143,7 +143,7 @@
         <div class="header__bot">
             <div class="header__container">
                 <div class="header__subLogo">
-                    <NuxtLink to="/">
+                    <NuxtLink :to="localePath('/')">
                         <img src="@/assets/logo/logo.png">
                     </NuxtLink>
                 </div>
@@ -157,7 +157,7 @@
                     >
                         <NuxtLink 
                             class="item__link" 
-                            :to="item?.slug.length > 1 ? `/${item?.slug}` : ``"
+                            :to="localePath(item?.slug.length > 1 ? `/${item?.slug}` : ``)"
                         >
                             <span>{{ item?.title }}</span>
                         </NuxtLink>
@@ -170,7 +170,7 @@
                                 v-for="subItem, index of item?.subs" 
                                 :key="index"
                             >
-                                <NuxtLink :to="`/${subItem?.slug}`">
+                                <NuxtLink :to="localePath(`/${subItem?.slug}`)">
                                     <span>{{ subItem?.title }}</span>
                                 </NuxtLink>
                             </li>
@@ -178,7 +178,7 @@
                     </li>
 
                     <li class="item">
-                        <NuxtLink to="/contacts" class="item__link">
+                        <NuxtLink :to="localePath('/contacts')" class="item__link">
                             <span>{{ $t('contacts') }}</span>
                         </NuxtLink>
                     </li>

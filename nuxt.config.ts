@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     compressPublicAssets: true
   },
   i18n: {
-    strategy: 'no_prefix',
+    strategy: 'prefix',
     vueI18n: './i18n.config.ts',
     locales: [
       {

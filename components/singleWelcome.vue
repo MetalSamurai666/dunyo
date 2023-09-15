@@ -47,17 +47,17 @@
                 <ul class="singleWelcome__breadcrumbs">
                     <!-- <pre>{{ news }}</pre> -->
                     <li class="item">
-                        <NuxtLink to="/"><span>{{ book?.main }}</span></NuxtLink>
+                        <NuxtLink :to="localePath('/')"><span>{{ book?.main }}</span></NuxtLink>
                     </li>
 
                     <li class="item">
-                        <NuxtLink :to="`/${route.fullPath.split('/')[1]}`">
+                        <NuxtLink :to="localePath(`/${route.fullPath.split('/')[1]}`)">
                             <span>{{ category?.title }}</span>
                         </NuxtLink>
                     </li>
 
                     <li class="item">
-                        <NuxtLink :to="`${route.fullPath}`">
+                        <NuxtLink :to="localePath(`/${route.fullPath}`)">
                             <span>{{ news?.title }}</span>
                         </NuxtLink>
                     </li>

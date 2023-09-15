@@ -72,7 +72,7 @@
                         <div class="slider__right">
                             <div class="slider__text" v-html="item?.content"></div>
                             <div class="slider__more">
-                                <NuxtLink :to="`${item?.category?.slug}/${item?.slug}`">
+                                <NuxtLink :to="localePath(`/${item?.category?.slug}/${item?.slug}`)">
                                     <span>{{ $t('more') }}</span>
                                     <img src="@/assets/logo/basic/arrowRight.svg">
                                 </NuxtLink>

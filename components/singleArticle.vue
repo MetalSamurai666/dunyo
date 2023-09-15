@@ -14,6 +14,8 @@
         mostViewed: Array
     })
 
+    
+
 </script>
 
 <template>
@@ -52,7 +54,7 @@
                 class="item telegram"
                 network="telegram"
                 :url="`${mainUrl}${route.fullPath}`"
-                :title="news?.title"
+                :title="news?.title || ''"
                 description=""
                 quote=""
                 hashtags=""
@@ -63,12 +65,34 @@
                 class="item instagram"
                 network="facebook"
                 :url="`${mainUrl}${route.fullPath}`"
-                :title="news?.title"
+                :title="news?.title || ''"
                 description=""
                 quote=""
                 hashtags=""
             >
                 <img src="@/assets/logo/socials/facebook.svg">
+            </ShareNetwork>
+            <ShareNetwork
+                class="item twitter"
+                network="twitter"
+                :url="`${mainUrl}${route.fullPath}`"
+                :title="news?.title || ''"
+                description=""
+                quote=""
+                hashtags=""
+            >
+                <img src="@/assets/logo/socials/twitter.svg">
+            </ShareNetwork>
+            <ShareNetwork
+                class="item vk"
+                network="vk"
+                :url="`${mainUrl}${route.fullPath}`"
+                :title="news?.title || ''"
+                description=""
+                quote=""
+                hashtags=""
+            >
+                <img src="@/assets/logo/socials/vk.svg">
             </ShareNetwork>
         </ul>
     </div>
