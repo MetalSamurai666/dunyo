@@ -1,6 +1,7 @@
 <script setup>
 /* Imports */
     import { useMainStore } from '~/store/main';
+    // import { doCount } from '~/utils/counter';
 
 /* Сonsts */
     const mainStore = useMainStore()
@@ -29,10 +30,13 @@
     })
 </script>
 
+    
+
 <template>
     <footer class="footer">
         <div class="footer__top">
             <div class="container">
+                
                 <div class="footer__nav">
                     <ul class="footer__list" v-for="list, index of cats?.slice(0, 3)" :key="index">
                         <li>
@@ -71,7 +75,12 @@
                                 <b>jahon@mfa.uz</b>
                             </a>
                         </li>
+
+                        <a style="margin-top: 15px;" href="https://www.uz/ru/res/visitor/index?id=45601" target=_top>
+                            <img height=31 src="https://cnt0.www.uz/counter/collect?id=45601&pg=https%3A//uzinfocom.uz&&col=0063AF&amp;t=ffffff&amp;p=E6850F" width=88 border=0 alt="Топ рейтинг www.uz">
+                        </a>
                     </ul>
+
                 </div>
             </div>
         </div>
