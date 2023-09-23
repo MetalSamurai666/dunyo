@@ -21,17 +21,20 @@
   import { useMenuStore } from '~/store/menu';
   import { useLocaleStore } from '~~/store/i18n'
   import { useMainStore } from '~/store/main';
+  import { useSearchStore } from '~/store/search';
 
   /* Consts */
   const localeStore = useLocaleStore()
   const { locale } = useI18n()
 
   const menuStore = useMenuStore()
+  const searchStore = useSearchStore()
   const { menuState } = storeToRefs(menuStore)
+  const { searchState } = storeToRefs(searchStore)
   const mainStore = useMainStore()
 
   function changeBody() {
-    if (menuState.value == true) {
+    if (menuState.value == true || searchState.value == true) {
       document.body.classList.add('noscroll')
     } else {
       document.body.classList.remove('noscroll')
@@ -51,6 +54,15 @@
   )
 
   watch(
+    () => searchState.value,
+    () => {
+      changeBody()
+    }
+  )
+
+
+
+  watch(
     () => locale.value,
     () => {
       getData(locale.value)
@@ -68,10 +80,11 @@
 
 
 <template>
-  <div>
+  <!-- <div>
     <meta name="theme-color" content="#1C4077" />
     <NuxtPage />
-  </div>
+  </div> -->
+  <NuxtPage />
 </template>
 
 <style lang="scss">

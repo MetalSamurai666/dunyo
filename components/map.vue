@@ -635,6 +635,7 @@
                             type: 'loop',
                             perPage: 4,
                             rewind: false,
+                            pagination: false,
                             breakpoints: {
                                 800: {
                                     perPage: 2

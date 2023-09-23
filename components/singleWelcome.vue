@@ -51,13 +51,13 @@
                     </li>
 
                     <li class="item">
-                        <NuxtLink :to="localePath(`/${route.fullPath.split('/')[1]}`)">
+                        <NuxtLink :to="localePath(`/${route.fullPath.split('/')[2]}`)">
                             <span>{{ category?.title }}</span>
                         </NuxtLink>
                     </li>
 
                     <li class="item">
-                        <NuxtLink :to="localePath(`/${route.fullPath}`)">
+                        <NuxtLink :to="localePath(`${route.fullPath}`)">
                             <span>{{ news?.title }}</span>
                         </NuxtLink>
                     </li>

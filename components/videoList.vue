@@ -4,8 +4,6 @@
     defineProps({
         list: Array
     })
-
-
 </script>
 
 <template>

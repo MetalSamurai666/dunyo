@@ -1,19 +1,29 @@
 <script setup>
-    import { useMainStore } from "~/store/main"
+    import { useMainStore } from "@/store/main.js"
 
     const mainStore = useMainStore()
-    const { locale } = useI18n()
-
+    const { t, locale } = useI18n()
     const route = useRoute()
 
-/* Getting News👾 */
-    const newsObj = ref({})
-    
+    const gallObj = ref({
+        category: {
+            title: t('gallery'),
+            slug: 'gallery',
+        },
+        album: {}
+    })
+
+    const images = ref([])
+
     const getData = async (lang) => {
-        let res = await mainStore.getNews(route.params.slug, lang)
+        let res = await mainStore.getOneGallery(route.params.id, lang)
         if (res.data.value) {
-            newsObj.value = res.data.value
-            console.log(newsObj.value, 'news')
+            gallObj.value.album = res.data.value
+            console.log(gallObj.value, 'xxx');
+            res.data.value.galery.img.map((item) => {
+                images.value.push(mainStore.url+'/'+item)
+                return images
+            })
         }
     }
 
@@ -31,29 +41,29 @@
 
 <template>
     <NuxtLayout name="alt-header">
-        <div class="single page">
+        <div class="singleGallery">
             <singleWelcome
-                :category="newsObj?.category"
-                :news="newsObj?.news"
+                :category="gallObj?.category"
+                :news="gallObj?.album?.galery"
             />
             <div class="single__body">
                 <div class="container">
                     <div class="single__left">
-                        <SingleArticle 
-                            :news="newsObj?.news"
-                            :mostViewed="newsObj?.most_viewed"
+                        <GallerySingle
+                            :images="images"
+                            :album="gallObj?.album?.galery?.img"
+                            :prop="'say hey'"
                         />
                     </div>
                     <div class="single__right">
                         <catMore 
-                            :moreTitle="$t('actual_news')"
-                            :moreData="newsObj?.actual"
+                            :moreTitle="$t('important_dates')"
+                            :moreData="gallObj?.album?.important_dates"
                             class="categories__more"
                         />
-                        
                         <catMore 
-                            :moreTitle="$t('latest_news')"
-                            :moreData="newsObj?.latest"
+                            :moreTitle="$t('other_news')"
+                            :moreData="gallObj?.album?.news"
                             class="categories__more"
                         />
                     </div>

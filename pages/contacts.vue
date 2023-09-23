@@ -9,7 +9,7 @@
             <div class="container">
                 <div class="contacts__box">
                     <div class="contacts__left">
-                        <div class="contacts__title">Контактные данные</div>
+                        <div class="contacts__title">{{ $t('contact_info') }}</div>
 
                         <ul class="contacts__list">
                             <li class="item">
@@ -18,7 +18,7 @@
                                 </div>
 
                                 <div class="item__right">
-                                    <a href="https://yandex.com/maps/10335/tashkent/?from=mapframe&ll=69.281754%2C41.308870&mode=usermaps&source=mapframe&um=constructor%3A1fbbb3b70814e6bd5aa8e62ad3354bbe416d5de2e1415e08a4ac8219ec7cd1f1&z=16">100000, Ташкент, ул. Амира Темура, 3</a>
+                                    <a href="https://yandex.com/maps/10335/tashkent/?from=mapframe&ll=69.281754%2C41.308870&mode=usermaps&source=mapframe&um=constructor%3A1fbbb3b70814e6bd5aa8e62ad3354bbe416d5de2e1415e08a4ac8219ec7cd1f1&z=16">{{ $t('address') }}</a>
                                 </div>
                             </li>
 
@@ -28,7 +28,7 @@
                                 </div>
 
                                 <div class="item__right">
-                                    <a href="tel:+998712331410">+99871-233-14-10</a>
+                                    <a href="tel:+998712391776">+99871-239-17-76</a>
                                 </div>
                             </li>
 
@@ -38,17 +38,17 @@
                                 </div>
 
                                 <div class="item__right">
-                                    <a href="mailto:jahon@mfa.uz">jahon@mfa.uz</a>
+                                    <a href="mailto:jahon@mfa.uz">Dunyo@mfa.uz</a>
                                 </div>
                             </li>
                         </ul>
                     </div>
                     <div class="contacts__right">
-                        <div class="contacts__title">Обратная свзяь</div>
+                        <div class="contacts__title">{{ $t('feedback') }}</div>
 
                         <div class="contacts__inputs">
                             <div class="item">
-                                <div class="item__top">Имя</div>
+                                <div class="item__top">{{ $t('name') }}</div>
 
                                 <div class="item__bot">
                                     <input type="text">
@@ -56,7 +56,7 @@
                             </div>
 
                             <div class="item">
-                                <div class="item__top">Электронная почта</div>
+                                <div class="item__top">{{ $t('email') }}</div>
 
                                 <div class="item__bot">
                                     <input type="email">
@@ -64,7 +64,7 @@
                             </div>
                             
                             <div class="item big">
-                                <div class="item__top">Текст сообщение</div>
+                                <div class="item__top">{{ $t('text') }}</div>
 
                                 <div class="item__bot">
                                     <textarea name="text" cols="30" rows="15"></textarea>
@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="contacts__send">
-                            <button>Отправить</button>
+                            <button>{{ $t('send') }}</button>
                         </div>
                     </div>
                 </div>

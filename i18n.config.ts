@@ -10,6 +10,8 @@ export default defineI18nConfig(() => ({
             most_viewed: 'Eng ko`p o`qilgan yangiliklar',
             important_dates: 'Muhim sanalar',
             contacts: 'Aloqa',
+            contact_info: 'Aloqa ma`lumotlari',
+            feedback: 'Teskari aloqa',
             actual: 'Dolzarb',
             more: 'Batafsil',
             more_news: 'Boshqa yangiliklar',
@@ -22,6 +24,11 @@ export default defineI18nConfig(() => ({
             no_country_news: 'Bu davlat bo`yicha yangiliklar hozircha yo`q',
             old: 'Saytning eski versiyasi',
             tashkent: 'Toshkent',
+            gallery: 'Galereya',
+            name: 'Ism',
+            email: 'Elektron pochta',
+            text: 'Matnli xabar',
+            send: 'Yuborish'
         },
         uzk: {
             main: 'Бош саҳифа',
@@ -31,6 +38,8 @@ export default defineI18nConfig(() => ({
             most_viewed: 'Энг кўп ўқилган янгиликлар',
             important_dates: 'Муҳим саналар',
             contacts: 'Алоқа',
+            contact_info: 'Алоқа маълумотлари',
+            feedback: 'Тескари алоқа',
             actual: 'Долзарб',
             more: 'Батафсил',
             more_news: 'Бощқа янгиликлар',
@@ -43,6 +52,11 @@ export default defineI18nConfig(() => ({
             no_country_news: 'Бу давлат бўйича янгиликлар ҳозирча йўқ',
             old: 'Сайтнинг эски версияси',
             tashkent: 'Тошкент',
+            gallery: 'Галерея',
+            name: 'Исм',
+            email: 'Электрон почта',
+            text: 'Матнли хабар',
+            send: 'Юбориш'
         },
         ru: {
             main: 'Главная',
@@ -52,6 +66,8 @@ export default defineI18nConfig(() => ({
             other_news: 'Другие новости',
             important_dates: 'Важные даты',
             contacts: 'Контакты',
+            contact_info: 'Контактные данные',
+            feedback: 'Обратная связь',
             actual: 'Актуально',
             more: 'Подробнее',
             more_news: 'Больше новостей',
@@ -64,6 +80,11 @@ export default defineI18nConfig(() => ({
             no_country_news: 'Новостей связанных с этой страной пока нет',
             old: 'Старая версия сайта',
             tashkent: 'Ташкент',
+            gallery: 'Галерея',
+            name: 'Имя',
+            email: 'Электронная почта',
+            text: 'Текст сообщение',
+            send: 'Отправить'
         },
         en: {
             main: 'Main page',
@@ -73,6 +94,8 @@ export default defineI18nConfig(() => ({
             other_news: 'Other news',
             important_dates: 'Important dates',
             contacts: 'Contacts',
+            contact_info: 'Contact details',
+            feedback: 'Feedback',
             actual: 'Actual',
             more: 'More',
             more_news: 'More news',
@@ -85,6 +108,11 @@ export default defineI18nConfig(() => ({
             no_country_news: 'There is no news related to this country yet',
             old: 'Old version of website',
             tashkent: 'Tashkent',
+            gallery: 'Gallery',
+            name: 'Name',
+            email: 'E-mail',
+            text: 'Text message',
+            send: 'Send'
         }
     }
 }))

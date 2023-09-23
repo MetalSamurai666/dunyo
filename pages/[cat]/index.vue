@@ -124,6 +124,9 @@
             flex-basis: unset;
             padding: 0;
         }
+        &__right{
+            margin-top: 20px;
+        }
     }
 }
 </style>

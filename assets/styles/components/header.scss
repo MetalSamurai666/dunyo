@@ -150,6 +150,12 @@
     &__right{
         @include df-aic;
     }
+    &__search{
+        margin-right: 15px;
+        button{
+            display: flex;
+        }
+    }
     &__date{
         @include df-aic;
         span{

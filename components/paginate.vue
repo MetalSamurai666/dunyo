@@ -1,21 +1,4 @@
-<template>
-    <div class="paginate">
-        <button @click="backPage">
-            <img src="@/assets/logo/basic/arrowRight.svg">
-        </button>
-    
-        <button v-for="item in count" :key="item" @click="() => goToPage(item)" :class="page == item ? 'paginate__btn active' : 'paginate__btn'" >
-            {{ item }}
-        </button>
-        <button @click="nextPage">
-            <img src="@/assets/logo/basic/arrowRight.svg">
-        </button>
-    </div>
-    <!-- <div v-for="item in data" :key="item.index">{{ item.value }}</div> -->
-</template>
-
 <script setup>
-
     let page = ref(1);
 
     const props = defineProps({
@@ -23,7 +6,6 @@
     })
 
     const count = computed(()=> Math.ceil(parseInt(props.data) / perPage))
-
     const emit = defineEmits(['next'])
 
     // const data = Array.from(Array(24).keys()).map((item) => {
@@ -64,6 +46,22 @@
         active.value = page
     })
 </script>
+
+<template>
+    <div class="paginate">
+        <button @click="backPage">
+            <img src="@/assets/logo/basic/arrowRight.svg">
+        </button>
+    
+        <button v-for="item in count" :key="item" @click="() => goToPage(item)" :class="page == item ? 'paginate__btn active' : 'paginate__btn'" >
+            {{ item }}
+        </button>
+        <button @click="nextPage">
+            <img src="@/assets/logo/basic/arrowRight.svg">
+        </button>
+    </div>
+    <!-- <div v-for="item in data" :key="item.index">{{ item.value }}</div> -->
+</template>
 
 <style lang="scss">
 @import '@/assets/styles/main.scss';

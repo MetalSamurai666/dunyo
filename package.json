@@ -26,6 +26,7 @@
     "firebase": "^10.1.0",
     "nuxt-lazy-load": "^3.0.4",
     "pinia": "^2.1.4",
+    "vue-easy-lightbox": "^1.16.0",
     "vue-social-sharing": "^4.0.0-alpha4"
   }
 }

@@ -48,7 +48,7 @@
                             v-for="item, index of videos?.list" 
                             :key="index"
                         >
-                            <div v-html="item?.link"></div>
+                            <div v-html="item?.link" class="video__link"></div>
                             <!-- <iframe width="100%" height="100%" :src="item.link" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen data-not-lazy></iframe> -->
                         </div>
                     </div>

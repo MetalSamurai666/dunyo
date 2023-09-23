@@ -42,13 +42,18 @@
                         <li class="item">
                             <nuxt-link :to="localePath('/')"><span>{{ $t('main') }}</span></nuxt-link>
                         </li>
-                        <li 
+                        <!-- <li 
                             v-for="item, index of route.fullPath.split('/')"
                             :key="index" 
                             class="item"
                             v-show="item.length > 0"
                         >
-                            <nuxt-link :to="item">
+                            <nuxt-link :to="localePath(item)">
+                                <span>{{ bread.breadObj?.title }}</span>
+                            </nuxt-link>
+                        </li> -->
+                        <li class="item">
+                            <nuxt-link :to="localePath(route.fullPath.split('/')[2])">
                                 <span>{{ bread.breadObj?.title }}</span>
                             </nuxt-link>
                         </li>

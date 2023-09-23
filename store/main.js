@@ -104,6 +104,23 @@ export const useMainStore = defineStore('indexId', () => {
         .catch(er => console.log(er))
     }
 
+    const getGallery = (lang, param = 1, page = 8) => {
+        // console.log(param, page, lang)
+        return useFetch(url.value+`/api/photos/?next=${param}&page=${page}&lang=${lang}`)
+        .catch(er => console.log(er))
+    }
+    const getOneGallery = (id, lang) => {
+        // console.log(id, lang)
+        return useFetch(url.value+`/api/photos/${id}/?lang=${lang}`)
+        .catch(er => console.log(er))
+    }
+    
+    const getSearch = (title, lang) => {
+        console.log(title, lang)
+        return useFetch(url.value+`/api/search/?title=${title}&lang=${lang}`)
+        .catch(er => console.log(er))
+    }
+
         return { 
             url, 
             mainUrl,
@@ -124,7 +141,10 @@ export const useMainStore = defineStore('indexId', () => {
             getSlides,
             getAllCountries,
             getCountry,
-            getVideos
+            getVideos,
+            getGallery,
+            getOneGallery,
+            getSearch
         }
     }
 )

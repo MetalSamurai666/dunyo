@@ -3,10 +3,12 @@
     import { storeToRefs } from 'pinia';
     import { useMainStore } from '~/store/main';
     import { useMenuStore } from '~/store/menu';
+    import { useSearchStore } from '~/store/search';
     import { useLocaleStore } from '~/store/i18n';
     
-    const menuStore = useMenuStore()
     const mainStore = useMainStore()
+    const menuStore = useMenuStore()
+    const searchStore = useSearchStore()
     
     const { locale, locales, setLocale } = useI18n()
     const { cats }  = storeToRefs(mainStore)
@@ -82,6 +84,11 @@
     //     console.log(error);
     // }
 
+/* Search Box */
+    function openSearch() {
+        searchStore.searchChange()
+    }
+
     onMounted(() => {
         getWeat(locale.value)
 
@@ -111,6 +118,12 @@
                 </div>
 
                 <div class="header__right">
+                    <div class="header__search">
+                        <button @click="openSearch">
+                            <img src="@/assets/logo/basic/magnifier.svg">
+                        </button>
+                    </div>
+
                     <div class="header__date">
                         <img src="@/assets/logo/basic/calendar.svg" data-not-lazy>
                         <span>{{ formattedDate }}</span>

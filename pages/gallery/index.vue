@@ -1,36 +1,39 @@
 <script setup>
     import { useMainStore } from "~/store/main"
-    import { getId } from '@/utils/video.js';
-    
-    const mainStore = useMainStore()
-    const { t } = useI18n()
 
-    const sexy = computed(() => {
-        return t('videos')
+    const mainStore = useMainStore()
+    const { locale, t } = useI18n()
+
+    const titlePrev = computed(() => {
+        return t('gallery')
     }) 
 
-    const videos = ref({
+    const gallery = ref({
         category: {
-            title: sexy
+            title: titlePrev
         },
         list: [],
-        count: 0
     })
+
+    const counter = ref(0)
     
     const rightNews = ref({})
-    const getData = async (next = 1) => {
-        let res = await mainStore.getVideos(next)
+    const getData = async (next = 1, page = 50) => {
+        let res = await mainStore.getGallery(locale.value, next, page)
         if (res.data.value) {
-            console.log(res.data.value)
+            gallery.value.list = res.data.value
             rightNews.value = res.data.value
-            // console.log(rightNews.value)
-            videos.value.list = res.data.value.links.map(item => {
-                item.link = getId(item.url)
-                return item
-            })
-            videos.value.count = res.data.value.count
+            // console.log(gallery.value)
+            counter.value = gallery.value.list.count
         }
     }
+
+    watch(
+        () => locale.value,
+        () => {
+            getData()
+        }
+    )
 
     onMounted(() => {
         getData()
@@ -39,20 +42,20 @@
 
 <template>
     <NuxtLayout name="alt-header">
-        <div class="categories page">
+        <div class="gallery">
             <Breadcrumbs  
-                :breadObj="videos?.category"
+                :breadObj="gallery?.category"
             />
             <div class="categories__body">
                 <div class="container">
                     <div class="categories__box">
                         <div class="categories__left">
-                            <VideoList 
-                                :list="videos?.list"
+                            <GalleryList 
+                                :list="gallery?.list?.galeries"
                             />
-
+                            
                             <paginate 
-                                :data="videos?.count"
+                                :data="counter"
                                 @next="getData"
                             />
                         </div>
@@ -83,49 +86,9 @@
 </template>
 
 <style lang="scss">
-.categories{
-    &__box{
-        padding: 40px 0px 90px;
-        display: flex;
-    }
-    &__left{
-        flex-basis: 66.6666%;
-        width: 66.6666%;
-        padding-right: 20px;
-    }
-    &__right{
-        flex-basis: 33.3333%;
-        width: 33.3333%;
-        margin: -15px 0px;
-    }
-    &__more{
-        padding: 15px 0px;
-    }
-    &__banner{
-        height: 130px;
-        padding: 15px 0px;
-        img{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-    }
-    &__pag{
-            margin-top: 20px;
-        }
-
     @media (max-width: 500px) {
-        &__box{
-            flex-direction: column;
-            padding: 20px 0px 40px;
+        .categories__right{
+            margin-top: 15px;
         }
-        &__left, &__right{
-            width: 100%;
-            flex-basis: unset;
-            padding: 0;
-        }
-        
     }
-}
 </style>

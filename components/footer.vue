@@ -65,14 +65,14 @@
                         </li>
                         <li class="footer__link">
                             <span>{{ $t('phone_number') }}</span>
-                            <a href="tel:+998712331410">
+                            <a href="tel:+998712391776">
                                 <b>+99871-239-17-76</b>
                             </a>
                         </li>
                         <li class="footer__link">
                             <span>E-mail</span>
                             <a href="mailto:jahon@mfa.uz">
-                                <b>jahon@mfa.uz</b>
+                                <b>Dunyo@mfa.uz</b>
                             </a>
                         </li>
 
