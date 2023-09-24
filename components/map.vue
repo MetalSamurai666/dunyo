@@ -1,7 +1,7 @@
 <script setup>
     import { useMainStore } from "@/store/main";
     import { Splide, SplideSlide } from '@splidejs/vue-splide';
-
+    import {translateToUzk} from '@/utils/convert'
     const mainStore = useMainStore()
     const { locale } = useI18n()
 
@@ -11,8 +11,11 @@
     const getNews = async (id) => {
         let res = await mainStore.getCountry(id, locale.value)
         if (res.data.value) {
+            
             list.value = res.data.value
-            // console.log(list.value)
+            if (locale.value == 'uzk'){
+                list.value.country = translateToUzk(list.value.country)
+            }
         }
     }
 
@@ -21,7 +24,12 @@
         let res = await mainStore.getAllCountries(lang)
         if (res.data.value) {
             countries.value = res.data.value
-            // console.log(countries.value)
+            if (lang == 'uzk'){
+                countries.value = countries.value.map(country => {
+                    return {...country, title: translateToUzk(country.title)}
+                })
+            }
+            
         }
     }
 

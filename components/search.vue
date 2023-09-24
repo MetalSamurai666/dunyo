@@ -19,7 +19,7 @@
             if (res.data.value) {
                 results.value = res.data.value
                 loading.value = false
-                console.log(results.value)
+                // console.log(results.value)
             }
         }
     }

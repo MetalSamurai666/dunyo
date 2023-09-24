@@ -13,7 +13,7 @@
         let res = await mainStore.getNews(route.params.slug, lang)
         if (res.data.value) {
             newsObj.value = res.data.value
-            console.log(newsObj.value, 'news')
+            // console.log(newsObj.value, 'news')
         }
     }
 

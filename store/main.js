@@ -116,7 +116,6 @@ export const useMainStore = defineStore('indexId', () => {
     }
     
     const getSearch = (title, lang) => {
-        console.log(title, lang)
         return useFetch(url.value+`/api/search/?title=${title}&lang=${lang}`)
         .catch(er => console.log(er))
     }

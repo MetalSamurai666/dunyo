@@ -21,7 +21,6 @@
     const getData = async (next = 1) => {
         let res = await mainStore.getVideos(next)
         if (res.data.value) {
-            console.log(res.data.value)
             rightNews.value = res.data.value
             // console.log(rightNews.value)
             videos.value.list = res.data.value.links.map(item => {

@@ -19,7 +19,6 @@
         let res = await mainStore.getOneGallery(route.params.id, lang)
         if (res.data.value) {
             gallObj.value.album = res.data.value
-            console.log(gallObj.value, 'xxx');
             res.data.value.galery.img.map((item) => {
                 images.value.push(mainStore.url+'/'+item)
                 return images

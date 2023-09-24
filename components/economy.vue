@@ -8,7 +8,7 @@
     const { t, locale } = useI18n()
     const mainStore = useMainStore()
     const localeStore = useLocaleStore()
-
+    const { book } = storeToRefs(localeStore)
     const tabFilter = ref('latest')
     
 /* First Category */
@@ -70,9 +70,14 @@
         ]
     })
 
+    const getBook = async (lang) => {
+        await localeStore.getKeywords(lang)
+    }
+
     watch(
         () => locale.value,
         () => {
+            
             getFirst(locale.value)
             getRand('politics', locale.value)
             getTabs(locale.value)
@@ -80,6 +85,7 @@
     )
     
     onMounted(() => {
+        getBook(locale.value)
         getFirst(locale.value)
         getRand('politics', locale.value)
         getTabs(locale.value)
@@ -92,7 +98,8 @@
             <div class="economy__box">
                 <div class="economy__row">
                     <div class="economy__small">
-                        <div class="economy__title">{{ cards?.category?.title }}</div>
+                        <!-- <div class="economy__title">{{ cards?.category?.title }}</div> -->
+                        <div class="economy__title">{{ book?.important_dates }}</div>
                         <ul class="economy__news">
                             <cardCat 
                                 class="economy__card"
@@ -101,15 +108,14 @@
                                 :key="index"
                             />
                         </ul>
-                        <div class="economy__more">
+                        <div class="economy__more" v-if="false">
                             <NuxtLink :to="localePath(`/${cards?.category?.slug}`)">{{ $t('more_news') }}</NuxtLink>
                         </div>
                     </div>
 
                     <div class="economy__big">
-                        <div class="economy__poster poster" :style="`background-image: url(${mainStore.url}/${rand?.news?.img})`">
+                        <div class="economy__poster poster" :style="`background-image: url(${encodeURI(mainStore.url+'/' + rand?.news?.img)})`">
                             <div class="economy__title">{{ rand?.category?.title }}</div>
-
                             <div class="poster__text">
                                 <div class="poster__date">{{ rand?.news?.date.slice(0, 10) }}</div>
                                 <NuxtLink :to="localePath(`/${rand?.category?.slug}/${rand?.news?.slug}`)" class="poster__title">{{ rand?.news?.title }}</NuxtLink>

@@ -52,11 +52,11 @@
 
     watch(
         () => locale.value,
-        () => getSecond('politics', locale.value)
+        () => getSecond('prezident', locale.value)
     )
 
     onMounted(() => {
-        getSecond('politics', locale.value)
+        getSecond('prezident', locale.value)
     })
 </script>
 
