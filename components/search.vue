@@ -43,12 +43,12 @@
                     <li class="item" v-for="item of results" :key="item?._id">
                         <div class="item__box">
                             <div class="item__left">
-                                <div class="item__img">
+                                <NuxtLink @click="closeSearch" :to="localePath(`/${item?.category}/${item?.slug}`)" class="item__img">
                                     <img :src="`${mainStore.url}/${item?.img}`">
-                                </div>
+                                </NuxtLink>
                             </div>  
                             <div class="item__right">
-                                <NuxtLink :to="localePath(`/${item?.category}/${item?.slug}`)" class="item__title">
+                                <NuxtLink @click="closeSearch" :to="localePath(`/${item?.category}/${item?.slug}`)" class="item__title">
                                     {{ item?.title }}
                                 </NuxtLink>
                             </div>

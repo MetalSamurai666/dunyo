@@ -2,7 +2,8 @@
 
 <template>
     <div>
-        <Header class="secondary"/>   
+        <Header class="secondary"/> 
+        <Search /> 
         <Menu />
         <slot/>
         
