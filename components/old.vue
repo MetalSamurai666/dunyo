@@ -6,7 +6,7 @@
     <div class="old">
         <div class="container">
             <div class="old__box">
-                <a class="old__link" href="https://dunyo.info" target="_blank">{{ $t('old') }}</a>
+                <a class="old__link" href="https://old.dunyo.info" target="_blank">{{ $t('old') }}</a>
             </div>
         </div>
     </div>
