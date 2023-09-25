@@ -94,29 +94,29 @@
                 <div class="footer__socials">
                     <ul>
                         <li>
-                            <NuxtLink to="/">
+                            <a target="_blank" href="https://www.youtube.com/channel/UCwHXdaoLTPBkaEQBMCDp6yQ">
                                 <img src="@/assets/logo/socials/youtube.svg">
-                            </NuxtLink>
+                            </a>
                         </li>
                         <li>
-                            <NuxtLink to="/">
+                            <a href="https://twitter.com/Dunyo_IA" target="_blank">
                                 <img src="@/assets/logo/socials/twitter.svg">
-                            </NuxtLink>
+                            </a>
                         </li>
-                        <li>
+                        <li v-if="false">
                             <NuxtLink to="/">
                                 <img src="@/assets/logo/socials/instagram.svg">
                             </NuxtLink>
                         </li>
                         <li>
-                            <NuxtLink to="/">
+                            <a href="https://www.facebook.com/DunyoIA/">
                                 <img src="@/assets/logo/socials/facebook.svg">
-                            </NuxtLink>
+                            </a>
                         </li>
                         <li>
-                            <NuxtLink to="/">
+                            <a href="https://t.me/iadunyo_uz" target="_blank">
                                 <img src="@/assets/logo/socials/telegram.svg">
-                            </NuxtLink>
+                            </a>
                         </li>
                     </ul>
                 </div>
