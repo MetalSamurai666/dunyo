@@ -57,9 +57,9 @@
                                 class="categories__more"
                             />
 
-                            <div class="categories__banner">
+                            <!-- <div class="categories__banner">
                                 <img src="@/assets/img/economy/poster.jpg">
-                            </div>
+                            </div> -->
 
                             <catMore
                                 v-if="cat?.rand_category?.length > 0"
