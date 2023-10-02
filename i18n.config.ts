@@ -3,6 +3,7 @@ export default defineI18nConfig(() => ({
     locale: 'uz',
     messages: {
         uz: {
+            all:'Barcha yangliklar',
             main: 'Bosh sahifa',
             latest_news: 'So`nggi yangiliklar',
             actual_news: 'Dolzarb yangiliklar',
@@ -20,7 +21,7 @@ export default defineI18nConfig(() => ({
             address_title: 'Manzil',
             address: '100066, Toshkent, Amir Temur ko`chasi, 4',
             phone_number: 'Telefon raqami',
-            copyright: '© 2023-yil O`zbekiston Respublikasi tashqi ishlar vazirligi Dunyo axborot agentligining rasmiy veb-sayti. Mualliflik huquqi himoyalangan.',
+            copyright: '© 2023-yil O`zbekiston Respublikasi Tashqi ishlar vazirligi Dunyo axborot agentligining rasmiy veb-sayti. Mualliflik huquqi himoyalangan.',
             no_country_news: 'Bu davlat bo`yicha yangiliklar hozircha yo`q',
             old: 'Saytning eski versiyasi',
             tashkent: 'Toshkent',
@@ -31,6 +32,7 @@ export default defineI18nConfig(() => ({
             send: 'Yuborish'
         },
         uzk: {
+            all:'Барча янгиликлар',
             main: 'Бош саҳифа',
             latest_news: 'Cўнгги янгиликлар',
             actual_news: 'Долзарб янгиликлар',
@@ -48,7 +50,7 @@ export default defineI18nConfig(() => ({
             address_title: 'Манзил',
             address: '100066, Тошкент, Амир Темур кўчаси, 4',
             phone_number: 'Телефон рақами',
-            copyright: '© 2023-йил Ўзбекистон Республикаси ташқи ишлар вазирлиги Дунё ахборот агентлигининг расмий веб-сайти.  Муаллифлик ҳуқуқи ҳимояланган.',
+            copyright: '© 2023-йил Ўзбекистон Республикаси Ташқи ишлар вазирлиги Дунё ахборот агентлигининг расмий веб-сайти.  Муаллифлик ҳуқуқи ҳимояланган.',
             no_country_news: 'Бу давлат бўйича янгиликлар ҳозирча йўқ',
             old: 'Сайтнинг эски версияси',
             tashkent: 'Тошкент',
@@ -59,6 +61,7 @@ export default defineI18nConfig(() => ({
             send: 'Юбориш'
         },
         ru: {
+            all:'Все новости',
             main: 'Главная',
             latest_news: 'Последние новости',
             actual_news: 'Актуальные новости',
@@ -87,6 +90,7 @@ export default defineI18nConfig(() => ({
             send: 'Отправить'
         },
         en: {
+            all:'News',
             main: 'Main page',
             latest_news: 'Latest news',
             actual_news: 'Actual news',

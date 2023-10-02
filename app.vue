@@ -72,8 +72,8 @@
   onMounted(() => {
     document.title = 'Dunyo'
     getData(locale.value)
+    
 
-    // localeStore.getTranslations(locale.value)
   })
 </script>
 

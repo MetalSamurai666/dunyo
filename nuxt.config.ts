@@ -6,6 +6,17 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/i18n',
     'nuxt-lazy-load',
+    [
+      'yandex-metrika-module-nuxt3',
+      {
+        id: '95112568',
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+      }
+    ]
+    
   ],
   // plugins: [
   //   'vue-social-sharing'

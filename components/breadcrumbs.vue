@@ -33,7 +33,7 @@
         <div class="container">
             <div class="breadcrumbs__box">
                 <div class="breadcrumbs__left">
-                    <div class="breadcrumbs__title">{{ breadObj?.title }}</div>
+                    <div class="breadcrumbs__title">{{ breadObj?.title || $t('all') }}</div>
                     
                     <!-- <pre>{{ route.fullPath.split('/') }}</pre> -->
                 </div>

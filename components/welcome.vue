@@ -114,12 +114,13 @@
                                     class="item__title" 
                                     :to="localePath(`/${item?.category?.slug}/${item?.slug}`)"
                                 >
-                                    {{ item?.title }}
+                                    {{ item?.title.trim() }}
                                 </NuxtLink>
-                                <div class="item__date">{{ item?.date .slice(0, 10)}}</div>
+                                <div class="item__date">{{ item?.date.slice(0, 10)}}</div>
                             </div>
                         </li>
                     </ul>
+                    <nuxt-link to="/all" class="welcome__more">{{ $t('more_news') }}</nuxt-link>
                 </div>
             </div>
             <div class="welcome__bot">
