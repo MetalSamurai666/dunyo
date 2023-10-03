@@ -120,7 +120,7 @@
                             </div>
                         </li>
                     </ul>
-                    <nuxt-link to="/all" class="welcome__more">{{ $t('more_news') }}</nuxt-link>
+                    <nuxt-link :to="localePath('/all')" class="welcome__more">{{ $t('more_news') }}</nuxt-link>
                 </div>
             </div>
             <div class="welcome__bot">
