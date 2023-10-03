@@ -77,9 +77,10 @@
                             </a>
                         </li>
 
+                        <a href="http://www.uz/ru/res/visitor/index?id=45601" target=_top><img height=31 src="https://cnt0.www.uz/counter/collect?id=45601&pg=http%3A//uzinfocom.uz&&col=D0D0CF&amp;t=ffffff&amp;p=24211D" width=88 border=0 alt="Топ рейтинг www.uz"></a>
 
-                            <a href="http://www.uz/ru/res/visitor/index?id=45601" target="_top">
-                                <img height=31 src="http://cnt0.www.uz/counter/collect?id=45601&pg=http%3A//uzinfocom.uz&&col=0063AF&amp;t=ffffff&amp;p=E6850F" width=88 border=0 alt="Топ рейтинг www.uz"></a>
+                            <!-- <a href="https://www.uz/ru/res/visitor/index?id=45601" target="_top">
+                                <img height=31 src="https://cnt0.www.uz/counter/collect?id=45601&pg=http%3A//uzinfocom.uz&&col=0063AF&amp;t=ffffff&amp;p=E6850F" width=88 border=0 alt="Топ рейтинг www.uz"></a> -->
                         
                     </ul>
 
