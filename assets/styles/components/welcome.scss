@@ -297,6 +297,25 @@
         }
     }
 
+    @media (max-width: 1440px) {
+        .slider{
+            &__text{
+                left: unset;
+            }
+            &__title{
+                @include oh(4);
+            }
+        }
+        &__news{
+            ul{
+                max-height: 300px;
+            }
+        }
+        &__bot{
+            left: 0;
+        }
+    }
+
     @media (max-width: 1024px) {
         .slider{
             &__text{
@@ -308,7 +327,10 @@
         }
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 768px) {
+        .container{
+            max-width: 100%;
+        }
         height: unset;
         &__slider{
             height: 100%;

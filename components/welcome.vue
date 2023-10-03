@@ -70,7 +70,7 @@
                     lazyLoad: true,
                     breakpoints: {
                         800: {
-                            height: 800,
+                            height: '100vh',
                         },
                         500:{
                             height: 600,

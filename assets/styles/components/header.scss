@@ -97,7 +97,6 @@
             }
         }
         &.alt{
-            
             .header__list{
                 .item__link{
                     color: #fff;
@@ -424,7 +423,7 @@
             .header__search{
                 button{
                     img{
-                        filter: invert(1);
+                        filter: unset;
                     }
                 }
             }
