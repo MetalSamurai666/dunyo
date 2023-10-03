@@ -124,12 +124,12 @@
         button{
             @include df-aic-jcc;
             @include tr(.2s);
-            width: 190px;
-            height: 60px;
-            background-color: #316AC0;
+            width: 150px;
+            height: 40px;
+            background-color: $colorLightBlue;
             color: #fff;
             &:hover{
-                background-color: darken(#316AC0, 10%);
+                background-color: darken($colorLightBlue, 10%);
             }
         }
     }

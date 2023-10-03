@@ -39,7 +39,7 @@
     const goToPage = (numPage) => {
         page.value = numPage;
         emit('next',page.value)
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0, behavior: 'smooth' })
     };
 
     onMounted(() => {
@@ -52,10 +52,32 @@
         <button @click="backPage">
             <img src="@/assets/logo/basic/arrowRight.svg">
         </button>
+
+
+        <div class="paginate__list">
+            <button v-for="item in count" :key="item" @click="() => goToPage(item)" :class="page == item ? 'paginate__btn active' : 'paginate__btn'" >
+                {{ item }}
+            </button>
+        </div>
     
-        <button v-for="item in count" :key="item" @click="() => goToPage(item)" :class="page == item ? 'paginate__btn active' : 'paginate__btn'" >
-            {{ item }}
-        </button>
+        <!-- <div class="paginate__list">
+            <button 
+            v-for="item in count" 
+            :key="item" 
+            @click="() => goToPage(item)" :class="page == item ? 'paginate__btn active' : 'paginate__btn'" 
+            v-show="
+            item == 1 || 
+            item == count || 
+            item == page || 
+            (page == 1 && Math.ceil(count / 2) == item) ||
+            (page == 1 && Math.ceil(count / 2) + 1 == item) ||
+            (page == 1 && Math.ceil(count / 2) - 1 == item) 
+            "
+            >
+                {{ item }}
+            </button>
+        </div> -->
+
         <button @click="nextPage">
             <img src="@/assets/logo/basic/arrowRight.svg">
         </button>
@@ -102,6 +124,12 @@
             background-color: $colorLightBlue;
             color: #fff;
         }
+    }
+    &__list{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
     }
 }
 </style>

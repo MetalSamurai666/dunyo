@@ -18,12 +18,12 @@ export const useMainStore = defineStore('indexId', () => {
         }
     }
     
-    const getOneCat = (slug, lang) => {
-        // console.log(slug, lang);
-        return useFetch(url.value+`/api/category/get/${slug}/?lang=${lang}`)
+    const getOneCat = (slug, lang, page) => {
+        console.log(slug, page, lang)
+        return useFetch(url.value+`/api/category/get/${slug}/?page=${page}&lang=${lang}`)
         .catch(er => console.log(er))
     }
-    
+        
     const getNews = (slug, lang) => {
         // console.log(slug, lang)
         return useFetch(url.value+`/api/news/get/${slug}/?lang=${lang}`)

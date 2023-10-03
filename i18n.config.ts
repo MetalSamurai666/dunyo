@@ -90,7 +90,7 @@ export default defineI18nConfig(() => ({
             send: 'Отправить'
         },
         en: {
-            all:'News',
+            all: 'All news',
             main: 'Main page',
             latest_news: 'Latest news',
             actual_news: 'Actual news',

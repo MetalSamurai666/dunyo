@@ -81,3 +81,54 @@ button{
         padding: 0px 20px;
     }
 }
+
+.pagination-container {
+    background-color: #fff;
+    border-radius: 1px;
+    padding: 10px 0px;
+    @media (max-width: 500px) {
+        width: 100%;
+        overflow-x: auto;
+        padding: 5px 0px;
+    }
+}
+.paginate-buttons {
+    width: 40px;
+    height: 40px;
+    margin-inline: 5px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    border-radius: 1px;
+}
+.back-button {
+    width: 70px;
+    @media (max-width: 500px) {
+        width: 50px;
+    }
+}
+.next-button {
+    width: 70px;
+    @media (max-width: 500px) {
+        width: 50px;
+    }
+}
+.back-button svg {
+    transform: rotate(180deg);
+}
+.active-page {
+    background-color: $colorLightBlue;
+    color: #fff;
+}
+
+.paginate-buttons:hover {
+    background-color: #e5e5e5;
+}
+.active-page:hover {
+    background-color: $colorDarkBlue;
+    color: #fff;
+}
+.back-button:active,
+.next-button:active {
+    background-color: #dedede;
+}

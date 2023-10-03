@@ -26,6 +26,7 @@
     "firebase": "^10.1.0",
     "nuxt-lazy-load": "^3.0.4",
     "pinia": "^2.1.4",
+    "vue-awesome-paginate": "^1.1.46",
     "vue-easy-lightbox": "^1.16.0",
     "vue-social-sharing": "^4.0.0-alpha4",
     "yandex-metrika-module-nuxt3": "^1.5.3"

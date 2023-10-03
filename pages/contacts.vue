@@ -84,6 +84,16 @@
     </NuxtLayout>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/assets/styles/components/contacts.scss';
+
+.contacts{
+    margin-top: 155px;
+}
+
+@media (max-width: 1024px) {
+    .contacts{
+        margin-top: 100px;
+    }
+}
 </style>

@@ -53,8 +53,8 @@
                             </nuxt-link>
                         </li> -->
                         <li class="item">
-                            <nuxt-link :to="localePath(route.fullPath.split('/')[2])">
-                                <span>{{ bread.breadObj?.title }}</span>
+                            <nuxt-link :to="localePath(`/${route.fullPath.split('/')[2]}`)">
+                                <span>{{ bread.breadObj?.title }} {{ route.fullPath.split('/')[2] == 'all' ? $t('all') : '' }}</span>
                             </nuxt-link>
                         </li>
                     </ul>

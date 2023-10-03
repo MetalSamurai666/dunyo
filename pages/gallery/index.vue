@@ -16,6 +16,8 @@
     })
 
     const counter = ref(0)
+
+    const currentPage = ref(1)
     
     const rightNews = ref({})
     const getData = async (next = 1, page = 50) => {
@@ -26,6 +28,11 @@
             // console.log(gallery.value)
             counter.value = gallery.value.list.count
         }
+    }
+
+    const onClickHandler = () => {
+        getData()
+        window.scrollTo({ top: 70, behavior: 'smooth' })
     }
 
     watch(
@@ -53,11 +60,47 @@
                             <GalleryList 
                                 :list="gallery?.list?.galeries"
                             />
-                            
-                            <paginate 
+                            <!-- <paginate 
                                 :data="counter"
                                 @next="getData"
-                            />
+                            /> -->
+
+                            <vue-awesome-paginate
+                                :total-items="counter"
+                                :items-per-page="10"
+                                :max-pages-shown="7"
+                                v-model="currentPage"
+                                :on-click="onClickHandler"
+                                style="margin-top: 20px;"
+                            >
+                                <template #prev-button>
+                                    <span>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="black"
+                                            width="8"
+                                            height="8"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path d="M8.122 24l-4.122-4 8-8-8-8 4.122-4 11.878 12z" />
+                                        </svg>
+                                    </span>
+                                </template>
+
+                                <template #next-button>
+                                    <span>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="black"
+                                            width="8"
+                                            height="8"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path d="M8.122 24l-4.122-4 8-8-8-8 4.122-4 11.878 12z" />
+                                        </svg>
+                                    </span>
+                                </template>
+                            </vue-awesome-paginate>
                         </div>
                         <div class="categories__right">
                             <catMore
