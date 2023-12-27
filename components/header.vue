@@ -119,9 +119,12 @@
 
                 <div class="header__right">
                     <div class="header__search">
-                        <button @click="openSearch">
+                        <NuxtLink to="/search">
                             <img src="@/assets/logo/basic/magnifier.svg">
-                        </button>
+                        </NuxtLink>
+                        <!-- <button @click="openSearch">
+                            <img src="@/assets/logo/basic/magnifier.svg">
+                        </button> -->
                     </div>
 
                     <div class="header__date">
@@ -170,7 +173,7 @@
                     >
                         <NuxtLink 
                             class="item__link" 
-                            :to="localePath(item?.slug.length > 1 ? `/${item?.slug}` : ``)"
+                            :to="item?.slug != 'uzbekistan-segodnya' ? localePath(item?.slug.length > 1 ? `/${item?.slug}` : ``) : ''"
                         >
                             <span>{{ item?.title }}</span>
                         </NuxtLink>

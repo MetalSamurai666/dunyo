@@ -60,6 +60,12 @@
             @include df-aic;
             li{
                 padding: 0px 5px;
+                a{
+                    img{
+                        width: 24px;
+                        filter: brightness(0) invert(1);
+                    }
+                }
             }
         }
     }

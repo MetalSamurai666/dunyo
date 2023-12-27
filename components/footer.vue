@@ -118,6 +118,11 @@
                                 <img src="@/assets/logo/socials/telegram.svg">
                             </a>
                         </li>
+                        <li>
+                            <a href="https://api.dunyo.info/api/news/rss" target="_blank">
+                                <img src="@/assets/logo/basic/rss.svg">
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

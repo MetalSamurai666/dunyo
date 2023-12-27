@@ -2,6 +2,28 @@
 export default defineNuxtConfig({
   ssr: false,
   devtools: { enabled: false },
+  head: {
+    __dangerouslyDisableSanitizers: ['script'],
+    script: [
+      {
+        hid: 'gtm-script1',
+        src: 'https://www.googletagmanager.com/gtag/js?id=G-0S8WKKTVME',
+        defer: true
+      },
+      {
+        hid: 'gtm-script2',
+        innerHTML: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-0S8WKKTVME');
+        `,
+        type: 'text/javascript',
+        charset: 'utf-8'
+      }
+    ]
+  },
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/i18n',

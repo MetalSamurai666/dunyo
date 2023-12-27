@@ -52,6 +52,7 @@
                         />
                         
                         <catMore 
+                            v-if="newsObj?.latest.length > 0"
                             :moreTitle="$t('latest_news')"
                             :moreData="newsObj?.latest"
                             class="categories__more"

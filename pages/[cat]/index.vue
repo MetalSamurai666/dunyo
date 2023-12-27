@@ -6,7 +6,7 @@
 
     const mainStore = useMainStore()
     const localeStore = useLocaleStore()
-    const { locale } = useI18n()
+    const { locale, t } = useI18n()
     const { book } = storeToRefs(localeStore)
 
     const route = useRoute()
@@ -71,6 +71,7 @@
                                 :max-pages-shown="7"
                                 v-model="currentPage"
                                 :on-click="onClickHandler"
+                                v-if="cat?.count > 10"
                             >
                                 <template #prev-button>
                                     <span>
@@ -108,6 +109,7 @@
                         </div>
                         <div class="categories__right">
                             <catMore
+                                v-if="cat?.important_dates?.length > 0"
                                 :moreTitle="book?.important_dates"
                                 :moreData="cat?.important_dates"
                                 class="categories__more"
@@ -126,7 +128,7 @@
                             
                             <catMore
                                 v-if="cat?.other_news?.length > 0"
-                                :moreTitle="'Другие новости'"
+                                :moreTitle="t('other_news')"
                                 :moreData="cat?.other_news"
                                 class="categories__more"
                             />

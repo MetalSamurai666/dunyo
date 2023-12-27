@@ -36,7 +36,7 @@
             <div class="catWrapper__top">
                 <div class="catWrapper__left" v-if="actual">
                     <div class="catWrapper__poster" :style="`background-image: url(${mainStore.url}/${encodeURI(actual?.img)})`">
-                        <div class="catWrapper__cat">Актуально</div>
+                        <div class="catWrapper__cat">{{ $t('actual') }}</div>
                         <div class="catWrapper__date">{{ actual?.date.slice(0, 10) }}</div>
                     </div>
                     <div class="catWrapper__title">

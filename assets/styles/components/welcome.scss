@@ -72,7 +72,7 @@
             display: flex;
             flex-direction: column;
             position: absolute;
-            top: 300px;
+            top: 30%;
             left: 0;
             z-index: 99;
             width: 100%;
@@ -288,6 +288,7 @@
                         line-clamp: 4;
                         -webkit-box-orient: vertical;
                         white-space: break-spaces;
+                        padding-top: 3px;
                         &:hover{
                             color: $colorDarkBlue;
                         }
@@ -327,7 +328,7 @@
         }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
         .container{
             max-width: 100%;
         }
@@ -408,6 +409,15 @@
                         font-size: 14px;
                     }
                 }
+            }
+        }
+    }
+
+
+    @media (max-width: 500px) {
+        .slider{
+            &__text{
+                top: unset;
             }
         }
     }

@@ -29,7 +29,9 @@ export default defineI18nConfig(() => ({
             name: 'Ism',
             email: 'Elektron pochta',
             text: 'Matnli xabar',
-            send: 'Yuborish'
+            send: 'Yuborish',
+            search: 'Qidiruv',
+            results: 'Qidiruv natijalari soni'
         },
         uzk: {
             all:'Барча янгиликлар',
@@ -44,7 +46,7 @@ export default defineI18nConfig(() => ({
             feedback: 'Тескари алоқа',
             actual: 'Долзарб',
             more: 'Батафсил',
-            more_news: 'Бощқа янгиликлар',
+            more_news: 'Бошқа янгиликлар',
             map_title: 'Давлатлар бўйича янгиликлар',
             videos: 'Видеолар',
             address_title: 'Манзил',
@@ -58,7 +60,9 @@ export default defineI18nConfig(() => ({
             name: 'Исм',
             email: 'Электрон почта',
             text: 'Матнли хабар',
-            send: 'Юбориш'
+            send: 'Юбориш',
+            search: 'Қидирув',
+            results: 'Қидирув натижалари сони'
         },
         ru: {
             all:'Все новости',
@@ -87,7 +91,9 @@ export default defineI18nConfig(() => ({
             name: 'Имя',
             email: 'Электронная почта',
             text: 'Текст сообщение',
-            send: 'Отправить'
+            send: 'Отправить',
+            search: 'Поиск',
+            results: 'Количество результатов'
         },
         en: {
             all: 'All news',
@@ -116,7 +122,9 @@ export default defineI18nConfig(() => ({
             name: 'Name',
             email: 'E-mail',
             text: 'Text message',
-            send: 'Send'
+            send: 'Send',
+            search: 'Search',
+            results: 'Number of results'
         }
     }
 }))

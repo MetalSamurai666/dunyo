@@ -115,10 +115,17 @@ export const useMainStore = defineStore('indexId', () => {
         .catch(er => console.log(er))
     }
     
-    const getSearch = (title, lang) => {
-        return useFetch(url.value+`/api/search/?title=${title}&lang=${lang}`)
+    const getSearch = (title, lang, next) => {
+        return useFetch(url.value+`/api/search/?title=${title}&lang=${lang}&next=${next}`)
         .catch(er => console.log(er))
     }
+
+    const getSponsors = (lang) => {
+        console.log(lang);
+        return useFetch(url.value+`/api/partners/?lang=${lang}`)
+        .catch(er => console.log(er))
+    }
+
 
         return { 
             url, 
@@ -143,7 +150,8 @@ export const useMainStore = defineStore('indexId', () => {
             getVideos,
             getGallery,
             getOneGallery,
-            getSearch
+            getSearch,
+            getSponsors
         }
     }
 )

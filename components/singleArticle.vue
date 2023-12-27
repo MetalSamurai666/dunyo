@@ -19,7 +19,7 @@
 </script>
 
 <template>
-    <div class="article">
+    <div class="article" v-if="mostViewed?.length > 0">
         <div class="article__box" v-html="news?.content">
         </div>
 
@@ -45,8 +45,6 @@
                     />
                 </SplideSlide>
             </Splide>
-
-            
         </div>
         
         <ul class="article__send">
