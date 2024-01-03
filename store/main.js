@@ -121,7 +121,7 @@ export const useMainStore = defineStore('indexId', () => {
     }
 
     const getSponsors = (lang) => {
-        console.log(lang);
+        // console.log(lang);
         return useFetch(url.value+`/api/partners/?lang=${lang}`)
         .catch(er => console.log(er))
     }

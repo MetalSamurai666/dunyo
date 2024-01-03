@@ -9,7 +9,7 @@
     const getData = async (lang) => {
         let res = await mainStore.getSponsors(lang)
         if (res.data.value) {
-            console.log(res.data);
+            // console.log(res.data);
             sponsors.value = res.data.value
         }
     }

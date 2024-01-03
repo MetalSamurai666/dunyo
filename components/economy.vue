@@ -34,7 +34,7 @@
     const getTabs = async (lang) => {
         let res = await mainStore.getFirstTabs(lang)
         if (res.data.value) {
-            console.log('eco', res.data.value);
+            // console.log('eco', res.data.value);
             tabs.value = res.data.value
             // console.log(tabs.value)
             tabList.value.map((listItem) => {

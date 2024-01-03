@@ -3,7 +3,7 @@
 <template>
     <div>
         <Header />
-        <Search />
+        <!-- <SearchBox /> -->
         <Menu />
         <slot/>
         

@@ -28,6 +28,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/i18n',
     'nuxt-lazy-load',
+    'nuxt-gtag',
     [
       'yandex-metrika-module-nuxt3',
       {
@@ -43,6 +44,9 @@ export default defineNuxtConfig({
   // plugins: [
   //   'vue-social-sharing'
   // ],
+  gtag: {
+    id: 'G-0S8WKKTVME'
+  },
   nitro: {
     compressPublicAssets: true
   },
