@@ -29,6 +29,7 @@
     const getActual = async (lang) => {
         let res = await mainStore.getActualNews(lang)
         if (res.data.value) {
+            console.log(res.data.value);
             actual.value = res.data.value
         }
     }
